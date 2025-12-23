@@ -1,1 +1,113 @@
-# site
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>dac</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 20px 0; /* espacio arriba y abajo */
+            font-family: Arial, sans-serif;
+            background-image: url("https://static.vecteezy.com/system/resources/thumbnails/041/853/844/small_2x/ai-generated-the-mecca-in-saudi-arabia-photo.jpg");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh; /* permite crecer */
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* clave para scroll */
+        }
+
+        .container {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+            color: white;
+        }
+
+        .container img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 15px;
+        }
+
+        h1 {
+            margin: 10px 0;
+            font-size: 24px;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+
+        .category {
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.85;
+        }
+
+        .link {
+            display: block;
+            text-decoration: none;
+            background: white;
+            color: black;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 10px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .link:hover {
+            background: #ddd;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="Foto de perfil">
+
+        <h1>DAC</h1>
+        <p>Games and streaming and more </p>
+
+        <!-- STREAMING -->
+        <div class="category">🏴 Streamingrip </div>
+        <a href="https://flixer.sh/" class="link">flixer</a>
+        <a href="xprime.stream" class="link">Xprime</a>
+        <a href="https://pstream.mov" class="link">pstream</a>
+         <a href="https://veloratv.ru" class="link">valoratv</a>
+          <a href="https://www.bitcine.app" class="link">bitcine</a>
+           <a href="https://www.cuevana3.eu" class="link">cuevana sp</a>
+           <a href="https://www25.pelisplushd.to" class="link">pelisplus sp</a>
+
+        <!-- TOOLS & GAMES -->
+        <div class="category">🏴 Gamesrip </div>
+         <a href="https://steamrip.com" class="link">Steamrip</a>
+        <a href="https://ankergames.net" class="link">AnkerGames</a>
+        <a href="https://gog-games.to" class="link">GOG-Games</a>
+        <a href=" https://steamgg.net" class="link">SteamGG</a>
+        <a href="https://optijuegos.net" class="link">Optijuegos</a>
+
+        <!-- puedes agregar INFINITOS links aquí sin problema -->
+        <!-- CONTACTO -->
+        <div class="category"> instagram</div>
+        <a href="https://www.instagram.com/mrpewpickles/#" class="link">followme for more</a>
+    </div>
+
+</body>
+</html>
