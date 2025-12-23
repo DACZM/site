@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -17,7 +18,6 @@ html, body {
     overflow-x: hidden;
 }
 
-/* FONDO FIX REAL (NO SE ROMPE) */
 body::before {
     content: "";
     position: fixed;
@@ -32,7 +32,6 @@ body::before {
     z-index: -1;
 }
 
-/* CONTENEDOR GENERAL */
 .page {
     min-height: 100vh;
     display: flex;
@@ -40,7 +39,6 @@ body::before {
     padding: 30px 12px;
 }
 
-/* CARD */
 .container {
     width: 100%;
     max-width: 420px;
@@ -57,18 +55,7 @@ body::before {
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
-    margin-bottom: 15px;
-}
-
-h1 {
-    font-size: 26px;
-    margin-bottom: 8px;
-}
-
-p {
-    font-size: 14px;
-    margin-bottom: 25px;
-    opacity: 0.9;
+    margin-bottom: 20px;
 }
 
 .category {
@@ -104,9 +91,6 @@ p {
 
 <div class="container">
     <img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="DAC">
-
-    <h1>DAC</h1>
-    <p>Games · Streaming · More</p>
 
     <div class="category">🏴 StreamingRip</div>
     <a href="https://flixer.sh/" class="link">Flixer</a>
