@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -8,38 +7,49 @@
 <style>
 * {
     box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
 html, body {
-    margin: 0;
-    padding: 0;
     min-height: 100%;
     font-family: Arial, sans-serif;
+    overflow-x: hidden;
 }
 
-body {
+/* FONDO FIX REAL (NO SE ROMPE) */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
     background-image: url("https://static.vecteezy.com/system/resources/thumbnails/041/853/844/small_2x/ai-generated-the-mecca-in-saudi-arabia-photo.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    z-index: -1;
 }
 
-/* Wrapper para scroll correcto */
-.wrapper {
+/* CONTENEDOR GENERAL */
+.page {
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 30px 10px;
+    padding: 30px 12px;
 }
 
+/* CARD */
 .container {
-    background: rgba(0, 0, 0, 0.65);
-    padding: 30px 20px;
-    border-radius: 16px;
-    text-align: center;
     width: 100%;
     max-width: 420px;
+    background: rgba(0, 0, 0, 0.65);
+    backdrop-filter: blur(4px);
+    padding: 30px 20px;
+    border-radius: 18px;
     color: white;
+    text-align: center;
 }
 
 .container img {
@@ -51,8 +61,8 @@ body {
 }
 
 h1 {
-    margin: 10px 0;
     font-size: 26px;
+    margin-bottom: 8px;
 }
 
 p {
@@ -64,42 +74,40 @@ p {
 .category {
     margin-top: 30px;
     margin-bottom: 12px;
-    font-size: 15px;
-    font-weight: bold;
-    text-transform: uppercase;
+    font-size: 14px;
     letter-spacing: 1px;
+    text-transform: uppercase;
     opacity: 0.85;
 }
 
 .link {
     display: block;
     text-decoration: none;
-    background: white;
+    background: #ffffff;
     color: #000;
     padding: 14px;
     margin: 10px 0;
-    border-radius: 12px;
+    border-radius: 14px;
     font-weight: bold;
-    transition: transform 0.2s, background 0.2s;
+    transition: transform 0.2s ease, background 0.2s ease;
 }
 
 .link:hover {
-    background: #eaeaea;
+    background: #ededed;
     transform: scale(1.03);
 }
 </style>
 </head>
 
 <body>
-<div class="wrapper">
+<div class="page">
 
 <div class="container">
-    <img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="Foto de perfil">
+    <img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="DAC">
 
     <h1>DAC</h1>
     <p>Games · Streaming · More</p>
 
-    <!-- STREAMING -->
     <div class="category">🏴 StreamingRip</div>
     <a href="https://flixer.sh/" class="link">Flixer</a>
     <a href="https://xprime.stream" class="link">XPrime</a>
@@ -109,7 +117,6 @@ p {
     <a href="https://www.cuevana3.eu" class="link">Cuevana SP</a>
     <a href="https://www25.pelisplushd.to" class="link">PelisPlus SP</a>
 
-    <!-- GAMES -->
     <div class="category">🏴 GamesRip</div>
     <a href="https://steamrip.com" class="link">SteamRip</a>
     <a href="https://ankergames.net" class="link">AnkerGames</a>
@@ -117,7 +124,6 @@ p {
     <a href="https://steamgg.net" class="link">SteamGG</a>
     <a href="https://optijuegos.net" class="link">Optijuegos</a>
 
-    <!-- INSTAGRAM -->
     <div class="category">📷 Instagram</div>
     <a href="https://www.instagram.com/mrpewpickles/" class="link">
         Follow me for more
