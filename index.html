@@ -43,7 +43,7 @@ border-radius:22px;
 text-align:center;
 }
 
-img{
+.avatar{
 width:120px;
 height:120px;
 border-radius:50%;
@@ -52,15 +52,25 @@ margin-bottom:15px;
 }
 
 h1{font-size:26px;margin-bottom:6px}
-p{font-size:14px;margin-bottom:18px;opacity:.85}
+p{font-size:14px;margin-bottom:14px;opacity:.85}
 
 .search{
 width:100%;
 padding:14px;
 border-radius:16px;
 border:none;
-margin-bottom:24px;
+margin-bottom:14px;
 font-size:14px;
+}
+
+.toggle{
+display:flex;
+justify-content:center;
+align-items:center;
+gap:10px;
+font-size:13px;
+margin-bottom:22px;
+opacity:.85;
 }
 
 .category{
@@ -81,7 +91,6 @@ padding:15px;
 margin:12px 0;
 border-radius:16px;
 font-weight:bold;
-position:relative;
 }
 
 .popular::after{
@@ -89,16 +98,13 @@ content:"🔥";
 float:right;
 }
 
-/* ===== PREVIEW ===== */
 .preview{
 position:fixed;
 bottom:20px;
 left:50%;
 transform:translateX(-50%);
 width:92%;
-max-width:380px;
-height:220px;
-background:#000;
+max-width:360px;
 border-radius:16px;
 overflow:hidden;
 display:none;
@@ -106,11 +112,7 @@ z-index:999;
 box-shadow:0 20px 40px rgba(0,0,0,.6);
 }
 
-.preview iframe{
-width:100%;
-height:100%;
-border:none;
-}
+.preview img{width:100%;display:block}
 </style>
 </head>
 
@@ -118,83 +120,92 @@ border:none;
 <div class="page">
 <div class="container">
 
-<img src="https://i.redd.it/oxo0i46vau1g1.jpeg">
+<img src="https://i.redd.it/oxo0i46vau1g1.jpeg" class="avatar">
 <h1>DAC</h1>
 <p>Games · Streaming · More</p>
 
 <input class="search" placeholder="🔍 Buscar" onkeyup="filterLinks(this.value)">
 
+<div class="toggle">
+<label>🖼️ Previews</label>
+<input type="checkbox" id="previewToggle" checked>
+</div>
+
 <div class="category">🔥 Populares</div>
-<a href="https://flixer.sh/" class="link popular" data-preview>Flixer</a>
-<a href="https://xprime.stream" class="link popular" data-preview>XPrime</a>
-<a href="https://rivestream.org/" class="link popular" data-preview>Rivestream</a>
-<a href="https://steamrip.com" class="link popular" data-preview>SteamRip</a>
-<a href="https://ankergames.net" class="link popular" data-preview>AnkerGames</a>
-<a href="https://gog-games.to" class="link popular" data-preview>GOG Games</a>
-<a href="https://steamgg.net" class="link popular" data-preview>SteamGG</a>
+<a href="https://flixer.sh/" class="link popular" data-img="https://image.thum.io/get/flixer.sh">Flixer</a>
+<a href="https://xprime.stream" class="link popular" data-img="https://image.thum.io/get/xprime.stream">XPrime</a>
+<a href="https://rivestream.org/" class="link popular" data-img="https://image.thum.io/get/rivestream.org">Rivestream</a>
+<a href="https://steamrip.com" class="link popular" data-img="https://image.thum.io/get/steamrip.com">SteamRip</a>
+<a href="https://ankergames.net" class="link popular" data-img="https://image.thum.io/get/ankergames.net">AnkerGames</a>
+<a href="https://gog-games.to" class="link popular" data-img="https://image.thum.io/get/gog-games.to">GOG Games</a>
+<a href="https://steamgg.net" class="link popular" data-img="https://image.thum.io/get/steamgg.net">SteamGG</a>
 
 <div class="category">🏴 StreamingRip</div>
-<a href="https://pstream.mov" class="link" data-preview>PStream</a>
-<a href="https://veloratv.ru" class="link" data-preview>VeloraTV</a>
-<a href="https://www.bitcine.app" class="link" data-preview>Bitcine</a>
-<a href="https://hianime.to/home" class="link" data-preview>Hianime</a>
-<a href="https://www.cuevana3.eu" class="link" data-preview>Cuevana SP</a>
-<a href="https://www25.pelisplushd.to" class="link" data-preview>PelisPlus SP</a>
+<a href="https://pstream.mov" class="link" data-img="https://image.thum.io/get/pstream.mov">PStream</a>
+<a href="https://veloratv.ru" class="link" data-img="https://image.thum.io/get/veloratv.ru">VeloraTV</a>
+<a href="https://www.bitcine.app" class="link" data-img="https://image.thum.io/get/bitcine.app">Bitcine</a>
+<a href="https://hianime.to/home" class="link" data-img="https://image.thum.io/get/hianime.to">Hianime</a>
+<a href="https://www.cuevana3.eu" class="link" data-img="https://image.thum.io/get/cuevana3.eu">Cuevana SP</a>
+<a href="https://www25.pelisplushd.to" class="link" data-img="https://image.thum.io/get/pelisplushd.to">PelisPlus SP</a>
 
 <div class="category">🏴 GamesRip</div>
-<a href="https://union-crax.xyz/" class="link" data-preview>UnionCrax</a>
-<a href="https://steamunderground.net/" class="link" data-preview>SteamUnderground</a>
-<a href="https://elenemigos.com/" class="link" data-preview>Elenemigos</a>
-<a href="https://optijuegos.net" class="link" data-preview>Optijuegos</a>
+<a href="https://union-crax.xyz/" class="link" data-img="https://image.thum.io/get/union-crax.xyz">UnionCrax</a>
+<a href="https://steamunderground.net/" class="link" data-img="https://image.thum.io/get/steamunderground.net">SteamUnderground</a>
+<a href="https://elenemigos.com/" class="link" data-img="https://image.thum.io/get/elenemigos.com">Elenemigos</a>
+<a href="https://optijuegos.net" class="link" data-img="https://image.thum.io/get/optijuegos.net">Optijuegos</a>
 
 <div class="category">🏴 RetroGamesRip</div>
-<a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link" data-preview>PS1</a>
-<a href="https://www.retrogames.onl/p/play-n64-games-online.html" class="link" data-preview>N64</a>
-<a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link" data-preview>GBA</a>
-<a href="https://www.retrogames.onl/p/play-gbc-games-online.html" class="link" data-preview>GBC</a>
-<a href="https://www.retrogames.onl/p/play-snes-games-online.html" class="link" data-preview>SNES</a>
-<a href="https://www.retrogames.onl/p/play-nds-games-online.html" class="link" data-preview>NDS</a>
-<a href="https://www.retrogames.onl/p/play-nes-games-online.html" class="link" data-preview>NES</a>
+<a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link" data-img="https://image.thum.io/get/retrogames.onl">PS1</a>
+<a href="https://www.retrogames.onl/p/play-n64-games-online.html" class="link" data-img="https://image.thum.io/get/retrogames.onl">N64</a>
+<a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link" data-img="https://image.thum.io/get/retrogames.onl">GBA</a>
+<a href="https://www.retrogames.onl/p/play-gbc-games-online.html" class="link" data-img="https://image.thum.io/get/retrogames.onl">GBC</a>
+<a href="https://www.retrogames.onl/p/play-snes-games-online.html" class="link" data-img="https://image.thum.io/get/retrogames.onl">SNES</a>
+<a href="https://www.retrogames.onl/p/play-nds-games-online.html" class="link" data-img="https://image.thum.io/get/retrogames.onl">NDS</a>
+<a href="https://www.retrogames.onl/p/play-nes-games-online.html" class="link" data-img="https://image.thum.io/get/retrogames.onl">NES</a>
 
 <div class="category">📷 Instagram</div>
-<a href="https://www.instagram.com/mrpewpickles/" class="link" data-preview>Follow me</a>
+<a href="https://www.instagram.com/mrpewpickles/" class="link" data-img="https://image.thum.io/get/instagram.com">Follow me for more</a>
 
 </div>
 </div>
 
-<!-- PREVIEW BOX -->
 <div class="preview" id="preview">
-<iframe id="previewFrame"></iframe>
+<img id="previewImg">
 </div>
 
 <script>
+const preview=document.getElementById("preview");
+const img=document.getElementById("previewImg");
+const toggle=document.getElementById("previewToggle");
+
 function filterLinks(text){
 text=text.toLowerCase();
-document.querySelectorAll(".link").forEach(link=>{
-link.style.display=link.innerText.toLowerCase().includes(text)?"block":"none";
+document.querySelectorAll(".link").forEach(l=>{
+l.style.display=l.innerText.toLowerCase().includes(text)?"block":"none";
 });
 }
 
-const preview=document.getElementById("preview");
-const frame=document.getElementById("previewFrame");
-
-document.querySelectorAll("[data-preview]").forEach(link=>{
-link.addEventListener("mouseenter",()=>showPreview(link.href));
-link.addEventListener("mouseleave",hidePreview);
+document.querySelectorAll(".link").forEach(link=>{
+link.addEventListener("mouseenter",()=>show(link));
+link.addEventListener("mouseleave",hide);
 link.addEventListener("touchstart",e=>{
+if(!toggle.checked)return;
 e.preventDefault();
-showPreview(link.href);
+show(link);
 });
 });
 
-function showPreview(url){
-frame.src=url;
+function show(link){
+if(!toggle.checked)return;
+const src=link.dataset.img;
+if(!src)return;
+img.src=src;
 preview.style.display="block";
 }
 
-function hidePreview(){
-frame.src="";
+function hide(){
 preview.style.display="none";
+img.src="";
 }
 </script>
 
