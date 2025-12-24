@@ -12,19 +12,24 @@
     padding: 0;
 }
 
-/* ===== FONDO ===== */
-html, body {
-    min-height: 100%;
+/* ===== FONDO FIJO REAL ===== */
+body {
+    min-height: 100vh;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+    position: relative;
 }
 
-body {
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
     background-image: url("https://wallpapercave.com/wp/wp12703228.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    background-attachment: scroll;
+    z-index: -1;
+    transform: translateZ(0); /* evita bugs en móvil */
 }
 
 /* ===== CONTENIDO ===== */
@@ -49,7 +54,7 @@ body {
     animation: fadeUp 0.9s ease forwards;
 }
 
-/* ===== FOTO ===== */
+/* ===== FOTO CON GLOW ===== */
 .container img {
     width: 120px;
     height: 120px;
@@ -57,10 +62,13 @@ body {
     object-fit: cover;
     margin-bottom: 15px;
 
-    animation: pop 0.8s ease forwards;
+    box-shadow:
+        0 0 15px #ff005d,
+        0 0 30px #00f2ff;
+    animation: glow 3s infinite alternate, pop 0.8s ease forwards;
 }
 
-/* ===== TEXTOS ===== */
+/* ===== TEXTO ===== */
 h1 {
     font-size: 26px;
     margin-bottom: 8px;
@@ -72,7 +80,7 @@ p {
     opacity: 0.9;
 }
 
-/* ===== CATEGORIAS ===== */
+/* ===== CATEGORÍAS ===== */
 .category {
     margin-top: 32px;
     margin-bottom: 12px;
@@ -80,11 +88,9 @@ p {
     letter-spacing: 1px;
     text-transform: uppercase;
     opacity: 0.85;
-
-    animation: fadeUp 0.8s ease forwards;
 }
 
-/* ===== BOTONES ===== */
+/* ===== BOTONES CON GLOW ===== */
 .link {
     display: block;
     text-decoration: none;
@@ -95,25 +101,38 @@ p {
     border-radius: 16px;
     font-weight: bold;
 
+    position: relative;
+    overflow: hidden;
+
     transform: translateY(20px);
     opacity: 0;
     animation: slideIn 0.6s ease forwards;
 }
 
-.link:nth-child(1) { animation-delay: 0.1s; }
-.link:nth-child(2) { animation-delay: 0.15s; }
-.link:nth-child(3) { animation-delay: 0.2s; }
-.link:nth-child(4) { animation-delay: 0.25s; }
-.link:nth-child(5) { animation-delay: 0.3s; }
-.link:nth-child(6) { animation-delay: 0.35s; }
-.link:nth-child(7) { animation-delay: 0.4s; }
-.link:nth-child(8) { animation-delay: 0.45s; }
-.link:nth-child(9) { animation-delay: 0.5s; }
+/* Glow animado */
+.link::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(
+        120deg,
+        #ff005d,
+        #00f2ff,
+        #ff005d
+    );
+    filter: blur(12px);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+    animation: glowMove 4s linear infinite;
+}
 
-/* Hover tipo Insta */
+.link:hover::before {
+    opacity: 1;
+}
+
 .link:hover {
     transform: scale(1.05);
-    background: #f2f2f2;
 }
 
 /* ===== ANIMACIONES ===== */
@@ -146,10 +165,25 @@ p {
     }
 }
 
-/* Fondo fijo solo en PC */
-@media (min-width: 768px) {
-    body {
-        background-attachment: fixed;
+@keyframes glow {
+    from {
+        box-shadow:
+            0 0 10px #ff005d,
+            0 0 20px #00f2ff;
+    }
+    to {
+        box-shadow:
+            0 0 25px #ff005d,
+            0 0 50px #00f2ff;
+    }
+}
+
+@keyframes glowMove {
+    from {
+        transform: translateX(-50%);
+    }
+    to {
+        transform: translateX(50%);
     }
 }
 </style>
