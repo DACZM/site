@@ -5,195 +5,95 @@
 <title>DAC</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-
-body{
-    font-family:'Segoe UI',Arial,sans-serif;
-    background:black;
-    color:white;
-    overflow-x:hidden;
-}
-
-/* ===== FONDO FIJO ===== */
+body{font-family:Segoe UI,Arial;background:black;color:white}
 body::before{
-    content:"";
-    position:fixed;
-    inset:0;
-    background:url("https://i.pinimg.com/originals/43/0d/54/430d54fac0b2ecfaf435cf5d65979a41.gif") center/contain no-repeat;
-    z-index:-1;
-}
-
-/* ===== CONTENEDOR ===== */
-.page{
-    min-height:100vh;
-    display:flex;
-    justify-content:center;
-    padding:30px 14px;
-}
-
+content:"";position:fixed;inset:0;
+background:url("https://i.pinimg.com/originals/43/0d/54/430d54fac0b2ecfaf435cf5d65979a41.gif")
+center/contain no-repeat;z-index:-1}
+.page{min-height:100vh;display:flex;justify-content:center;padding:30px 14px}
 .container{
-    width:100%;
-    max-width:440px;
-    background:rgba(0,0,0,.75);
-    backdrop-filter:blur(8px);
-    border-radius:28px;
-    padding:32px 22px;
-    text-align:center;
-    animation:fadeUp .9s ease;
-}
-
-/* ===== PERFIL ===== */
-.avatar{
-    width:120px;
-    height:120px;
-    border-radius:50%;
-    object-fit:cover;
-    margin-bottom:12px;
-    box-shadow:0 0 20px rgba(255,255,255,.15);
-}
-
-h1{
-    font-size:30px;
-    letter-spacing:1px;
-}
-
-.bio{
-    font-size:14px;
-    opacity:.85;
-    margin:6px 0 16px;
-}
-
-/* ===== CONTADOR ===== */
-.counter{
-    font-size:12px;
-    opacity:.7;
-    margin-bottom:22px;
-}
-
-/* ===== CATEGORÍAS ===== */
-.category{
-    margin:32px 0 14px;
-    font-size:13px;
-    letter-spacing:2px;
-    text-transform:uppercase;
-    opacity:.75;
-}
-
-/* ===== LINKS ===== */
-.link{
-    display:block;
-    text-decoration:none;
-    background:white;
-    color:black;
-    padding:15px 16px;
-    margin:12px 0;
-    border-radius:18px;
-    font-weight:600;
-    position:relative;
-    overflow:hidden;
-    transform:translateY(20px);
-    opacity:0;
-    animation:slideIn .5s forwards;
-    transition:transform .15s ease, box-shadow .15s ease;
-}
-
-.link:hover{
-    transform:scale(1.03);
-    box-shadow:0 8px 20px rgba(0,0,0,.35);
-}
-
-.link:active{
-    transform:scale(.96);
-}
-
-/* ===== POPULAR ===== */
-.popular::after{
-    content:"🔥 Popular";
-    position:absolute;
-    right:14px;
-    top:50%;
-    transform:translateY(-50%);
-    font-size:11px;
-    opacity:.75;
-}
-
-/* ===== ANIMACIONES ===== */
-@keyframes fadeUp{
-    from{opacity:0;transform:translateY(26px)}
-    to{opacity:1;transform:translateY(0)}
-}
-
-@keyframes slideIn{
-    to{opacity:1;transform:translateY(0)}
-}
+max-width:460px;width:100%;
+background:rgba(0,0,0,.75);
+backdrop-filter:blur(8px);
+border-radius:28px;
+padding:32px 22px;text-align:center}
+.link{display:block;background:white;color:black;
+padding:15px;margin:12px 0;border-radius:18px;
+font-weight:600;text-decoration:none}
+.stats{font-size:11px;opacity:.6}
+.search{width:100%;padding:14px;border-radius:16px;border:none;margin-bottom:18px}
+.category{margin:30px 0 14px;font-size:13px;letter-spacing:2px;opacity:.7}
+.popular::after{content:"🔥 Popular";float:right;font-size:11px;opacity:.7}
 </style>
 </head>
 
 <body>
-
 <div class="page">
 <div class="container">
 
-<img src="https://i.redd.it/oxo0i46vau1g1.jpeg" class="avatar" alt="DAC">
-
 <h1>DAC</h1>
-<div class="bio">🎮 Games · 🎬 Streaming · 🔥 Rips</div>
+<div id="visits">👁️ Cargando…</div>
 
-<div class="counter" id="visits">👁️ Cargando visitas…</div>
+<input class="search" placeholder="🔍 Buscar" onkeyup="filterLinks(this.value)">
 
-<!-- ===== STREAMING ===== -->
-<div class="category">🏴 StreamingRip</div>
-<a href="https://flixer.sh/" class="link popular">Flixer</a>
-<a href="https://xprime.stream" class="link popular">XPrime</a>
-<a href="https://rivestream.org/" class="link popular">Rivestream</a>
-<a href="https://pstream.mov" class="link">PStream</a>
-<a href="https://veloratv.ru" class="link">VeloraTV</a>
-<a href="https://www.bitcine.app" class="link">Bitcine</a>
-<a href="https://hianime.to/home" class="link">Hianime</a>
-<a href="https://www.cuevana3.eu" class="link">Cuevana SP</a>
-<a href="https://www25.pelisplushd.to" class="link">PelisPlus SP</a>
+<div class="category">🔥 Populares</div>
+<a href="https://flixer.sh" class="link popular" data-id="flixer">Flixer<div class="stats"></div></a>
+<a href="https://steamrip.com" class="link popular" data-id="steamrip">SteamRip<div class="stats"></div></a>
 
-<!-- ===== GAMES ===== -->
-<div class="category">🏴 GamesRip</div>
-<a href="https://steamrip.com" class="link popular">SteamRip</a>
-<a href="https://ankergames.net" class="link popular">AnkerGames</a>
-<a href="https://gog-games.to" class="link popular">GOG Games</a>
-<a href="https://steamgg.net" class="link">SteamGG</a>
-<a href="https://union-crax.xyz/" class="link">UnionCrax</a>
-<a href="https://steamunderground.net/" class="link">SteamUnderground</a>
-<a href="https://elenemigos.com/" class="link">ElEnemigos</a>
-<a href="https://optijuegos.net" class="link">Optijuegos</a>
-
-<!-- ===== RETRO ===== -->
-<div class="category">🏴 RetroGamesRip</div>
-<a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link">PS1</a>
-<a href="https://www.retrogames.onl/p/play-n64-games-online.html" class="link">N64</a>
-<a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link">GBA</a>
-<a href="https://www.retrogames.onl/p/play-gbc-games-online.html" class="link">GBC</a>
-<a href="https://www.retrogames.onl/p/play-snes-games-online.html" class="link">SNES</a>
-<a href="https://www.retrogames.onl/p/play-nds-games-online.html" class="link">NDS</a>
-<a href="https://www.retrogames.onl/p/play-nes-games-online.html" class="link">NES</a>
-
-<!-- ===== SOCIAL ===== -->
-<div class="category">📷 Instagram</div>
-<a href="https://www.instagram.com/mrpewpickles/" class="link">Follow me for more</a>
+<div class="category">🏴 Streaming</div>
+<a href="https://cuevana3.eu" class="link" data-id="cuevana">Cuevana<div class="stats"></div></a>
 
 </div>
 </div>
 
 <script>
-/* ===== CONTADOR REAL ===== */
-let visits = localStorage.getItem("dac_visits");
+/* ===== FIREBASE CONFIG (CAMBIA ESTO) ===== */
+firebase.initializeApp({
+  apiKey: "TU_API_KEY",
+  authDomain: "TU_DOMINIO.firebaseapp.com",
+  projectId: "TU_PROJECT_ID"
+});
+const db = firebase.firestore();
 
-if(!visits){
-    visits = 1;
-} else {
-    visits = parseInt(visits) + 1;
+/* ===== VISITAS GLOBALES ===== */
+const visitsRef = db.collection("stats").doc("visits");
+visitsRef.get().then(doc=>{
+  let v = doc.exists ? doc.data().count+1 : 1;
+  visitsRef.set({count:v});
+  document.getElementById("visits").innerText="👁️ "+v+" visitas";
+});
+
+/* ===== CLICS POR LINK ===== */
+document.querySelectorAll(".link").forEach(link=>{
+  const id = link.dataset.id;
+  const ref = db.collection("stats").doc(id);
+
+  ref.onSnapshot(snap=>{
+    let c = snap.exists ? snap.data().count : 0;
+    link.querySelector(".stats").innerText="👆 "+c+" clics";
+  });
+
+  link.addEventListener("click",()=>{
+    ref.get().then(d=>{
+      let c = d.exists ? d.data().count+1 : 1;
+      ref.set({count:c});
+    });
+  });
+});
+
+/* ===== BUSCADOR ===== */
+function filterLinks(t){
+ t=t.toLowerCase();
+ document.querySelectorAll(".link").forEach(l=>{
+  l.style.display=l.innerText.toLowerCase().includes(t)?"block":"none";
+ });
 }
-
-localStorage.setItem("dac_visits", visits);
-document.getElementById("visits").innerText = "👁️ " + visits.toLocaleString() + " visitas";
 </script>
 
 </body>
