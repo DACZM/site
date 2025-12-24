@@ -12,27 +12,19 @@
     padding: 0;
 }
 
-/* ===== FONDO FIJO REAL ===== */
-body {
-    min-height: 100vh;
+/* ===== FONDO ESTABLE (SIN ERRORES EN MÓVIL) ===== */
+html, body {
+    min-height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-    position: relative;
-}
 
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
     background-image: url("https://wallpapercave.com/wp/wp12703228.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -1;
-    transform: translateZ(0); /* evita bugs en móvil */
 }
 
-/* ===== CONTENIDO ===== */
+/* ===== CONTENIDO TIPO LINKTREE ===== */
 .page {
     min-height: 100vh;
     display: flex;
@@ -51,10 +43,10 @@ body::before {
     color: white;
     text-align: center;
 
-    animation: fadeUp 0.9s ease forwards;
+    animation: fadeUp 0.8s ease forwards;
 }
 
-/* ===== FOTO CON GLOW ===== */
+/* ===== FOTO CON GLOW ROJO LEVE ===== */
 .container img {
     width: 120px;
     height: 120px;
@@ -62,13 +54,11 @@ body::before {
     object-fit: cover;
     margin-bottom: 15px;
 
-    box-shadow:
-        0 0 15px #ff005d,
-        0 0 30px #00f2ff;
-    animation: glow 3s infinite alternate, pop 0.8s ease forwards;
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.55);
+    animation: redGlow 3s ease-in-out infinite, pop 0.6s ease forwards;
 }
 
-/* ===== TEXTO ===== */
+/* ===== TEXTOS ===== */
 h1 {
     font-size: 26px;
     margin-bottom: 8px;
@@ -90,7 +80,7 @@ p {
     opacity: 0.85;
 }
 
-/* ===== BOTONES CON GLOW ===== */
+/* ===== BOTONES CON GLOW ROJO ===== */
 .link {
     display: block;
     text-decoration: none;
@@ -104,27 +94,21 @@ p {
     position: relative;
     overflow: hidden;
 
-    transform: translateY(20px);
+    transform: translateY(18px);
     opacity: 0;
-    animation: slideIn 0.6s ease forwards;
+    animation: slideIn 0.5s ease forwards;
 }
 
-/* Glow animado */
+/* Glow rojo suave */
 .link::before {
     content: "";
     position: absolute;
     inset: -2px;
-    background: linear-gradient(
-        120deg,
-        #ff005d,
-        #00f2ff,
-        #ff005d
-    );
-    filter: blur(12px);
+    background: rgba(255, 0, 0, 0.45);
+    filter: blur(14px);
     opacity: 0;
-    transition: opacity 0.3s ease;
+    transition: opacity 0.25s ease;
     z-index: -1;
-    animation: glowMove 4s linear infinite;
 }
 
 .link:hover::before {
@@ -132,14 +116,14 @@ p {
 }
 
 .link:hover {
-    transform: scale(1.05);
+    transform: scale(1.04);
 }
 
 /* ===== ANIMACIONES ===== */
 @keyframes fadeUp {
     from {
         opacity: 0;
-        transform: translateY(25px);
+        transform: translateY(20px);
     }
     to {
         opacity: 1;
@@ -156,7 +140,7 @@ p {
 
 @keyframes pop {
     from {
-        transform: scale(0.7);
+        transform: scale(0.8);
         opacity: 0;
     }
     to {
@@ -165,25 +149,12 @@ p {
     }
 }
 
-@keyframes glow {
+@keyframes redGlow {
     from {
-        box-shadow:
-            0 0 10px #ff005d,
-            0 0 20px #00f2ff;
+        box-shadow: 0 0 8px rgba(255, 0, 0, 0.35);
     }
     to {
-        box-shadow:
-            0 0 25px #ff005d,
-            0 0 50px #00f2ff;
-    }
-}
-
-@keyframes glowMove {
-    from {
-        transform: translateX(-50%);
-    }
-    to {
-        transform: translateX(50%);
+        box-shadow: 0 0 18px rgba(255, 0, 0, 0.65);
     }
 }
 </style>
