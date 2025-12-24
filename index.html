@@ -12,18 +12,22 @@
     padding: 0;
 }
 
+/* ===== FONDO ===== */
 html, body {
     min-height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
+}
 
-    background-image: url("https://pbs.twimg.com/media/G5LWSfIW0AAK3qQ.jpg");
+body {
+    background-image: url("https://wallpapercave.com/wp/wp12703228.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     background-attachment: scroll;
 }
 
+/* ===== CONTENIDO ===== */
 .page {
     min-height: 100vh;
     display: flex;
@@ -31,26 +35,32 @@ html, body {
     padding: 30px 12px;
 }
 
-/* CARD */
+/* ===== CARD ===== */
 .container {
     width: 100%;
     max-width: 420px;
     background: rgba(0, 0, 0, 0.65);
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(6px);
     padding: 30px 20px;
-    border-radius: 18px;
+    border-radius: 22px;
     color: white;
     text-align: center;
+
+    animation: fadeUp 0.9s ease forwards;
 }
 
+/* ===== FOTO ===== */
 .container img {
     width: 120px;
     height: 120px;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
+
+    animation: pop 0.8s ease forwards;
 }
 
+/* ===== TEXTOS ===== */
 h1 {
     font-size: 26px;
     margin-bottom: 8px;
@@ -62,30 +72,78 @@ p {
     opacity: 0.9;
 }
 
+/* ===== CATEGORIAS ===== */
 .category {
-    margin-top: 30px;
+    margin-top: 32px;
     margin-bottom: 12px;
     font-size: 14px;
     letter-spacing: 1px;
     text-transform: uppercase;
     opacity: 0.85;
+
+    animation: fadeUp 0.8s ease forwards;
 }
 
+/* ===== BOTONES ===== */
 .link {
     display: block;
     text-decoration: none;
     background: #ffffff;
     color: #000;
-    padding: 14px;
-    margin: 10px 0;
-    border-radius: 14px;
+    padding: 15px;
+    margin: 12px 0;
+    border-radius: 16px;
     font-weight: bold;
-    transition: transform 0.2s ease, background 0.2s ease;
+
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideIn 0.6s ease forwards;
 }
 
+.link:nth-child(1) { animation-delay: 0.1s; }
+.link:nth-child(2) { animation-delay: 0.15s; }
+.link:nth-child(3) { animation-delay: 0.2s; }
+.link:nth-child(4) { animation-delay: 0.25s; }
+.link:nth-child(5) { animation-delay: 0.3s; }
+.link:nth-child(6) { animation-delay: 0.35s; }
+.link:nth-child(7) { animation-delay: 0.4s; }
+.link:nth-child(8) { animation-delay: 0.45s; }
+.link:nth-child(9) { animation-delay: 0.5s; }
+
+/* Hover tipo Insta */
 .link:hover {
-    background: #ededed;
-    transform: scale(1.03);
+    transform: scale(1.05);
+    background: #f2f2f2;
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes fadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pop {
+    from {
+        transform: scale(0.7);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
 }
 
 /* Fondo fijo solo en PC */
