@@ -81,11 +81,35 @@ padding:15px;
 margin:12px 0;
 border-radius:16px;
 font-weight:bold;
+position:relative;
 }
 
 .popular::after{
 content:"🔥";
 float:right;
+}
+
+/* ===== PREVIEW ===== */
+.preview{
+position:fixed;
+bottom:20px;
+left:50%;
+transform:translateX(-50%);
+width:92%;
+max-width:380px;
+height:220px;
+background:#000;
+border-radius:16px;
+overflow:hidden;
+display:none;
+z-index:999;
+box-shadow:0 20px 40px rgba(0,0,0,.6);
+}
+
+.preview iframe{
+width:100%;
+height:100%;
+border:none;
 }
 </style>
 </head>
@@ -94,48 +118,53 @@ float:right;
 <div class="page">
 <div class="container">
 
-<img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="DAC">
+<img src="https://i.redd.it/oxo0i46vau1g1.jpeg">
 <h1>DAC</h1>
 <p>Games · Streaming · More</p>
 
 <input class="search" placeholder="🔍 Buscar" onkeyup="filterLinks(this.value)">
 
 <div class="category">🔥 Populares</div>
-<a href="https://flixer.sh/" class="link popular">Flixer</a>
-<a href="https://xprime.stream" class="link popular">XPrime</a>
-<a href="https://rivestream.org/" class="link popular">Rivestream</a>
-<a href="https://steamrip.com" class="link popular">SteamRip</a>
-<a href="https://ankergames.net" class="link popular">AnkerGames</a>
-<a href="https://gog-games.to" class="link popular">GOG Games</a>
-<a href="https://steamgg.net" class="link popular">SteamGG</a>
+<a href="https://flixer.sh/" class="link popular" data-preview>Flixer</a>
+<a href="https://xprime.stream" class="link popular" data-preview>XPrime</a>
+<a href="https://rivestream.org/" class="link popular" data-preview>Rivestream</a>
+<a href="https://steamrip.com" class="link popular" data-preview>SteamRip</a>
+<a href="https://ankergames.net" class="link popular" data-preview>AnkerGames</a>
+<a href="https://gog-games.to" class="link popular" data-preview>GOG Games</a>
+<a href="https://steamgg.net" class="link popular" data-preview>SteamGG</a>
 
 <div class="category">🏴 StreamingRip</div>
-<a href="https://pstream.mov" class="link">PStream</a>
-<a href="https://veloratv.ru" class="link">VeloraTV</a>
-<a href="https://www.bitcine.app" class="link">Bitcine</a>
-<a href="https://hianime.to/home" class="link">Hianime</a>
-<a href="https://www.cuevana3.eu" class="link">Cuevana SP</a>
-<a href="https://www25.pelisplushd.to" class="link">PelisPlus SP</a>
+<a href="https://pstream.mov" class="link" data-preview>PStream</a>
+<a href="https://veloratv.ru" class="link" data-preview>VeloraTV</a>
+<a href="https://www.bitcine.app" class="link" data-preview>Bitcine</a>
+<a href="https://hianime.to/home" class="link" data-preview>Hianime</a>
+<a href="https://www.cuevana3.eu" class="link" data-preview>Cuevana SP</a>
+<a href="https://www25.pelisplushd.to" class="link" data-preview>PelisPlus SP</a>
 
 <div class="category">🏴 GamesRip</div>
-<a href="https://union-crax.xyz/" class="link">UnionCrax</a>
-<a href="https://steamunderground.net/" class="link">SteamUnderground</a>
-<a href="https://elenemigos.com/" class="link">Elenemigos</a>
-<a href="https://optijuegos.net" class="link">Optijuegos</a>
+<a href="https://union-crax.xyz/" class="link" data-preview>UnionCrax</a>
+<a href="https://steamunderground.net/" class="link" data-preview>SteamUnderground</a>
+<a href="https://elenemigos.com/" class="link" data-preview>Elenemigos</a>
+<a href="https://optijuegos.net" class="link" data-preview>Optijuegos</a>
 
 <div class="category">🏴 RetroGamesRip</div>
-<a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link">PS1</a>
-<a href="https://www.retrogames.onl/p/play-n64-games-online.html" class="link">N64</a>
-<a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link">GBA</a>
-<a href="https://www.retrogames.onl/p/play-gbc-games-online.html" class="link">GBC</a>
-<a href="https://www.retrogames.onl/p/play-snes-games-online.html" class="link">SNES</a>
-<a href="https://www.retrogames.onl/p/play-nds-games-online.html" class="link">NDS</a>
-<a href="https://www.retrogames.onl/p/play-nes-games-online.html" class="link">NES</a>
+<a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link" data-preview>PS1</a>
+<a href="https://www.retrogames.onl/p/play-n64-games-online.html" class="link" data-preview>N64</a>
+<a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link" data-preview>GBA</a>
+<a href="https://www.retrogames.onl/p/play-gbc-games-online.html" class="link" data-preview>GBC</a>
+<a href="https://www.retrogames.onl/p/play-snes-games-online.html" class="link" data-preview>SNES</a>
+<a href="https://www.retrogames.onl/p/play-nds-games-online.html" class="link" data-preview>NDS</a>
+<a href="https://www.retrogames.onl/p/play-nes-games-online.html" class="link" data-preview>NES</a>
 
 <div class="category">📷 Instagram</div>
-<a href="https://www.instagram.com/mrpewpickles/" class="link">Follow me for more</a>
+<a href="https://www.instagram.com/mrpewpickles/" class="link" data-preview>Follow me</a>
 
 </div>
+</div>
+
+<!-- PREVIEW BOX -->
+<div class="preview" id="preview">
+<iframe id="previewFrame"></iframe>
 </div>
 
 <script>
@@ -144,6 +173,28 @@ text=text.toLowerCase();
 document.querySelectorAll(".link").forEach(link=>{
 link.style.display=link.innerText.toLowerCase().includes(text)?"block":"none";
 });
+}
+
+const preview=document.getElementById("preview");
+const frame=document.getElementById("previewFrame");
+
+document.querySelectorAll("[data-preview]").forEach(link=>{
+link.addEventListener("mouseenter",()=>showPreview(link.href));
+link.addEventListener("mouseleave",hidePreview);
+link.addEventListener("touchstart",e=>{
+e.preventDefault();
+showPreview(link.href);
+});
+});
+
+function showPreview(url){
+frame.src=url;
+preview.style.display="block";
+}
+
+function hidePreview(){
+frame.src="";
+preview.style.display="none";
 }
 </script>
 
