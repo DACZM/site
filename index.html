@@ -12,19 +12,26 @@
     padding: 0;
 }
 
-/* ===== FONDO ESTABLE (SIN ERRORES EN MÓVIL) ===== */
-html, body {
-    min-height: 100%;
+/* ===== FONDO FIJO REAL (NO SE MUEVE NI SE ESTIRA) ===== */
+body {
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-
-    background-image: url("https://wallpapercave.com/wp/wp12703228.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+    background: black;
 }
 
-/* ===== CONTENIDO TIPO LINKTREE ===== */
+/* Fondo separado para evitar bugs en móvil */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background-image: url("https://wallpapercave.com/wp/wp12703228.jpg");
+    background-size: contain; /* se ve COMPLETO */
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: -1;
+}
+
+/* ===== CONTENIDO ===== */
 .page {
     min-height: 100vh;
     display: flex;
@@ -46,7 +53,7 @@ html, body {
     animation: fadeUp 0.8s ease forwards;
 }
 
-/* ===== FOTO CON GLOW ROJO LEVE ===== */
+/* ===== FOTO CON GLOW ROJO ===== */
 .container img {
     width: 120px;
     height: 120px;
@@ -80,7 +87,7 @@ p {
     opacity: 0.85;
 }
 
-/* ===== BOTONES CON GLOW ROJO ===== */
+/* ===== BOTONES ===== */
 .link {
     display: block;
     text-decoration: none;
