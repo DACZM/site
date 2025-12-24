@@ -6,208 +6,223 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{margin:0;padding:0;box-sizing:border-box}
+
+body{
+    font-family:'Segoe UI',Arial,sans-serif;
+    background:black;
+    overflow-x:hidden;
+    color:white;
 }
 
-/* ===== FONDO FIJO REAL (NO SE MUEVE NI SE ESTIRA) ===== */
-body {
-    font-family: Arial, sans-serif;
-    overflow-x: hidden;
-    background: black;
+/* ===== FONDO FIJO ===== */
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    background:url("https://i.pinimg.com/originals/43/0d/54/430d54fac0b2ecfaf435cf5d65979a41.gif") center/contain no-repeat;
+    z-index:-1;
 }
 
-/* Fondo separado para evitar bugs en móvil */
-body::before {
-    content: "";
-    position: fixed;
-    inset: 0;
-    background-image: url("https://i.pinimg.com/originals/43/0d/54/430d54fac0b2ecfaf435cf5d65979a41.gif");
-    background-size: contain; /* se ve COMPLETO */
-    background-position: center;
-    background-repeat: no-repeat;
-    z-index: -1;
+/* ===== CONTENEDOR ===== */
+.page{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    padding:30px 14px;
 }
 
-/* ===== CONTENIDO ===== */
-.page {
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    padding: 30px 12px;
+.container{
+    width:100%;
+    max-width:440px;
+    background:rgba(0,0,0,.75);
+    backdrop-filter:blur(8px);
+    border-radius:28px;
+    padding:32px 22px;
+    text-align:center;
+    animation:fadeUp .9s ease;
 }
 
-/* ===== CARD ===== */
-.container {
-    width: 100%;
-    max-width: 420px;
-    background: rgba(0, 0, 0, 0.64);
-    backdrop-filter: blur(6px);
-    padding: 30px 20px;
-    border-radius: 22px;
-    color: white;
-    text-align: center;
-
-    animation: fadeUp 0.8s ease forwards;
+/* ===== PERFIL ===== */
+.avatar{
+    width:120px;
+    height:120px;
+    border-radius:50%;
+    object-fit:cover;
+    box-shadow:0 0 18px rgba(255,0,0,.7);
 }
 
-/* ===== FOTO CON GLOW ROJO ===== */
-.container img {
-    width: 120px;
-    height: 120px;
-    border-radius: 50%;
-    object-fit: cover;
-    margin-bottom: 15px;
- forwards;
+h1{
+    font-size:30px;
+    margin-top:12px;
+    letter-spacing:1px;
 }
 
-/* ===== TEXTOS ===== */
-h1 {
-    font-size: 26px;
-    margin-bottom: 8px;
+.bio{
+    font-size:14px;
+    opacity:.85;
+    margin:6px 0 22px;
 }
 
-p {
-    font-size: 14px;
-    margin-bottom: 25px;
-    opacity: 0.9;
+/* ===== CONTADOR ===== */
+.counter{
+    font-size:12px;
+    opacity:.7;
+    margin-bottom:18px;
 }
 
 /* ===== CATEGORÍAS ===== */
-.category {
-    margin-top: 32px;
-    margin-bottom: 12px;
-    font-size: 14px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    opacity: 0.85;
+.category{
+    margin:30px 0 14px;
+    font-size:13px;
+    letter-spacing:2px;
+    text-transform:uppercase;
+    opacity:.8;
 }
 
 /* ===== BOTONES ===== */
-.link {
-    display: block;
-    text-decoration: none;
-    background: #ffffff;
-    color: #000;
-    padding: 15px;
-    margin: 12px 0;
-    border-radius: 16px;
-    font-weight: bold;
-
-    position: relative;
-    overflow: hidden;
-
-    transform: translateY(18px);
-    opacity: 0;
-    animation: slideIn 0.5s ease forwards;
+.link{
+    display:block;
+    text-decoration:none;
+    background:white;
+    color:black;
+    padding:15px;
+    margin:12px 0;
+    border-radius:18px;
+    font-weight:600;
+    position:relative;
+    overflow:hidden;
+    transform:translateY(20px);
+    opacity:0;
+    animation:slideIn .5s forwards;
+    transition:transform .15s ease;
 }
 
-/* Glow rojo suave */
-.link::before {
-    content: "";
-    position: absolute;
-    inset: -2px;
-    background: rgba(255, 0, 0, 0.45);
-    filter: blur(14px);
-    opacity: 0;
-    transition: opacity 0.25s ease;
-    z-index: -1;
+.link:active{transform:scale(.95)}
+
+.link::before{
+    content:"";
+    position:absolute;
+    inset:-3px;
+    background:rgba(255,0,0,.5);
+    filter:blur(16px);
+    opacity:0;
+    transition:.3s;
+    z-index:-1;
 }
 
-.link:hover::before {
-    opacity: 1;
+.link:hover::before{opacity:1}
+
+/* ===== RECOMENDADO ===== */
+.recommended::after{
+    content:"⭐";
+    position:absolute;
+    right:14px;
 }
 
-.link:hover {
-    transform: scale(1.04);
+/* ===== TOOLTIP ===== */
+.link span{
+    position:absolute;
+    bottom:-26px;
+    left:50%;
+    transform:translateX(-50%);
+    font-size:11px;
+    opacity:.7;
+}
+
+/* ===== BOTONES EXTRA ===== */
+.controls{
+    display:flex;
+    gap:12px;
+    justify-content:center;
+    margin:18px 0;
+}
+
+.ctrl{
+    background:#111;
+    border:1px solid rgba(255,0,0,.5);
+    color:white;
+    padding:10px 14px;
+    border-radius:14px;
+    font-size:12px;
+    cursor:pointer;
 }
 
 /* ===== ANIMACIONES ===== */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+@keyframes fadeUp{
+    from{opacity:0;transform:translateY(25px)}
+    to{opacity:1;transform:translateY(0)}
+}
+@keyframes slideIn{
+    to{opacity:1;transform:translateY(0)}
 }
 
-@keyframes slideIn {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-@keyframes pop {
-    from {
-        transform: scale(0.8);
-        opacity: 0;
-    }
-    to {
-        transform: scale(1);
-        opacity: 1;
-    }
-}
-
-@keyframes redGlow {
-    from {
-        box-shadow: 0 0 8px rgba(255, 0, 0, 0.35);
-    }
-    to {
-        box-shadow: 0 0 18px rgba(255, 0, 0, 0.65);
-    }
+/* ===== MODO ROJO ===== */
+.red-mode{
+    background:rgba(40,0,0,.85)!important;
 }
 </style>
 </head>
 
 <body>
+
+<!-- ===== MÚSICA ===== -->
+<audio id="bgm" loop autoplay>
+<source src="https://files.catbox.moe/5x4k9z.mp3" type="audio/mpeg">
+</audio>
+
 <div class="page">
-    <div class="container">
-        <img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="DAC">
+<div class="container" id="card">
 
-        <h1>DAC</h1>
-        <p>Games · Streaming · More</p>
+<img src="https://i.redd.it/oxo0i46vau1g1.jpeg" class="avatar">
 
-        <div class="category">🏴 StreamingRip</div>
-        <a href="https://flixer.sh/" class="link">🔥Flixer</a>
-        <a href="https://xprime.stream" class="link">🔥XPrime</a>
-        <a href="https://rivestream.org/" class="link">🔥Rivestream</a>
-        <a href="https://pstream.mov" class="link">PStream</a>
-        <a href="https://veloratv.ru" class="link">VeloraTV</a>
-        <a href="https://www.bitcine.app" class="link">Bitcine</a>
-        <a href="https://hianime.to/home" class="link">Hianime</a>
-        <a href="https://www.cuevana3.eu" class="link">Cuevana SP</a>
-        <a href="https://www25.pelisplushd.to" class="link">PelisPlus SP</a>
+<h1>DAC</h1>
+<div class="bio">🎮 Games · 🎬 Streaming · 🔥 Rips</div>
 
-        <div class="category">🏴 GamesRip</div>
-        <a href="https://steamrip.com" class="link">🔥SteamRip</a>
-        <a href="https://ankergames.net" class="link">🔥AnkerGames</a>
-        <a href="https://gog-games.to" class="link">🔥GOG Games</a>
-        <a href="https://steamgg.net" class="link">🔥SteamGG</a>
-       <a href="https://union-crax.xyz/" class="link"🔥>Unioncrax</a>
-      <a href="https://steamunderground.net/" class="link">Steamunderground</a>
-       <a href="https://elenemigos.com/" class="link">Elenemigos</a>
-        <a href="https://optijuegos.net" class="link">Optijuegos</a>
-        <div class="category">🏴 RetroGamesRip</div>
-<a href="https://www.retrogames.onl/p/play-ps1-games-online.html"class="link">PS1</a>
-<a href="https://www.retrogames.onl/p/play-n64-games-online.html"class="link">N64</a>
-        <a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link">GBA</a>
-        <a
-        <a href="https://www.retrogames.onl/p/play-gbc-games-online.html"class="link">GBA</a>
-        <a href="https://www.retrogames.onl/p/play-snes-games-online.html"class="link">SNES</a>
-        <a href="https://www.retrogames.onl/p/play-nds-games-online.html"class="link">NDS</a>
-        <a href="https://www.retrogames.onl/p/play-nes-games-online.html"class="link">NES</a>
+<div class="counter">👁️ 12,458 visitas</div>
 
-        <div class="category">📷 Instagram</div>
-        <a href="https://www.instagram.com/mrpewpickles/" class="link">
-            Follow me for more
-        </a>
-    </div>
+<div class="controls">
+<button class="ctrl" onclick="toggleMusic()">🔊 Música</button>
+<button class="ctrl" onclick="toggleRed()">🔴 Modo rojo</button>
+<button class="ctrl" onclick="copyLink()">🔗 Copiar link</button>
 </div>
+
+<div class="category">🏴 Streaming</div>
+<a href="https://flixer.sh/" class="link recommended">🔥 Flixer <span>HD · Español</span></a>
+<a href="https://xprime.stream" class="link recommended">🔥 XPrime <span>HD</span></a>
+<a href="https://rivestream.org/" class="link">Rivestream</a>
+
+<div class="category">🏴 Games</div>
+<a href="https://steamrip.com" class="link recommended">🔥 SteamRip</a>
+<a href="https://ankergames.net" class="link">AnkerGames</a>
+<a href="https://gog-games.to" class="link">GOG Games</a>
+
+<div class="category">🎮 Retro</div>
+<a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link">PS1</a>
+<a href="https://www.retrogames.onl/p/play-n64-games-online.html" class="link">N64</a>
+<a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link">GBA</a>
+
+<div class="category">📷 Social</div>
+<a href="https://www.instagram.com/mrpewpickles/" class="link">Instagram</a>
+
+</div>
+</div>
+
+<script>
+const music=document.getElementById("bgm");
+function toggleMusic(){
+    music.paused?music.play():music.pause();
+}
+
+function toggleRed(){
+    document.getElementById("card").classList.toggle("red-mode");
+}
+
+function copyLink(){
+    navigator.clipboard.writeText(window.location.href);
+    alert("Link copiado 🔥");
+}
+</script>
+
 </body>
 </html>
