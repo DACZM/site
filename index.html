@@ -1,4 +1,4 @@
-
+<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -16,23 +16,13 @@ html, body {
     min-height: 100%;
     font-family: Arial, sans-serif;
     overflow-x: hidden;
-}
 
-
-body::before {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     background-image: url("https://pbs.twimg.com/media/G5LWSfIW0AAK3qQ.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    z-index: -1;
+    background-attachment: scroll;
 }
-
 
 .page {
     min-height: 100vh;
@@ -97,42 +87,47 @@ p {
     background: #ededed;
     transform: scale(1.03);
 }
+
+/* Fondo fijo solo en PC */
+@media (min-width: 768px) {
+    body {
+        background-attachment: fixed;
+    }
+}
 </style>
 </head>
 
 <body>
 <div class="page">
+    <div class="container">
+        <img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="DAC">
 
-<div class="container">
-    <img src="https://i.redd.it/oxo0i46vau1g1.jpeg" alt="DAC">
+        <h1>DAC</h1>
+        <p>Games · Streaming · More</p>
 
-    <h1>DAC</h1>
-    <p>Games · Streaming · More</p>
+        <div class="category">🏴 StreamingRip</div>
+        <a href="https://flixer.sh/" class="link">Flixer</a>
+        <a href="https://xprime.stream" class="link">XPrime</a>
+        <a href="https://rivestream.org/" class="link">Rivestream</a>
+        <a href="https://pstream.mov" class="link">PStream</a>
+        <a href="https://veloratv.ru" class="link">VeloraTV</a>
+        <a href="https://www.bitcine.app" class="link">Bitcine</a>
+        <a href="https://hianime.to/home" class="link">Hianime</a>
+        <a href="https://www.cuevana3.eu" class="link">Cuevana SP</a>
+        <a href="https://www25.pelisplushd.to" class="link">PelisPlus SP</a>
 
-    <div class="category">🏴 StreamingRip</div>
-    <a href="https://flixer.sh/" class="link">Flixer</a>
-    <a href="https://xprime.stream" class="link">XPrime</a>
-    <a href="https://rivestream.org/" class="link">Rivestream</a>
-    <a href="https://pstream.mov" class="link">PStream</a>
-    <a href="https://veloratv.ru" class="link">VeloraTV</a>
-    <a href="https://www.bitcine.app" class="link">Bitcine</a>
-    <a href="https://hianime.to/home" class="link">Hianime</a>
-    <a href="https://www.cuevana3.eu" class="link">Cuevana SP</a>
-    <a href="https://www25.pelisplushd.to" class="link">PelisPlus SP</a>
+        <div class="category">🏴 GamesRip</div>
+        <a href="https://steamrip.com" class="link">SteamRip</a>
+        <a href="https://ankergames.net" class="link">AnkerGames</a>
+        <a href="https://gog-games.to" class="link">GOG Games</a>
+        <a href="https://steamgg.net" class="link">SteamGG</a>
+        <a href="https://optijuegos.net" class="link">Optijuegos</a>
 
-    <div class="category">🏴 GamesRip</div>
-    <a href="https://steamrip.com" class="link">SteamRip</a>
-    <a href="https://ankergames.net" class="link">AnkerGames</a>
-    <a href="https://gog-games.to" class="link">GOG Games</a>
-    <a href="https://steamgg.net" class="link">SteamGG</a>
-    <a href="https://optijuegos.net" class="link">Optijuegos</a>
-
-    <div class="category">📷 Instagram</div>
-    <a href="https://www.instagram.com/mrpewpickles/" class="link">
-        Follow me for more
-    </a>
-</div>
-
+        <div class="category">📷 Instagram</div>
+        <a href="https://www.instagram.com/mrpewpickles/" class="link">
+            Follow me for more
+        </a>
+    </div>
 </div>
 </body>
 </html>
