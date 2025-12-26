@@ -5,7 +5,7 @@
     <title>DAC | Storage</title>
     <link rel="icon" href="https://pngimg.com/d/cat_PNG50473.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
         :root {
@@ -13,6 +13,7 @@
             --bg-glass: rgba(15, 15, 15, 0.88);
             --border-glass: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
+            --brave-color: #ff1b12;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -36,25 +37,17 @@
             filter: brightness(0.35);
         }
 
-        /* Estilos Nieve */
+        /* Nieve */
         .snowflake {
             color: #fff;
-            font-size: 1em;
-            font-family: Arial, sans-serif;
-            text-shadow: 0 0 5px #000;
             position: fixed;
             top: -10%;
             z-index: 9999;
             user-select: none;
-            cursor: default;
-            animation-name: snowflakes-fall, snowflakes-shake;
-            animation-duration: 10s, 3s;
-            animation-timing-function: linear, ease-in-out;
-            animation-iteration-count: infinite, infinite;
-            animation-play-state: running, running;
+            animation: snowflakes-fall 10s linear infinite, snowflakes-shake 3s ease-in-out infinite;
         }
         @keyframes snowflakes-fall { 0% { top: -10%; } 100% { top: 100%; } }
-        @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(80px); } }
+        @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(50px); } }
 
         .page {
             display: flex;
@@ -74,7 +67,6 @@
             text-align: center;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
             position: relative;
-            z-index: 10;
         }
 
         .avatar {
@@ -87,31 +79,27 @@
         }
 
         h1 { font-size: 28px; margin-bottom: 5px; }
-        .subtitle { font-size: 13px; margin-bottom: 15px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+        .subtitle { font-size: 13px; margin-bottom: 10px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Botones Redes Sociales Superiores */
+        /* Iconos de Redes Minimalistas */
         .social-header {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 25px;
             margin-bottom: 25px;
         }
-        .social-btn {
-            color: white;
-            font-size: 20px;
-            width: 45px;
-            height: 45px;
-            line-height: 45px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 50%;
-            transition: 0.3s;
-            border: 1px solid var(--border-glass);
+        .social-icon {
+            color: rgba(255,255,255,0.7);
+            font-size: 26px;
+            text-decoration: none;
+            transition: all 0.3s ease;
         }
-        .social-btn:hover {
-            background: var(--accent-color);
-            transform: translateY(-3px);
-            color: #000;
+        .social-icon:hover {
+            transform: scale(1.2);
+            color: #fff;
         }
+        .social-icon.inst:hover { color: #E1306C; }
+        .social-icon.git:hover { color: #fff; }
 
         .search-box {
             position: relative;
@@ -177,7 +165,8 @@
         .fa-gamepad { color: #2ed573; }
         .fa-ghost { color: #a55eea; }
         .fa-instagram { color: #fd9644; }
-        .fa-brave { color: #ff7644; }
+        /* Color oficial de Brave */
+        .fa-brave { color: #fb542b !important; }
 
     </style>
 </head>
@@ -191,8 +180,8 @@
         <p class="subtitle">Games • Streaming • More</p>
 
         <div class="social-header">
-            <a href="https://www.instagram.com/mrpewpickles/" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
-            <a href="https://github.com/" class="social-btn"><i class="fa-brands fa-github"></i></a>
+            <a href="https://www.instagram.com/mrpewpickles/" class="social-icon inst"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/" class="social-icon git"><i class="fa-brands fa-github"></i></a>
         </div>
 
         <div class="search-box">
@@ -360,18 +349,10 @@
                 <i class="fa-solid fa-ghost"></i> <span class="link-text">NES Online</span>
             </a>
         </div>
-
-        <div class="group">
-            <div class="category-title">📷 Instagram</div>
-            <a href="https://www.instagram.com/mrpewpickles/" class="link-card">
-                <i class="fa-brands fa-instagram"></i> <span class="link-text">Follow me for moree</span>
-            </a>
-        </div>
     </div>
 </div>
 
 <script>
-    // Filtrar enlaces
     function filterLinks(query) {
         const text = query.toLowerCase();
         const groups = document.querySelectorAll('.group');
@@ -391,7 +372,6 @@
         });
     }
 
-    // Efecto de Nieve
     function createSnowflake() {
         const snow = document.createElement('div');
         snow.innerHTML = '❄';
@@ -400,12 +380,8 @@
         snow.style.animationDuration = Math.random() * 3 + 7 + 's';
         snow.style.opacity = Math.random();
         snow.style.fontSize = Math.random() * 10 + 10 + 'px';
-        
         document.body.appendChild(snow);
-        
-        setTimeout(() => {
-            snow.remove();
-        }, 10000);
+        setTimeout(() => { snow.remove(); }, 10000);
     }
     setInterval(createSnowflake, 300);
 </script>
