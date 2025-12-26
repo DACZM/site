@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>DAC | Storage</title>
-    <link rel="icon" href="https://pngimg.com/d/cat_PNG50473.png" type="cat">
-</head>
+    <link rel="icon" href="https://pngimg.com/d/cat_PNG50473.png" type="image/png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -23,6 +22,7 @@
             background: #050505;
             color: var(--text-main);
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         body::before {
@@ -35,6 +35,26 @@
             z-index: -1;
             filter: brightness(0.35);
         }
+
+        /* Estilos Nieve */
+        .snowflake {
+            color: #fff;
+            font-size: 1em;
+            font-family: Arial, sans-serif;
+            text-shadow: 0 0 5px #000;
+            position: fixed;
+            top: -10%;
+            z-index: 9999;
+            user-select: none;
+            cursor: default;
+            animation-name: snowflakes-fall, snowflakes-shake;
+            animation-duration: 10s, 3s;
+            animation-timing-function: linear, ease-in-out;
+            animation-iteration-count: infinite, infinite;
+            animation-play-state: running, running;
+        }
+        @keyframes snowflakes-fall { 0% { top: -10%; } 100% { top: 100%; } }
+        @keyframes snowflakes-shake { 0%, 100% { transform: translateX(0); } 50% { transform: translateX(80px); } }
 
         .page {
             display: flex;
@@ -53,6 +73,8 @@
             border: 1px solid var(--border-glass);
             text-align: center;
             box-shadow: 0 25px 50px rgba(0,0,0,0.6);
+            position: relative;
+            z-index: 10;
         }
 
         .avatar {
@@ -65,9 +87,32 @@
         }
 
         h1 { font-size: 28px; margin-bottom: 5px; }
-        .subtitle { font-size: 13px; margin-bottom: 25px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
+        .subtitle { font-size: 13px; margin-bottom: 15px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Buscador */
+        /* Botones Redes Sociales Superiores */
+        .social-header {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        .social-btn {
+            color: white;
+            font-size: 20px;
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            transition: 0.3s;
+            border: 1px solid var(--border-glass);
+        }
+        .social-btn:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            color: #000;
+        }
+
         .search-box {
             position: relative;
             margin-bottom: 25px;
@@ -99,7 +144,6 @@
             text-transform: uppercase;
         }
 
-        /* Enlaces */
         .link-card {
             display: flex;
             align-items: center;
@@ -133,6 +177,7 @@
         .fa-gamepad { color: #2ed573; }
         .fa-ghost { color: #a55eea; }
         .fa-instagram { color: #fd9644; }
+        .fa-brave { color: #ff7644; }
 
     </style>
 </head>
@@ -145,15 +190,18 @@
         <h1>DAC</h1>
         <p class="subtitle">Games • Streaming • More</p>
 
+        <div class="social-header">
+            <a href="https://www.instagram.com/mrpewpickles/" class="social-btn"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://github.com/" class="social-btn"><i class="fa-brands fa-github"></i></a>
+        </div>
+
         <div class="search-box">
             <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" class="search-input" placeholder="Buscar..." onkeyup="filterLinks(this.value)">
         </div>
 
         <div class="group">
-<div class="category-title">PLEASE USE BRAVE TO AVOID ADS</div>
-
-
+            <div class="category-title">PLEASE USE BRAVE TO AVOID ADS</div>
             <a href="https://brave.com/" class="link-card">
                 <i class="fa-brands fa-brave"></i> <span class="link-text">BRAVE</span>
             </a>
@@ -172,18 +220,15 @@
                 <i class="fa-solid fa-fire"></i> <span class="link-text">AnkerGames</span>
             </a>
         </div>
-<div class="group">
-            
 
         <div class="group">
             <div class="category-title">🏴 StreamingRip</div>
-<a href="https://flixer.sh/" class="link-card">
+            <a href="https://flixer.sh/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">FLIXER</span>
-                    </a>
+            </a>
             <a href="https://www.primeshows.live/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">PRIMESHOWS</span>
             </a>
-                  </a>
             <a href="https://netplayz.live/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">NETPLAY</span>
             </a>
@@ -192,89 +237,80 @@
             </a>
             <a href="https://cinemadeck.com/home" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">CINEMDK</span>
-                </a>
+            </a>
             <a href="https://hexa.su/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">HEXA</span>
             </a>  
             <a href="https://watch.vidora.su/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">VIDORA </span>
             </a>
-                  </a>
             <a href="https://xprime.stream" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">XPRIME</span>
             </a>
-           </a>
             <a href="https://youflex.live/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">YOUFLEX</span>
             </a>
             <a href="https://www.bitcine.app" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">BTCINE</span>
             </a>
-              </a>
             <a href="https://cinepeace.in/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">CINEPC</span>
-          </a>
-
-                    </a>
+            </a>
             <a href="https://www.beech.watch/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">BEECH</span>
             </a>
-
         </div>
     
-<div class="category-title">🏴 StreamingANIME</div>
-
-                        </a>
+        <div class="group">
+            <div class="category-title">🏴 StreamingANIME</div>
             <a href="https://yenime.net/home" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">YEANIME</span>
             </a>
-  </a>
             <a href="https://kuroiru.co/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">KUROIRU</span>
             </a>
-  </a>
             <a href="https://kaa.to/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">KAA</span>
             </a>
-  </a>
             <a href="https://animex.one/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">ANIMEX</span>
             </a>
-  </a>
             <a href="https://anidap.se/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">ANIDAP</span>
             </a>
-  </a>
             <a href="https://allmanga.to/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">ALLMANGA</span>
             </a>
-    
-<div class="category-title">🏴 StreamingAPK</div>
+        </div>
 
-<a href="https://netflyapp.com/" class="link-card">
+        <div class="group">
+            <div class="category-title">🏴 StreamingAPK</div>
+            <a href="https://netflyapp.com/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">NETFLY</span> 
-</a>
-<a href="https://www.mediafire.com/file_premium/36o08euu5e82rg2/FLAv_v1.0.apk/file" class="link-card">
+            </a>
+            <a href="https://www.mediafire.com/file_premium/36o08euu5e82rg2/FLAv_v1.0.apk/file" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">FLAVIPTV</span> 
-</a>
-<a href="https://ayudaalcliente.org/epix368/" class="link-card">
+            </a>
+            <a href="https://ayudaalcliente.org/epix368/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">EpixFlix</span> 
-</a>
-
-<a href="https://appsparavertv.com/film-app/" class="link-card">
+            </a>
+            <a href="https://appsparavertv.com/film-app/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">FLIMAPP</span> 
-</a>
-<a href="https://movieplus-apk.com/" class="link-card">
+            </a>
+            <a href="https://movieplus-apk.com/" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">Moviesplus</span> 
-</a>
-<a href="https://www.mediafire.com/folder/jj14n6ntee2ec/Disn3y_Plus" class="link-card">
+            </a>
+            <a href="https://www.mediafire.com/folder/jj14n6ntee2ec/Disn3y_Plus" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">DisneyPlus</span> 
-</a>
-<a href="https://www.mediafire.com/file_premium/yu53en7qjn4zafs/SportzX_2.1v.apk/file" class="link-card">
+            </a>
+            <a href="https://www.mediafire.com/file_premium/yu53en7qjn4zafs/SportzX_2.1v.apk/file" class="link-card">
                 <i class="fa-solid fa-circle-play"></i> <span class="link-text">SportX</span> 
-</a>
-        <div class="category-title">🏴 GamesRip</div>
- <a href="https://steamrip.com" class="link-card">
+            </a>
+        </div>
+
+        <div class="group">
+            <div class="category-title">🏴 GamesRip</div>
+            <a href="https://steamrip.com" class="link-card">
                 <i class="fa-solid fa-gamepad"></i> <span class="link-text">SteamRip</span>
             </a>
             <a href="https://union-crax.xyz/" class="link-card">
@@ -286,7 +322,7 @@
             <a href="https://elenemigos.com/" class="link-card">
                 <i class="fa-solid fa-gamepad"></i> <span class="link-text">Elenemigos</span>
             </a>
- <a href="https://ankergames.net" class="link-card">
+            <a href="https://ankergames.net" class="link-card">
                 <i class="fa-solid fa-gamepad"></i> <span class="link-text">AnkerGames</span>
             </a>
             <a href="https://gog-games.to" class="link-card">
@@ -299,10 +335,9 @@
                 <i class="fa-solid fa-gamepad"></i> <span class="link-text">Optijuegos</span>
             </a>
         </div>
+
         <div class="group">
-
             <div class="category-title">🏴 RetroGamesRip</div>
-
             <a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link-card">
                 <i class="fa-solid fa-ghost"></i> <span class="link-text">PS1 Online</span>
             </a>
@@ -336,14 +371,13 @@
 </div>
 
 <script>
+    // Filtrar enlaces
     function filterLinks(query) {
         const text = query.toLowerCase();
         const groups = document.querySelectorAll('.group');
-
         groups.forEach(group => {
             const links = group.querySelectorAll('.link-card');
             let hasResults = false;
-
             links.forEach(link => {
                 const title = link.querySelector('.link-text').innerText.toLowerCase();
                 if (title.includes(text)) {
@@ -353,10 +387,27 @@
                     link.style.display = "none";
                 }
             });
-
             group.style.display = hasResults ? "block" : "none";
         });
     }
+
+    // Efecto de Nieve
+    function createSnowflake() {
+        const snow = document.createElement('div');
+        snow.innerHTML = '❄';
+        snow.classList.add('snowflake');
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.animationDuration = Math.random() * 3 + 7 + 's';
+        snow.style.opacity = Math.random();
+        snow.style.fontSize = Math.random() * 10 + 10 + 'px';
+        
+        document.body.appendChild(snow);
+        
+        setTimeout(() => {
+            snow.remove();
+        }, 10000);
+    }
+    setInterval(createSnowflake, 300);
 </script>
 
 </body>
