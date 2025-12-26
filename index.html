@@ -13,7 +13,6 @@
             --bg-glass: rgba(15, 15, 15, 0.88);
             --border-glass: rgba(255, 255, 255, 0.1);
             --text-main: #ffffff;
-            --brave-color: #ff1b12;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -81,7 +80,7 @@
         h1 { font-size: 28px; margin-bottom: 5px; }
         .subtitle { font-size: 13px; margin-bottom: 10px; opacity: 0.6; text-transform: uppercase; letter-spacing: 1px; }
 
-        /* Iconos de Redes Minimalistas */
+        /* Iconos de Redes Limpios */
         .social-header {
             display: flex;
             justify-content: center;
@@ -96,10 +95,9 @@
         }
         .social-icon:hover {
             transform: scale(1.2);
-            color: #fff;
         }
         .social-icon.inst:hover { color: #E1306C; }
-        .social-icon.git:hover { color: #fff; }
+        .social-icon.git:hover { color: #ffffff; }
 
         .search-box {
             position: relative;
@@ -151,6 +149,16 @@
             border-color: var(--accent-color);
         }
 
+        /* Contenedor del icono Brave */
+        .brave-icon-svg {
+            width: 20px;
+            height: 20px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
         .link-card i:first-child {
             width: 25px;
             margin-right: 15px;
@@ -164,9 +172,6 @@
         .fa-circle-play { color: #1e90ff; }
         .fa-gamepad { color: #2ed573; }
         .fa-ghost { color: #a55eea; }
-        .fa-instagram { color: #fd9644; }
-        /* Color oficial de Brave */
-        .fa-brave { color: #fb542b !important; }
 
     </style>
 </head>
@@ -191,7 +196,7 @@
 
         <div class="group">
             <div class="category-title">PLEASE USE BRAVE TO AVOID ADS</div>
-          <a href="https://brave.com/" class="link-card">
+            <a href="https://brave.com/" class="link-card">
                 <div class="brave-icon-svg">
                     <svg viewBox="0 0 24 24" fill="#fb542b" xmlns="http://www.w3.org/2000/svg"><path d="M12.44 14.12l.13-.12.01-.01c.21-.21.43-.43.61-.63.29-.31.47-.53.51-.59.2-.29.35-.61.46-.94.01-.03.02-.06.03-.1l.03-.13c.01-.06.02-.12.02-.18v-.03c0-.13-.02-.26-.06-.39l-.02-.06-.03-.1-.01-.03-.05-.12c-.01-.02-.02-.04-.03-.05-.08-.18-.18-.35-.31-.5l-.01-.01-.05-.06-.05-.06-.06-.05-.04-.04c-.11-.1-.23-.19-.36-.26l-.08-.04-.04-.02c-.1-.05-.21-.08-.32-.1-.06-.01-.12-.02-.18-.02h-.14c-.13 0-.25.02-.38.06l-.06.02-.11.04-.03.01c-.13.05-.25.11-.36.18l-.04.03-.04.03-.06.05-.05.06-.05.06-.01.01c-.13.15-.23.32-.31.5l-.03.05-.05.12-.01.03-.03.1-.02.06c-.04.13-.06.26-.06.39v.03c0 .06.01.12.02.18l.02.13.04.1c.11.33.26.65.46.94.04.06.22.28.51.59.18.2.4.42.61.63l.01.01.13.12c.11.1.25.16.4.16s.29-.06.4-.16zM24 12c0 6.627-5.373 12-12 12S0 18.627 0 12 5.373 0 12 0s12 5.373 12 12zm-3.266-4.595c-.328-.857-1.47-1.422-2.316-1.574-.083-.015-.164-.029-.243-.042-2.585-.436-5.185-.56-7.795-.367l-.234.02c-.105.01-.21.02-.316.03-.844.095-1.983.424-2.45 1.23-.054.092-.099.191-.132.296-1.603 5.034-1.371 10.15.59 15.028a.185.185 0 00.323.033c.895-1.124 1.76-2.268 2.595-3.43.042-.058.053-.133.03-.2a7.128 7.128 0 01-.223-2.024l.01-.274c.038-.97.234-1.93.582-2.836.035-.091.121-.153.218-.158l.192-.011c1.246-.073 2.5-.045 3.74.083.088.009.167.062.203.143.435 1.013.633 2.103.582 3.195a.39.39 0 01-.004.053 7.07 7.07 0 01-.581 2.394.116.116 0 00.063.149 14.18 14.18 0 002.324.908.172.172 0 00.222-.119c1.473-5.26 1.134-10.457-.714-15.345l-.014-.038a.042.042 0 01.01-.044z"/></svg>
                 </div>
@@ -199,158 +204,45 @@
             </a>
 
             <div class="category-title">🔥 Populares</div>
-            <a href="https://flixer.sh/" class="link-card">
-                <i class="fa-solid fa-fire"></i> <span class="link-text">Flixer</span>
-            </a>
-            <a href="https://hianime.to/home" class="link-card">
-                <i class="fa-solid fa-fire"></i> <span class="link-text">Hianime</span>
-            </a>
-            <a href="https://steamrip.com" class="link-card">
-                <i class="fa-solid fa-fire"></i> <span class="link-text">SteamRip</span>
-            </a>
-            <a href="https://ankergames.net" class="link-card">
-                <i class="fa-solid fa-fire"></i> <span class="link-text">AnkerGames</span>
-            </a>
+            <a href="https://flixer.sh/" class="link-card"><i class="fa-solid fa-fire"></i> <span class="link-text">Flixer</span></a>
+            <a href="https://hianime.to/home" class="link-card"><i class="fa-solid fa-fire"></i> <span class="link-text">Hianime</span></a>
+            <a href="https://steamrip.com" class="link-card"><i class="fa-solid fa-fire"></i> <span class="link-text">SteamRip</span></a>
+            <a href="https://ankergames.net" class="link-card"><i class="fa-solid fa-fire"></i> <span class="link-text">AnkerGames</span></a>
         </div>
 
         <div class="group">
             <div class="category-title">🏴 StreamingRip</div>
-            <a href="https://flixer.sh/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">FLIXER</span>
-            </a>
-            <a href="https://www.primeshows.live/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">PRIMESHOWS</span>
-            </a>
-            <a href="https://netplayz.live/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">NETPLAY</span>
-            </a>
-            <a href="https://netflex.uk/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">NETFLEX </span>
-            </a>
-            <a href="https://cinemadeck.com/home" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">CINEMDK</span>
-            </a>
-            <a href="https://hexa.su/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">HEXA</span>
-            </a>  
-            <a href="https://watch.vidora.su/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">VIDORA </span>
-            </a>
-            <a href="https://xprime.stream" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">XPRIME</span>
-            </a>
-            <a href="https://youflex.live/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">YOUFLEX</span>
-            </a>
-            <a href="https://www.bitcine.app" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">BTCINE</span>
-            </a>
-            <a href="https://cinepeace.in/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">CINEPC</span>
-            </a>
-            <a href="https://www.beech.watch/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">BEECH</span>
-            </a>
+            <a href="https://flixer.sh/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">FLIXER</span></a>
+            <a href="https://www.primeshows.live/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">PRIMESHOWS</span></a>
+            <a href="https://netplayz.live/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">NETPLAY</span></a>
+            <a href="https://netflex.uk/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">NETFLEX </span></a>
+            <a href="https://cinemadeck.com/home" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">CINEMDK</span></a>
+            <a href="https://hexa.su/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">HEXA</span></a>  
+            <a href="https://watch.vidora.su/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">VIDORA </span></a>
+            <a href="https://xprime.stream" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">XPRIME</span></a>
+            <a href="https://youflex.live/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">YOUFLEX</span></a>
+            <a href="https://www.bitcine.app" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">BTCINE</span></a>
+            <a href="https://cinepeace.in/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">CINEPC</span></a>
+            <a href="https://www.beech.watch/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">BEECH</span></a>
         </div>
     
         <div class="group">
             <div class="category-title">🏴 StreamingANIME</div>
-            <a href="https://yenime.net/home" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">YEANIME</span>
-            </a>
-            <a href="https://kuroiru.co/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">KUROIRU</span>
-            </a>
-            <a href="https://kaa.to/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">KAA</span>
-            </a>
-            <a href="https://animex.one/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">ANIMEX</span>
-            </a>
-            <a href="https://anidap.se/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">ANIDAP</span>
-            </a>
-            <a href="https://allmanga.to/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">ALLMANGA</span>
-            </a>
-        </div>
-
-        <div class="group">
-            <div class="category-title">🏴 StreamingAPK</div>
-            <a href="https://netflyapp.com/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">NETFLY</span> 
-            </a>
-            <a href="https://www.mediafire.com/file_premium/36o08euu5e82rg2/FLAv_v1.0.apk/file" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">FLAVIPTV</span> 
-            </a>
-            <a href="https://ayudaalcliente.org/epix368/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">EpixFlix</span> 
-            </a>
-            <a href="https://appsparavertv.com/film-app/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">FLIMAPP</span> 
-            </a>
-            <a href="https://movieplus-apk.com/" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">Moviesplus</span> 
-            </a>
-            <a href="https://www.mediafire.com/folder/jj14n6ntee2ec/Disn3y_Plus" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">DisneyPlus</span> 
-            </a>
-            <a href="https://www.mediafire.com/file_premium/yu53en7qjn4zafs/SportzX_2.1v.apk/file" class="link-card">
-                <i class="fa-solid fa-circle-play"></i> <span class="link-text">SportX</span> 
-            </a>
+            <a href="https://yenime.net/home" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">YEANIME</span></a>
+            <a href="https://kuroiru.co/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">KUROIRU</span></a>
+            <a href="https://kaa.to/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">KAA</span></a>
+            <a href="https://animex.one/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">ANIMEX</span></a>
+            <a href="https://anidap.se/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">ANIDAP</span></a>
+            <a href="https://allmanga.to/" class="link-card"><i class="fa-solid fa-circle-play"></i> <span class="link-text">ALLMANGA</span></a>
         </div>
 
         <div class="group">
             <div class="category-title">🏴 GamesRip</div>
-            <a href="https://steamrip.com" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">SteamRip</span>
-            </a>
-            <a href="https://union-crax.xyz/" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">UnionCrax</span>
-            </a>
-            <a href="https://steamunderground.net/" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">SteamUNDG</span>
-            </a>
-            <a href="https://elenemigos.com/" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">Elenemigos</span>
-            </a>
-            <a href="https://ankergames.net" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">AnkerGames</span>
-            </a>
-            <a href="https://gog-games.to" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">GOG Games</span>
-            </a>
-            <a href="https://steamgg.net" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">SteamGG</span>
-            </a>
-            <a href="https://optijuegos.net" class="link-card">
-                <i class="fa-solid fa-gamepad"></i> <span class="link-text">Optijuegos</span>
-            </a>
-        </div>
-
-        <div class="group">
-            <div class="category-title">🏴 RetroGamesRip</div>
-            <a href="https://www.retrogames.onl/p/play-ps1-games-online.html" class="link-card">
-                <i class="fa-solid fa-ghost"></i> <span class="link-text">PS1 Online</span>
-            </a>
-            <a href="https://www.retrogames.onl/p/play-n64-games-online.html" class="link-card">
-                <i class="fa-solid fa-ghost"></i> <span class="link-text">N64 Online</span>
-            </a>
-            <a href="https://www.retrogames.onl/p/play-gba-games-online.html" class="link-card">
-                <i class="fa-solid fa-ghost"></i> <span class="link-text">GBA Online</span>
-            </a>
-            <a href="https://www.retrogames.onl/p/play-gbc-games-online.html" class="link-card">
-                <i class="fa-solid fa-ghost"></i> <span class="link-text">GBC Online</span>
-            </a>
-            <a href="https://www.retrogames.onl/p/play-snes-games-online.html" class="link-card">
-                <i class="fa-solid fa-ghost"></i> <span class="link-text">SNES Online</span>
-            </a>
-            <a href="https://www.retrogames.onl/p/play-nds-games-online.html" class="link-card">
-                <i class="fa-solid fa-ghost"></i> <span class="link-text">NDS Online</span>
-            </a>
-            <a href="https://www.retrogames.onl/p/play-nes-games-online.html" class="link-card">
-                <i class="fa-solid fa-ghost"></i> <span class="link-text">NES Online</span>
-            </a>
+            <a href="https://steamrip.com" class="link-card"><i class="fa-solid fa-gamepad"></i> <span class="link-text">SteamRip</span></a>
+            <a href="https://union-crax.xyz/" class="link-card"><i class="fa-solid fa-gamepad"></i> <span class="link-text">UnionCrax</span></a>
+            <a href="https://steamunderground.net/" class="link-card"><i class="fa-solid fa-gamepad"></i> <span class="link-text">SteamUNDG</span></a>
+            <a href="https://elenemigos.com/" class="link-card"><i class="fa-solid fa-gamepad"></i> <span class="link-text">Elenemigos</span></a>
+            <a href="https://ankergames.net" class="link-card"><i class="fa-solid fa-gamepad"></i> <span class="link-text">AnkerGames</span></a>
         </div>
     </div>
 </div>
