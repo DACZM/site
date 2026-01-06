@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
-          
+    
     <style>
         :root {
             --bg-app: #050505; 
@@ -86,6 +86,50 @@
         .main-content::-webkit-scrollbar { width: 5px; }
         .main-content::-webkit-scrollbar-thumb { background: var(--primary); border-radius: 10px; }
 
+        /* --- TOP NAVIGATION --- */
+        .top-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .nav-link {
+            color: var(--text-sec);
+            text-decoration: none;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 1.2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 8px; /* Espacio entre icono y texto */
+        }
+
+        .nav-link i {
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .nav-link:hover { color: var(--primary-light); }
+        .nav-link:hover i { transform: translateY(-2px); }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-light);
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after { width: 100%; }
+
+        /* --- SECTIONS --- */
         .view-section {
             display: none;
             max-width: 1400px;
@@ -208,6 +252,7 @@
             .logo-img { display: none; }
             .nav-item { margin: 0; height: 100%; width: 60px; }
             .main-content { padding: 20px; order: 1; padding-bottom: 80px; }
+            .top-nav { justify-content: center; gap: 15px; margin-bottom: 20px; }
             .content-grid { grid-template-columns: 1fr 1fr; }
         }
     </style>
@@ -222,10 +267,17 @@
     </nav>
 
     <main class="main-content">
-          <nav>
-            <a href="#" class="nav-link">HOME</a>
-            <a href="https://daczm.github.io/site/" class="nav-link">STORAGE</a>
-            <a href="https://www.instagram.com/mrpewpickles/" class="nav-link">INSTAGRAM</a>
+        <nav class="top-nav">
+            <a href="https://dachub.neocities.org/" class="nav-link">
+                <i class="fa-solid fa-house"></i> Home
+            </a>
+            <a href="https://daczm.github.io/site/" target="_blank" class="nav-link">
+                <i class="fa-solid fa-database"></i> Storage
+            </a>
+            <a href="https://www.instagram.com/mrpewpickles/" target="_blank" class="nav-link">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+        </nav>
 
         <section id="games" class="view-section active">
             <div class="section-header"><h2>Software & Games</h2></div>
@@ -241,7 +293,6 @@
             <div class="section-header"><h2>Anime & Manga</h2></div>
             <div class="content-grid" id="anime-grid"></div>
         </section>
-        
     </main>
 
     <div class="music-widget">
@@ -295,9 +346,7 @@
         ];
 
         function createCard(item) {
-            // Imagen fija solicitada por el usuario
             const cardImage = "https://files.catbox.moe/rkxf95.png";
-            
             return `
             <a href="${item.url}" target="_blank" class="card">
                 <div class="card-img-wrapper">
