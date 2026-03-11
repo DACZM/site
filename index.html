@@ -1,11 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DACHUB</title>
-    <!-- No Favicon/Icon images as requested, keeping it clean -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     
     <style>
@@ -107,7 +105,6 @@
             background: rgba(255,255,255,0.03);
         }
 
-        /* Accent line for active item */
         .nav-item.active::before {
             content: '';
             position: absolute;
@@ -230,7 +227,6 @@
             padding: 32px;
         }
 
-        /* Custom Scrollbar */
         .content-scroll::-webkit-scrollbar { width: 6px; }
         .content-scroll::-webkit-scrollbar-track { background: transparent; }
         .content-scroll::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
@@ -241,7 +237,7 @@
             gap: 16px;
         }
 
-        /* PROFESSIONAL CARD STYLE */
+        /* CARD STYLE */
         .card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-light);
@@ -388,7 +384,6 @@
         }
         .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .sidebar { display: none; }
             .mobile-nav { display: flex; }
@@ -398,9 +393,9 @@
             .grid { grid-template-columns: 1fr; }
             .search-wrapper { width: 100px; }
             .search-input { padding-right: 8px; }
-            .util-btn span { display: none; } /* Hide button text on mobile */
+            .util-btn span { display: none; }
             .util-btn { padding: 8px; }
-            .card-actions { opacity: 1; } /* Always show actions on mobile since no hover */
+            .card-actions { opacity: 1; }
         }
     </style>
 </head>
@@ -439,7 +434,6 @@
 
     <!-- Main Content -->
     <main class="main">
-        <!-- Header -->
         <header>
             <div class="header-title-group">
                 <div class="header-title" id="pageTitle">Games</div>
@@ -463,7 +457,6 @@
             </div>
         </header>
 
-        <!-- Scrollable Content -->
         <div class="content-scroll">
             <div id="view-games" class="view-section active"><div class="grid" id="grid-games"></div></div>
             <div id="view-streaming" class="view-section"><div class="grid" id="grid-streaming"></div></div>
@@ -497,7 +490,6 @@
         </a>
     </nav>
 
-    <!-- Toast Notification -->
     <div id="toast" class="toast">
         <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
         <span id="toastMsg">Action completed</span>
@@ -545,31 +537,30 @@
                 { id: 's24', name: "NetPlay", url: "https://netplayz.live/" },
                 { id: 's25', name: "XPrime", url: "https://xprime.stream" }
             ],
- anime: [
-    { id: 'a1', name: "AnimeKai", url: "https://animekai.pw/" },
-    { id: 'a2', name: "Anigo", url: "https://anigo.to/home" },
-    { id: 'a3', name: "Kuudere", url: "https://kuudere.to/" },
-    { id: 'a4', name: "AnimeLok", url: "https://animelok.site/home" },
-    { id: 'a5', name: "AniZone", url: "https://anizone.to/" },
-    { id: 'a6', name: "AllManga Anime", url: "https://allmanga.to/anime" },
-    { id: 'a7', name: "Anime Nexus", url: "https://anime.nexus/" },
-    { id: 'a8', name: "KickAssAnime", url: "https://kickassanime.cx/" },
-    { id: 'a9', name: "AnimeSogo", url: "https://animesogo.to/home" },
-    { id: 'a10', name: "Senshi", url: "https://senshi.live/" },
-    { id: 'a11', name: "AniWatchTV", url: "https://aniwatchtv.to/home" },
-    { id: 'a12', name: "Miruro", url: "https://www.miruro.com/" },
-    { id: 'a13', name: "Kaido", url: "https://kaido.to/home" },
-    { id: 'a14', name: "HiAnime", url: "https://hianime.to/home" },
-    { id: 'a15', name: "AniHQ", url: "https://anihq.org/home/" },
-    { id: 'a16', name: "9AnimeTV", url: "https://9animetv.to/home" },
-    { id: 'a17', name: "AnimeNana", url: "https://animenana.com/" },
-    { id: 'a18', name: "AnimePahe", url: "https://animepahe.si/" },
-    { id: 'a19', name: "AnimeSalt", url: "https://animesalt.to/" },
-    { id: 'a20', name: "AnimeHub", url: "https://animehub.ac/" },
-    { id: 'a21', name: "AniCrush", url: "https://anicrush.to/home" },
-    { id: 'a22', name: "AnimeHeaven", url: "https://animeheaven.me/" },
-    { id: 'a23', name: "4Anime", url: "https://4anime.gg/home" }
-],
+            anime: [
+                { id: 'a1', name: "AnimeKai", url: "https://animekai.pw/" },
+                { id: 'a2', name: "Anigo", url: "https://anigo.to/home" },
+                { id: 'a3', name: "Kuudere", url: "https://kuudere.to/" },
+                { id: 'a4', name: "AnimeLok", url: "https://animelok.site/home" },
+                { id: 'a5', name: "AniZone", url: "https://anizone.to/" },
+                { id: 'a6', name: "AllManga Anime", url: "https://allmanga.to/anime" },
+                { id: 'a7', name: "Anime Nexus", url: "https://anime.nexus/" },
+                { id: 'a8', name: "KickAssAnime", url: "https://kickassanime.cx/" },
+                { id: 'a9', name: "AnimeSogo", url: "https://animesogo.to/home" },
+                { id: 'a10', name: "Senshi", url: "https://senshi.live/" },
+                { id: 'a11', name: "AniWatchTV", url: "https://aniwatchtv.to/home" },
+                { id: 'a12', name: "Miruro", url: "https://www.miruro.com/" },
+                { id: 'a13', name: "Kaido", url: "https://kaido.to/home" },
+                { id: 'a14', name: "HiAnime", url: "https://hianime.to/home" },
+                { id: 'a15', name: "AniHQ", url: "https://anihq.org/home/" },
+                { id: 'a16', name: "9AnimeTV", url: "https://9animetv.to/home" },
+                { id: 'a17', name: "AnimeNana", url: "https://animenana.com/" },
+                { id: 'a18', name: "AnimePahe", url: "https://animepahe.si/" },
+                { id: 'a19', name: "AnimeSalt", url: "https://animesalt.to/" },
+                { id: 'a20', name: "AnimeHub", url: "https://animehub.ac/" },
+                { id: 'a21', name: "AniCrush", url: "https://anicrush.to/home" },
+                { id: 'a22', name: "AnimeHeaven", url: "https://animeheaven.me/" },
+                { id: 'a23', name: "4Anime", url: "https://4anime.gg/home" }
             ],
             tvapks: [
                 { id: 't1', name: "DuktekTV", url: "https://www.mediafire.com/file_premium/3tc5agdar0ywus7/DuktekTV.apk/file" },
@@ -629,7 +620,8 @@
                 const cleanUrl = item.url.replace(/^https?:\/\//, '');
                 const isFav = this.isFavorite(item.id);
                 
-                return 
+                // Fixed: Added backticks \` \`
+                return `
                 <a href="${item.url}" target="_blank" class="card">
                     <div class="card-top">
                         <div class="card-title">${item.name}</div>
@@ -646,11 +638,12 @@
                     <div class="card-footer">
                         <span class="card-tag">${category}</span>
                     </div>
-                </a>;
+                </a>`;
             },
 
             render(category, filter = "") {
-                const container = document.getElementById(grid-${category});
+                // Fixed: Added backticks \` \`
+                const container = document.getElementById(`grid-${category}`);
                 let data = category === 'favorites' ? [] : db[category];
                 
                 if (category === 'favorites') {
@@ -669,7 +662,8 @@
                 document.getElementById('countBadge').textContent = filtered.length;
 
                 if (filtered.length === 0) {
-                    container.innerHTML = <div style="color:var(--text-muted); font-size:13px; grid-column:1/-1; padding:20px; text-align:center;">No results found.</div>;
+                    // Fixed: Added backticks \` \`
+                    container.innerHTML = `<div style="color:var(--text-muted); font-size:13px; grid-column:1/-1; padding:20px; text-align:center;">No results found.</div>`;
                     return;
                 }
 
@@ -690,7 +684,8 @@
                 document.querySelectorAll('.mobile-nav-item').forEach(el => el.classList.toggle('active', el.getAttribute('onclick').includes(tabId)));
                 
                 document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-                const target = document.getElementById(view-${tabId});
+                // Fixed: Added backticks \` \`
+                const target = document.getElementById(`view-${tabId}`);
                 if(target) target.classList.add('active');
 
                 this.render(tabId, document.querySelector('.search-input').value);
@@ -702,3 +697,4 @@
         window.addEventListener('DOMContentLoaded', () => app.init());
     </script>
 </body>
+</html>
