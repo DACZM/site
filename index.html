@@ -1,35 +1,38 @@
+
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>DACHUB</title>
-    <link rel="icon" href="https://files.catbox.moe/uayyjy.png" type="image/png">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- No Favicon/Icon images as requested, keeping it clean -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Monochrome Palette */
-            --bg-app: #09090b;       /* Very dark background */
-            --bg-sidebar: #000000;   /* Pure black sidebar */
-            --bg-card: #000000;
-            --bg-hover: #18181b;     /* Hover state */
+            /* Professional Dark Palette */
+            --bg-app: #050505;
+            --bg-sidebar: #000000;
+            --bg-card: #0A0A0A;
+            --bg-card-hover: #111111;
             
-            --border-light: #27272a;
-            --border-focus: #52525b;
+            --border-light: #1F1F1F;
+            --border-hover: #333333;
             
-            --text-primary: #fafafa;
-            --text-secondary: #71717a;
-            --text-muted: #52525b;
+            --text-primary: #ECECEC;
+            --text-secondary: #A1A1AA;
+            --text-muted: #52525B;
             
-            /* Accent - Very subtle blue for focus only */
-            --accent: #3b82f6;       
-
             --font-main: 'Inter', sans-serif;
-            --radius: 6px;
+            --font-mono: 'JetBrains Mono', monospace;
+            
+            --radius: 8px;
+            --header-height: 64px;
+            --sidebar-width: 240px;
+            --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
 
         body {
             font-family: var(--font-main);
@@ -38,27 +41,38 @@
             height: 100vh;
             display: flex;
             overflow: hidden;
-            -webkit-font-smoothing: antialiased;
+        }
+
+        /* --- UTILS --- */
+        .icon {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            fill: none;
         }
 
         /* --- SIDEBAR --- */
         .sidebar {
-            width: 220px; /* Wider for text labels */
+            width: var(--sidebar-width);
             background-color: var(--bg-sidebar);
             border-right: 1px solid var(--border-light);
             display: flex;
             flex-direction: column;
-            padding: 24px 16px;
+            padding: 24px 0;
             flex-shrink: 0;
+            z-index: 20;
         }
 
         .brand {
             font-size: 14px;
             font-weight: 700;
-            letter-spacing: 0.05em;
+            letter-spacing: 0.15em;
             color: var(--text-primary);
-            margin-bottom: 40px;
-            padding-left: 12px;
+            margin-bottom: 32px;
+            padding-left: 24px;
             text-transform: uppercase;
         }
 
@@ -69,41 +83,37 @@
             text-transform: uppercase;
             letter-spacing: 0.05em;
             margin-bottom: 8px;
-            padding-left: 12px;
+            padding-left: 24px;
+            margin-top: 16px;
         }
 
-        .nav-link {
+        .nav-item {
             display: flex;
             align-items: center;
-            padding: 10px 12px;
+            gap: 12px;
+            padding: 10px 24px;
             color: var(--text-secondary);
-            text-decoration: none;
             font-size: 14px;
             font-weight: 500;
-            border-radius: var(--radius);
-            margin-bottom: 2px;
-            transition: all 0.15s ease;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
         }
 
-        .nav-link:hover {
-            background-color: var(--bg-hover);
+        .nav-item:hover { color: var(--text-primary); background: rgba(255,255,255,0.02); }
+        
+        .nav-item.active {
             color: var(--text-primary);
+            background: rgba(255,255,255,0.03);
         }
 
-        .nav-link.active {
-            background-color: var(--bg-hover);
-            color: var(--text-primary);
-            font-weight: 600;
-        }
-
-        .nav-link.active::before {
+        /* Accent line for active item */
+        .nav-item.active::before {
             content: '';
             position: absolute;
-            left: 0; 
-            height: 100%; width: 3px;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
             background-color: var(--text-primary);
-            border-top-right-radius: 3px;
-            border-bottom-right-radius: 3px;
         }
 
         /* --- MAIN AREA --- */
@@ -112,114 +122,169 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            min-width: 0;
+            background-color: var(--bg-app);
         }
 
         /* HEADER */
         header {
-            height: 70px;
+            height: var(--header-height);
             border-bottom: 1px solid var(--border-light);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 0 32px;
-            background: var(--bg-app);
+            background: rgba(5, 5, 5, 0.8);
+            backdrop-filter: blur(10px);
+            z-index: 10;
+        }
+
+        .header-title-group {
+            display: flex;
+            align-items: baseline;
+            gap: 12px;
         }
 
         .header-title {
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        .header-count {
+            font-family: var(--font-mono);
+            font-size: 11px;
+            color: var(--text-muted);
+            background: var(--bg-card);
+            border: 1px solid var(--border-light);
+            padding: 2px 8px;
+            border-radius: 12px;
         }
 
         .header-actions {
             display: flex;
             gap: 16px;
+            align-items: center;
         }
 
-        .action-link {
-            font-size: 13px;
+        .util-btn {
+            background: transparent;
+            border: 1px solid transparent;
             color: var(--text-secondary);
+            font-size: 13px;
+            padding: 6px 12px;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: var(--transition);
             text-decoration: none;
-            transition: color 0.2s;
         }
-        .action-link:hover { color: var(--text-primary); }
+
+        .util-btn:hover {
+            color: var(--text-primary);
+            border-color: var(--border-hover);
+            background: var(--bg-card);
+        }
 
         /* SEARCH */
-        .search-bar {
+        .search-wrapper {
             position: relative;
-            width: 300px;
+            width: 260px;
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-muted);
+            width: 14px;
+            height: 14px;
+            pointer-events: none;
         }
 
         .search-input {
             width: 100%;
-            background: transparent;
+            background: var(--bg-card);
             border: 1px solid var(--border-light);
             color: var(--text-primary);
-            padding: 8px 12px;
+            padding: 8px 12px 8px 36px;
             font-family: var(--font-main);
-            font-size: 14px;
-            border-radius: var(--radius);
+            font-size: 13px;
+            border-radius: 4px;
             outline: none;
-            transition: border-color 0.2s;
+            transition: var(--transition);
         }
 
         .search-input:focus {
-            border-color: var(--border-focus);
+            border-color: var(--border-hover);
+            background: #0F0F0F;
         }
 
-        /* GRID CONTENT */
+        /* CONTENT */
         .content-scroll {
             flex: 1;
             overflow-y: auto;
             padding: 32px;
         }
 
+        /* Custom Scrollbar */
+        .content-scroll::-webkit-scrollbar { width: 6px; }
+        .content-scroll::-webkit-scrollbar-track { background: transparent; }
+        .content-scroll::-webkit-scrollbar-thumb { background: #222; border-radius: 3px; }
+
         .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 16px;
         }
 
-        /* CARD - Minimalist File Style */
+        /* PROFESSIONAL CARD STYLE */
         .card {
             background-color: var(--bg-card);
             border: 1px solid var(--border-light);
             border-radius: var(--radius);
-            text-decoration: none;
             color: var(--text-primary);
             padding: 20px;
             display: flex;
             flex-direction: column;
-            transition: transform 0.15s ease, border-color 0.15s ease, background-color 0.15s ease;
+            text-decoration: none;
+            transition: var(--transition);
             position: relative;
         }
 
         .card:hover {
-            background-color: var(--bg-hover);
-            border-color: var(--border-focus);
-            transform: translateY(-1px);
+            background-color: var(--bg-card-hover);
+            border-color: var(--border-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.4);
         }
 
         .card-top {
             display: flex;
             justify-content: space-between;
-            margin-bottom: 12px;
+            align-items: flex-start;
+            margin-bottom: 16px;
         }
 
         .card-title {
-            font-size: 15px;
-            font-weight: 500;
+            font-size: 14px;
+            font-weight: 600;
             line-height: 1.4;
             color: var(--text-primary);
         }
 
         .card-url {
-            font-size: 12px;
+            font-family: var(--font-mono);
+            font-size: 11px;
             color: var(--text-muted);
-            font-family: monospace;
+            margin-bottom: 20px;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            margin-bottom: 16px;
+            opacity: 0.7;
         }
 
         .card-footer {
@@ -227,207 +292,372 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
+            padding-top: 12px;
+            border-top: 1px solid rgba(255,255,255,0.03);
         }
 
-        .tag {
+        .card-tag {
             font-size: 10px;
-            font-weight: 600;
+            font-weight: 500;
             color: var(--text-secondary);
-            background-color: rgba(255,255,255,0.05);
-            padding: 4px 8px;
-            border-radius: 4px;
             text-transform: uppercase;
+            letter-spacing: 0.05em;
         }
 
-        .arrow {
+        .card-actions {
+            display: flex;
+            gap: 8px;
             opacity: 0;
-            transform: translateX(-4px);
-            transition: all 0.2s ease;
-            color: var(--text-primary);
+            transition: opacity 0.2s;
         }
 
-        .card:hover .arrow {
-            opacity: 1;
-            transform: translateX(0);
+        .card:hover .card-actions { opacity: 1; }
+
+        .action-icon {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 4px;
+            color: var(--text-muted);
+            cursor: pointer;
+            transition: all 0.2s;
         }
+
+        .action-icon:hover {
+            color: var(--text-primary);
+            background: rgba(255,255,255,0.1);
+        }
+
+        .fav-icon.active { color: #EAB308; stroke: #EAB308; fill: #EAB308; }
 
         /* VIEWS */
-        .view-section { display: none; }
-        .view-section.active { display: block; animation: fadeIn 0.3s ease; }
+        .view-section { display: none; animation: fadeIn 0.2s ease forwards; }
+        .view-section.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
 
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        /* MOBILE NAV */
+        .mobile-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0,0,0,0.95);
+            border-top: 1px solid var(--border-light);
+            padding: 8px 0 20px 0;
+            z-index: 50;
+            justify-content: space-around;
+        }
+
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-size: 10px;
+            color: var(--text-muted);
+            text-decoration: none;
+            gap: 6px;
+            padding: 8px 12px;
+        }
+
+        .mobile-nav-item.active { color: var(--text-primary); }
+        .mobile-nav-item svg { width: 20px; height: 20px; stroke-width: 1.5; }
+
+        /* TOAST */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: #FFFFFF;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.2s ease;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+        .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            body { flex-direction: column; }
-            .sidebar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                align-items: center;
-                padding: 12px 16px;
-                border-right: none;
-                border-bottom: 1px solid var(--border-light);
-                overflow-x: auto;
-            }
-            .brand { margin-bottom: 0; margin-right: 20px; font-size: 12px; }
-            .nav-label { display: none; }
-            .nav-link { white-space: nowrap; margin-bottom: 0; }
-            .main { height: calc(100vh - 60px); }
+            .sidebar { display: none; }
+            .mobile-nav { display: flex; }
+            .main { padding-bottom: 70px; }
             header { padding: 0 16px; }
             .content-scroll { padding: 16px; }
             .grid { grid-template-columns: 1fr; }
-            .search-bar { width: 140px; }
+            .search-wrapper { width: 100px; }
+            .search-input { padding-right: 8px; }
+            .util-btn span { display: none; } /* Hide button text on mobile */
+            .util-btn { padding: 8px; }
+            .card-actions { opacity: 1; } /* Always show actions on mobile since no hover */
         }
     </style>
 </head>
 <body>
 
-    <!-- Sidebar Navigation -->
+    <!-- Desktop Sidebar -->
     <nav class="sidebar">
         <div class="brand">DACHUB</div>
         
         <div class="nav-label">Library</div>
-        <a href="#" class="nav-link active" onclick="app.setTab('games', event)">Games</a>
-        <a href="#" class="nav-link" onclick="app.setTab('streaming', event)">Streaming</a>
-        <a href="#" class="nav-link" onclick="app.setTab('anime', event)">Anime</a>
-        <a href="#" class="nav-link" onclick="app.setTab('tvapks', event)">APKs</a>
+        <div class="nav-item active" onclick="app.setTab('games', event)">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4m10-2h-4"/></svg>
+            Games
+        </div>
+        <div class="nav-item" onclick="app.setTab('streaming', event)">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+            Streaming
+        </div>
+        <div class="nav-item" onclick="app.setTab('anime', event)">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            Anime
+        </div>
+        <div class="nav-item" onclick="app.setTab('tvapks', event)">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            APKs
+        </div>
+
+        <div style="margin-top: auto;"></div>
+        
+        <div class="nav-label">System</div>
+        <div class="nav-item" onclick="app.setTab('favorites', event)">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Favorites
+        </div>
     </nav>
 
     <!-- Main Content -->
     <main class="main">
-        <!-- Top Header -->
+        <!-- Header -->
         <header>
-            <div class="header-title" id="pageTitle">Games</div>
+            <div class="header-title-group">
+                <div class="header-title" id="pageTitle">Games</div>
+                <div class="header-count" id="countBadge">0</div>
+            </div>
             
             <div class="header-actions">
-                <div class="search-bar">
+                <div class="search-wrapper">
+                    <svg class="search-icon icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
                     <input type="text" class="search-input" placeholder="Search..." onkeyup="app.handleSearch(this.value)">
                 </div>
-                <a href="https://dachub.neocities.org/" class="action-link">Home</a>
-                <a href="https://daczm.github.io/site/" target="_blank" class="action-link">Storage</a>
+                
+                <a href="https://dachub.neocities.org/" class="util-btn" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+                    <span>Home</span>
+                </a>
+                <a href="https://daczm.github.io/site/" class="util-btn" target="_blank">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                    <span>Storage</span>
+                </a>
             </div>
         </header>
 
-        <!-- Scrollable Area -->
+        <!-- Scrollable Content -->
         <div class="content-scroll">
-            
-            <div id="view-games" class="view-section active">
-                <div class="grid" id="grid-games"></div>
-            </div>
-
-            <div id="view-streaming" class="view-section">
-                <div class="grid" id="grid-streaming"></div>
-            </div>
-
-            <div id="view-anime" class="view-section">
-                <div class="grid" id="grid-anime"></div>
-            </div>
-
-            <div id="view-tvapks" class="view-section">
-                <div class="grid" id="grid-tvapks"></div>
-            </div>
-
+            <div id="view-games" class="view-section active"><div class="grid" id="grid-games"></div></div>
+            <div id="view-streaming" class="view-section"><div class="grid" id="grid-streaming"></div></div>
+            <div id="view-anime" class="view-section"><div class="grid" id="grid-anime"></div></div>
+            <div id="view-tvapks" class="view-section"><div class="grid" id="grid-tvapks"></div></div>
+            <div id="view-favorites" class="view-section"><div class="grid" id="grid-favorites"></div></div>
         </div>
     </main>
+
+    <!-- Mobile Navigation -->
+    <nav class="mobile-nav">
+        <a class="mobile-nav-item active" onclick="app.setTab('games', event)">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2"/><path d="M6 12h4m-2-2v4m10-2h-4"/></svg>
+            Games
+        </a>
+        <a class="mobile-nav-item" onclick="app.setTab('streaming', event)">
+            <svg class="icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/><line x1="12" y1="2" x2="12" y2="22"/></svg>
+            Stream
+        </a>
+        <a class="mobile-nav-item" onclick="app.setTab('anime', event)">
+            <svg class="icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+            Anime
+        </a>
+        <a class="mobile-nav-item" onclick="app.setTab('tvapks', event)">
+            <svg class="icon" viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            APKs
+        </a>
+        <a class="mobile-nav-item" onclick="app.setTab('favorites', event)">
+            <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+            Saved
+        </a>
+    </nav>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast">
+        <svg class="icon" style="width:14px;height:14px;" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="toastMsg">Action completed</span>
+    </div>
 
     <script>
         const db = {
             games: [
-                { name: "SteamRip", url: "https://steamrip.com" },
-                { name: "FitGirl Repacks", url: "https://fitgirl-repacks.site" },
-                { name: "DODI Repacks", url: "https://dodi-repacks.site" },
-                { name: "ElEnemigos", url: "https://elenemigos.com" },
-                { name: "AnkerGames", url: "https://ankergames.net" },
-                { name: "SteamUnderground", url: "https://steamunderground.net/" },
-                { name: "UnionCrax", url: "https://union-crax.xyz/" },
-                { name: "Optijuegos", url: "https://optijuegos.net" },
-                { name: "Vanya Games", url: "https://vanya-games.site/" },
-                { name: "FreeGOG", url: "https://freegogpcgames.com" },
-                { name: "KaOsKrew", url: "https://kaoskrew.org" }
+                { id: 'g1', name: "SteamRip", url: "https://steamrip.com" },
+                { id: 'g2', name: "FitGirl Repacks", url: "https://fitgirl-repacks.site" },
+                { id: 'g3', name: "DODI Repacks", url: "https://dodi-repacks.site" },
+                { id: 'g4', name: "ElEnemigos", url: "https://elenemigos.com" },
+                { id: 'g5', name: "AnkerGames", url: "https://ankergames.net" },
+                { id: 'g6', name: "SteamUnderground", url: "https://steamunderground.net/" },
+                { id: 'g7', name: "UnionCrax", url: "https://union-crax.xyz/" },
+                { id: 'g8', name: "Optijuegos", url: "https://optijuegos.net" },
+                { id: 'g9', name: "Vanya Games", url: "https://vanya-games.site/" },
+                { id: 'g10', name: "FreeGOG", url: "https://freegogpcgames.com" },
+                { id: 'g11', name: "KaOsKrew", url: "https://kaoskrew.org" }
             ],
             streaming: [
-                { name: "YFlix", url: "https://yflix.to/home" },
-                { name: "1Movies", url: "https://1movies.bz/home" },
-                { name: "Series2Watch", url: "https://series2watch.net/home" },
-                { name: "Flixtor", url: "https://flixtor.mov/home" },
-                { name: "MovHub", url: "https://movhub.ws/home" },
-                { name: "Noozy", url: "https://noozy.tv/home" },
-                { name: "FlixUp", url: "https://flixup.to/home" },
-                { name: "StreamEX", url: "https://streamex.net/" },
-                { name: "SmashyStream", url: "https://smashystream.xyz/" },
-                { name: "VidPlay", url: "https://vidplay.top/" },
-                { name: "HydraHD", url: "https://hydrahd.ru/" },
-                { name: "Soapy", url: "https://soapy.to/home" },
-                { name: "FreeHDMovies", url: "https://freehdmovies.to/home" },
-                { name: "MyFlixerz", url: "https://myflixerz.to/home" },
-                { name: "Flixer", url: "https://flixer.sh/" },
-                { name: "NetFlex", url: "https://netflex.uk/" },
-                { name: "PrimeShows", url: "https://www.primeshows.live/" },
-                { name: "CineMDK", url: "https://cinemadeck.com/home" },
-                { name: "Hexa", url: "https://hexa.su/" },
-                { name: "Vidora", url: "https://watch.vidora.su/" },
-                { name: "YouFlex", url: "https://youflex.live/" },
-                { name: "Beech", url: "https://www.beech.watch/" },
-                { name: "CinePC", url: "https://cinepeace.in/" },
-                { name: "NetPlay", url: "https://netplayz.live/" },
-                { name: "XPrime", url: "https://xprime.stream" }
+                { id: 's1', name: "YFlix", url: "https://yflix.to/home" },
+                { id: 's2', name: "1Movies", url: "https://1movies.bz/home" },
+                { id: 's3', name: "Series2Watch", url: "https://series2watch.net/home" },
+                { id: 's4', name: "Flixtor", url: "https://flixtor.mov/home" },
+                { id: 's5', name: "MovHub", url: "https://movhub.ws/home" },
+                { id: 's6', name: "Noozy", url: "https://noozy.tv/home" },
+                { id: 's7', name: "FlixUp", url: "https://flixup.to/home" },
+                { id: 's8', name: "StreamEX", url: "https://streamex.net/" },
+                { id: 's9', name: "SmashyStream", url: "https://smashystream.xyz/" },
+                { id: 's10', name: "VidPlay", url: "https://vidplay.top/" },
+                { id: 's11', name: "HydraHD", url: "https://hydrahd.ru/" },
+                { id: 's12', name: "Soapy", url: "https://soapy.to/home" },
+                { id: 's13', name: "FreeHDMovies", url: "https://freehdmovies.to/home" },
+                { id: 's14', name: "MyFlixerz", url: "https://myflixerz.to/home" },
+                { id: 's15', name: "Flixer", url: "https://flixer.sh/" },
+                { id: 's16', name: "NetFlex", url: "https://netflex.uk/" },
+                { id: 's17', name: "PrimeShows", url: "https://www.primeshows.live/" },
+                { id: 's18', name: "CineMDK", url: "https://cinemadeck.com/home" },
+                { id: 's19', name: "Hexa", url: "https://hexa.su/" },
+                { id: 's20', name: "Vidora", url: "https://watch.vidora.su/" },
+                { id: 's21', name: "YouFlex", url: "https://youflex.live/" },
+                { id: 's22', name: "Beech", url: "https://www.beech.watch/" },
+                { id: 's23', name: "CinePC", url: "https://cinepeace.in/" },
+                { id: 's24', name: "NetPlay", url: "https://netplayz.live/" },
+                { id: 's25', name: "XPrime", url: "https://xprime.stream" }
             ],
-            anime: [
-                { name: "Anigo", url: "https://anigo.to/home" },
-                { name: "Anime Nexus", url: "https://anime.nexus/es" },
-                { name: "AnimeLok", url: "https://animelok.to/home" },
-                { name: "AniCrush", url: "https://anicrush.to/home" },
-                { name: "AnimeSalt", url: "https://animesalt.to/" },
-                { name: "Yenime", url: "https://yenime.net/home" },
-                { name: "Kuroiru", url: "https://kuroiru.co/" },
-                { name: "KAA", url: "https://kaa.to/" },
-                { name: "Animex", url: "https://animex.one/" },
-                { name: "Anidap", url: "https://anidap.se/" },
-                { name: "AllManga", url: "https://allmanga.to/" }
+ anime: [
+    { id: 'a1', name: "AnimeKai", url: "https://animekai.pw/" },
+    { id: 'a2', name: "Anigo", url: "https://anigo.to/home" },
+    { id: 'a3', name: "Kuudere", url: "https://kuudere.to/" },
+    { id: 'a4', name: "AnimeLok", url: "https://animelok.site/home" },
+    { id: 'a5', name: "AniZone", url: "https://anizone.to/" },
+    { id: 'a6', name: "AllManga Anime", url: "https://allmanga.to/anime" },
+    { id: 'a7', name: "Anime Nexus", url: "https://anime.nexus/" },
+    { id: 'a8', name: "KickAssAnime", url: "https://kickassanime.cx/" },
+    { id: 'a9', name: "AnimeSogo", url: "https://animesogo.to/home" },
+    { id: 'a10', name: "Senshi", url: "https://senshi.live/" },
+    { id: 'a11', name: "AniWatchTV", url: "https://aniwatchtv.to/home" },
+    { id: 'a12', name: "Miruro", url: "https://www.miruro.com/" },
+    { id: 'a13', name: "Kaido", url: "https://kaido.to/home" },
+    { id: 'a14', name: "HiAnime", url: "https://hianime.to/home" },
+    { id: 'a15', name: "AniHQ", url: "https://anihq.org/home/" },
+    { id: 'a16', name: "9AnimeTV", url: "https://9animetv.to/home" },
+    { id: 'a17', name: "AnimeNana", url: "https://animenana.com/" },
+    { id: 'a18', name: "AnimePahe", url: "https://animepahe.si/" },
+    { id: 'a19', name: "AnimeSalt", url: "https://animesalt.to/" },
+    { id: 'a20', name: "AnimeHub", url: "https://animehub.ac/" },
+    { id: 'a21', name: "AniCrush", url: "https://anicrush.to/home" },
+    { id: 'a22', name: "AnimeHeaven", url: "https://animeheaven.me/" },
+    { id: 'a23', name: "4Anime", url: "https://4anime.gg/home" }
+],
             ],
             tvapks: [
-                { name: "DuktekTV", url: "https://www.mediafire.com/file_premium/3tc5agdar0ywus7/DuktekTV.apk/file" },
-                { name: "FalconCast V4", url: "https://www.mediafire.com/file_premium/xzenycbqzfzf2f8/FalconCast%2528V4.apk/file" },
-                { name: "FLAV", url: "https://www.mediafire.com/file_premium/36o08euu5e82rg2/FLAv_v1.0.apk/file" },
-                { name: "GeeSports", url: "https://www.mediafire.com/file_premium/7mbhka3cq8o4q06/GeeSports_V3.2.apk/file" },
-                { name: "SportzX", url: "https://www.mediafire.com/file_premium/yu53en7qjn4zafs/SportzX_2.1v.apk/file" },
-                { name: "GnulaTVPlus", url: "https://www.mediafire.com/file_premium/pnvgvlcll7epxrj/GnulaTVPlus.apk/file" },
-                { name: "Infiniti", url: "https://www.mediafire.com/file_premium/5drxape709fb320/Infiniti.apk/file" },
-                { name: "NETFLY", url: "https://www.mediafire.com/file_premium/a77uwnkmzh0l88r/NETFLY_V2.2.0.apk/file" },
-                { name: "SHARK TV+", url: "https://www.mediafire.com/file_premium/vy5kxdt6m2lje9q/SHARK_TV%252B-3.1.apk/file" },
-                { name: "YoutubePremiun", url: "https://www.mediafire.com/file_premium/l4f0p5nr1jgykyc/YoutubeTVBOX.apk/file" }
+                { id: 't1', name: "DuktekTV", url: "https://www.mediafire.com/file_premium/3tc5agdar0ywus7/DuktekTV.apk/file" },
+                { id: 't2', name: "FalconCast V4", url: "https://www.mediafire.com/file_premium/xzenycbqzfzf2f8/FalconCast%2528V4.apk/file" },
+                { id: 't3', name: "FLAV", url: "https://www.mediafire.com/file_premium/36o08euu5e82rg2/FLAv_v1.0.apk/file" },
+                { id: 't4', name: "GeeSports", url: "https://www.mediafire.com/file_premium/7mbhka3cq8o4q06/GeeSports_V3.2.apk/file" },
+                { id: 't5', name: "SportzX", url: "https://www.mediafire.com/file_premium/yu53en7qjn4zafs/SportzX_2.1v.apk/file" },
+                { id: 't6', name: "GnulaTVPlus", url: "https://www.mediafire.com/file_premium/pnvgvlcll7epxrj/GnulaTVPlus.apk/file" },
+                { id: 't7', name: "Infiniti", url: "https://www.mediafire.com/file_premium/5drxape709fb320/Infiniti.apk/file" },
+                { id: 't8', name: "NETFLY", url: "https://www.mediafire.com/file_premium/a77uwnkmzh0l88r/NETFLY_V2.2.0.apk/file" },
+                { id: 't9', name: "SHARK TV+", url: "https://www.mediafire.com/file_premium/vy5kxdt6m2lje9q/SHARK_TV%252B-3.1.apk/file" },
+                { id: 't10', name: "YoutubePremiun", url: "https://www.mediafire.com/file_premium/l4f0p5nr1jgykyc/YoutubeTVBOX.apk/file" }
             ]
         };
 
         const app = {
             currentTab: 'games',
+            favorites: [],
 
             init() {
+                const savedFavs = localStorage.getItem('dachub_favs_v2');
+                if (savedFavs) this.favorites = JSON.parse(savedFavs);
                 this.renderAll();
                 this.setTab('games');
             },
 
+            isFavorite(id) { return this.favorites.includes(id); },
+
+            toggleFavorite(id, e) {
+                e.stopPropagation(); e.preventDefault();
+                const idx = this.favorites.indexOf(id);
+                if (idx === -1) {
+                    this.favorites.push(id);
+                    this.showToast("Added to favorites");
+                } else {
+                    this.favorites.splice(idx, 1);
+                    this.showToast("Removed from favorites");
+                }
+                localStorage.setItem('dachub_favs_v2', JSON.stringify(this.favorites));
+                this.render(this.currentTab, document.querySelector('.search-input').value);
+            },
+
+            copyLink(url, e) {
+                e.stopPropagation(); e.preventDefault();
+                navigator.clipboard.writeText(url).then(() => this.showToast("Link copied"));
+            },
+
+            showToast(msg) {
+                const t = document.getElementById('toast');
+                const m = document.getElementById('toastMsg');
+                m.innerText = msg;
+                t.classList.add('show');
+                setTimeout(() => t.classList.remove('show'), 2000);
+            },
+
             createCard(item, category) {
-                // Strip protocol for clean display
                 const cleanUrl = item.url.replace(/^https?:\/\//, '');
+                const isFav = this.isFavorite(item.id);
                 
-                return `
+                return 
                 <a href="${item.url}" target="_blank" class="card">
                     <div class="card-top">
-                        <span class="card-title">${item.name}</span>
+                        <div class="card-title">${item.name}</div>
+                        <div class="card-actions">
+                            <div class="action-icon fav-icon ${isFav ? 'active' : ''}" onclick="app.toggleFavorite('${item.id}', event)">
+                                <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                            </div>
+                            <div class="action-icon" onclick="app.copyLink('${item.url}', event)">
+                                <svg class="icon" viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                            </div>
+                        </div>
                     </div>
                     <div class="card-url">${cleanUrl}</div>
                     <div class="card-footer">
-                        <span class="tag">${category}</span>
-                        <i class="arrow">→</i>
+                        <span class="card-tag">${category}</span>
                     </div>
-                </a>`;
+                </a>;
             },
 
             render(category, filter = "") {
-                const container = document.getElementById(`grid-${category}`);
-                const data = db[category];
+                const container = document.getElementById(grid-${category});
+                let data = category === 'favorites' ? [] : db[category];
+                
+                if (category === 'favorites') {
+                    Object.values(db).forEach(arr => {
+                        data.push(...arr.filter(i => this.favorites.includes(i.id)));
+                    });
+                }
                 
                 if (!container) return;
 
@@ -436,46 +666,39 @@
                     item.url.toLowerCase().includes(filter.toLowerCase())
                 );
 
+                document.getElementById('countBadge').textContent = filtered.length;
+
                 if (filtered.length === 0) {
-                    container.innerHTML = `<div style="color:#71717a; grid-column:1/-1; padding:20px; font-size:13px;">No results found.</div>`;
+                    container.innerHTML = <div style="color:var(--text-muted); font-size:13px; grid-column:1/-1; padding:20px; text-align:center;">No results found.</div>;
                     return;
                 }
 
-                container.innerHTML = filtered.map(item => this.createCard(item, category)).join('');
+                container.innerHTML = filtered.map(i => this.createCard(i, category === 'favorites' ? 'Saved' : category)).join('');
             },
 
             renderAll(filter = "") {
-                Object.keys(db).forEach(key => this.render(key, filter));
+                Object.keys(db).forEach(k => this.render(k, filter));
+                this.render('favorites', filter);
             },
 
-            setTab(tabId, event) {
-                if(event) event.preventDefault();
-                
+            setTab(tabId, e) {
+                if(e) e.preventDefault();
                 this.currentTab = tabId;
-                
-                // Update Title
                 document.getElementById('pageTitle').textContent = tabId.charAt(0).toUpperCase() + tabId.slice(1);
-
-                // Update Nav
-                document.querySelectorAll('.nav-link').forEach(el => {
-                    el.classList.toggle('active', el.getAttribute('onclick').includes(tabId));
-                });
-
-                // Update View
+                
+                document.querySelectorAll('.sidebar .nav-item').forEach(el => el.classList.toggle('active', el.getAttribute('onclick').includes(tabId)));
+                document.querySelectorAll('.mobile-nav-item').forEach(el => el.classList.toggle('active', el.getAttribute('onclick').includes(tabId)));
+                
                 document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-                document.getElementById(`view-${tabId}`).classList.add('active');
+                const target = document.getElementById(view-${tabId});
+                if(target) target.classList.add('active');
 
-                // Render current tab
-                const searchVal = document.querySelector('.search-input').value;
-                this.render(tabId, searchVal);
+                this.render(tabId, document.querySelector('.search-input').value);
             },
 
-            handleSearch(val) {
-                this.render(this.currentTab, val);
-            }
+            handleSearch(val) { this.render(this.currentTab, val); }
         };
 
         window.addEventListener('DOMContentLoaded', () => app.init());
     </script>
 </body>
-</html>
