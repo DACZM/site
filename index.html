@@ -65,13 +65,28 @@
         }
 
         .brand {
+            /* Updated to flex for logo alignment */
+            display: flex;
+            align-items: center;
+            gap: 12px;
             font-size: 14px;
             font-weight: 700;
             letter-spacing: 0.15em;
             color: var(--text-primary);
             margin-bottom: 32px;
             padding-left: 24px;
+            padding-right: 24px; /* Added right padding */
             text-transform: uppercase;
+        }
+
+        .brand-logo {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            image-rendering: pixelated; /* Crisp look for pixel art gifs */
+            border-radius: 6px;
+            background: rgba(255,255,255,0.05); /* Subtle container */
+            padding: 2px;
         }
 
         .nav-label {
@@ -403,7 +418,11 @@
 
     <!-- Desktop Sidebar -->
     <nav class="sidebar">
-        <div class="brand">DACHUB</div>
+        <!-- Logo Added Here -->
+        <div class="brand">
+            <img src="https://files.catbox.moe/c4uh8x.gif" alt="Donkey Kong" class="brand-logo">
+            DACHUB
+        </div>
         
         <div class="nav-label">Library</div>
         <div class="nav-item active" onclick="app.setTab('games', event)">
@@ -538,6 +557,7 @@
             ],
             anime: [
                 { id: 'a1', name: "AnimeKai", url: "https://animekai.pw/" },
+                { id: 'a2', name: "Anigo", url: "https://anigo.to/home" }, // Fixed ID sequence
                 { id: 'a3', name: "Kuudere", url: "https://kuudere.to/" },
                 { id: 'a4', name: "AnimeLok", url: "https://animelok.site/home" },
                 { id: 'a5', name: "AniZone", url: "https://anizone.to/" },
@@ -618,7 +638,6 @@
                 const cleanUrl = item.url.replace(/^https?:\/\//, '');
                 const isFav = this.isFavorite(item.id);
                 
-                // Fixed: Added backticks \` \`
                 return `
                 <a href="${item.url}" target="_blank" class="card">
                     <div class="card-top">
@@ -640,7 +659,6 @@
             },
 
             render(category, filter = "") {
-                // Fixed: Added backticks \` \`
                 const container = document.getElementById(`grid-${category}`);
                 let data = category === 'favorites' ? [] : db[category];
                 
@@ -660,7 +678,6 @@
                 document.getElementById('countBadge').textContent = filtered.length;
 
                 if (filtered.length === 0) {
-                    // Fixed: Added backticks \` \`
                     container.innerHTML = `<div style="color:var(--text-muted); font-size:13px; grid-column:1/-1; padding:20px; text-align:center;">No results found.</div>`;
                     return;
                 }
@@ -682,7 +699,6 @@
                 document.querySelectorAll('.mobile-nav-item').forEach(el => el.classList.toggle('active', el.getAttribute('onclick').includes(tabId)));
                 
                 document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-                // Fixed: Added backticks \` \`
                 const target = document.getElementById(`view-${tabId}`);
                 if(target) target.classList.add('active');
 
