@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>DZH</title>
+<title>DACHUB</title>
 <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root {
@@ -15,9 +15,9 @@
   --text: #f0f0f0;
   --muted: #666;
   --dim: #333;
-  --accent: #c8ff00;
-  --accent2: #ff6b35;
-  --accent3: #00d4ff;
+  --accent: #a855f7;
+  --accent2: #c084fc;
+  --accent3: #7c3aed;
   --sidebar-w: 220px;
   --header-h: 56px;
   --r: 6px;
@@ -132,7 +132,7 @@ body {
 
 .nav-item.active {
   color: var(--accent);
-  background: rgba(200,255,0,0.06);
+  background: rgba(168,85,247,0.08);
 }
 
 .nav-item.active::before {
@@ -165,12 +165,16 @@ body {
 }
 
 .nav-item.active .nav-badge {
-  background: rgba(200,255,0,0.12);
-  border-color: rgba(200,255,0,0.3);
+  background: rgba(168,85,247,0.15);
+  border-color: rgba(168,85,247,0.35);
   color: var(--accent);
 }
 
-/* SIDEBAR BOTTOM */
+/* INSTAGRAM LINK */
+.nav-item.ig:hover, a.nav-item:hover { color: var(--text); background: var(--surface); }
+a.nav-item { color: var(--muted); }
+
+
 .sidebar-bottom {
   margin-top: auto;
   padding: 12px 20px;
@@ -289,8 +293,8 @@ header {
 
 .search-input:focus {
   border-color: var(--accent);
-  background: rgba(200,255,0,0.03);
-  box-shadow: 0 0 0 2px rgba(200,255,0,0.08);
+  background: rgba(168,85,247,0.04);
+  box-shadow: 0 0 0 2px rgba(168,85,247,0.1);
 }
 
 .search-input::placeholder { color: var(--dim); }
@@ -359,8 +363,8 @@ header {
 
 .hbtn svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 1.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-.hbtn.accent { border-color: rgba(200,255,0,0.3); color: var(--accent); background: rgba(200,255,0,0.07); }
-.hbtn.accent:hover { background: rgba(200,255,0,0.12); }
+.hbtn.accent { border-color: rgba(168,85,247,0.35); color: var(--accent); background: rgba(168,85,247,0.1); }
+.hbtn.accent:hover { background: rgba(168,85,247,0.18); }
 
 /* SORT/VIEW CONTROLS */
 .controls-bar {
@@ -386,7 +390,7 @@ header {
 }
 
 .sort-btn:hover { color: var(--text); border-color: var(--border); }
-.sort-btn.active { color: var(--accent); border-color: rgba(200,255,0,0.3); background: rgba(200,255,0,0.06); }
+.sort-btn.active { color: var(--accent); border-color: rgba(168,85,247,0.35); background: rgba(168,85,247,0.08); }
 
 .view-toggle {
   margin-left: auto;
@@ -408,7 +412,7 @@ header {
 
 .view-btn svg { width: 14px; height: 14px; stroke: currentColor; stroke-width: 1.5; fill: none; }
 .view-btn:hover { color: var(--muted); border-color: var(--border); }
-.view-btn.active { color: var(--accent); border-color: rgba(200,255,0,0.3); background: rgba(200,255,0,0.06); }
+.view-btn.active { color: var(--accent); border-color: rgba(168,85,247,0.35); background: rgba(168,85,247,0.08); }
 
 .open-all-btn {
   margin-left: 8px;
@@ -501,7 +505,7 @@ header {
   position: absolute;
   inset: 0;
   opacity: 0;
-  background: radial-gradient(ellipse at 50% 0%, rgba(200,255,0,0.08), transparent 70%);
+  background: radial-gradient(ellipse at 50% 0%, rgba(168,85,247,0.1), transparent 70%);
   transition: opacity 0.3s;
   pointer-events: none;
 }
@@ -643,26 +647,7 @@ header {
   font-family: var(--mono);
 }
 
-/* SPOTIFY VIEW */
-.spotify-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  gap: 16px;
-  padding: 24px;
-}
 
-.spotify-wrapper {
-  width: 100%;
-  max-width: 760px;
-  height: 380px;
-  border-radius: 12px;
-  overflow: hidden;
-  border: 1px solid var(--border);
-  box-shadow: 0 16px 60px rgba(0,0,0,0.6);
-}
 
 /* STATS VIEW */
 .stats-grid {
@@ -756,7 +741,6 @@ header {
 /* VIEWS */
 .view-section { display: none; }
 .view-section.active { display: block; animation: fadeIn 0.25s ease; }
-.view-section.spotify-active { display: flex; flex-direction: column; height: 100%; }
 
 @keyframes fadeIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
@@ -849,8 +833,8 @@ header {
 }
 
 .btn:hover { color: var(--text); border-color: var(--border-hover); }
-.btn.primary { background: var(--accent); border-color: var(--accent); color: #000; font-weight: 800; }
-.btn.primary:hover { background: #d9ff33; }
+.btn.primary { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 800; }
+.btn.primary:hover { background: #b36ef5; }
 
 /* TOAST */
 .toast {
@@ -970,6 +954,8 @@ body.matrix-mode {
 
 body.matrix-mode .brand-name { color: var(--accent); text-shadow: 0 0 20px var(--accent); }
 body.matrix-mode .card:hover { box-shadow: 0 0 20px rgba(0,255,65,0.15); }
+body.matrix-mode .nav-item.active { background: rgba(0,255,65,0.06); }
+body.matrix-mode .sort-btn.active,.body.matrix-mode .view-btn.active { border-color: rgba(0,255,65,0.3); background: rgba(0,255,65,0.06); }
 
 /* NEON MODE */
 body.neon-mode {
@@ -981,8 +967,8 @@ body.neon-mode {
   --border-hover: rgba(255,0,255,0.3);
 }
 
+body.neon-mode .nav-item.active { background: rgba(255,0,255,0.06); }
 body.neon-mode .card:hover { box-shadow: 0 0 20px rgba(255,0,255,0.2), 0 0 60px rgba(0,255,255,0.1); }
-body.neon-mode .nav-item.active { color: var(--accent); }
 body.neon-mode .search-input:focus { border-color: var(--accent2); box-shadow: 0 0 0 2px rgba(0,255,255,0.1); }
 
 /* RANDOM SITE BUTTON */
@@ -991,7 +977,7 @@ body.neon-mode .search-input:focus { border-color: var(--accent2); box-shadow: 0
 }
 @keyframes pulse {
   0%,100%{box-shadow:none}
-  50%{box-shadow:0 0 12px rgba(200,255,0,0.3)}
+  50%{box-shadow:0 0 12px rgba(168,85,247,0.4)}
 }
 
 /* IMPORT/EXPORT */
@@ -1033,9 +1019,9 @@ body.neon-mode .search-input:focus { border-color: var(--accent2); box-shadow: 0
 <!-- SIDEBAR -->
 <nav class="sidebar">
   <div class="brand">
-    <img src="https://c.tenor.com/KvSfAb1AOQgAAAAC/tenor.gif" alt="logo" class="brand-logo">
-    <span class="brand-name"></span>
-    <span class="brand-ver"></span>
+    <img src="https://i.pinimg.com/736x/dc/8e/ac/dc8eac0d6cbdd0a35d9ff7e2da3f7cc1.jpg" alt="logo" class="brand-logo">
+    <span class="brand-name">DAC</span>
+    <span class="brand-ver">v2</span>
   </div>
 
   <div class="nav-section">
@@ -1063,11 +1049,11 @@ body.neon-mode .search-input:focus { border-color: var(--accent2); box-shadow: 0
   </div>
 
   <div class="nav-section">
-    <div class="nav-label">Media</div>
-    <div class="nav-item" onclick="app.setTab('spotify',event)" data-tab="spotify">
-      <svg class="nav-icon" viewBox="0 0 24 24"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>
-      music
-    </div>
+    <div class="nav-label">Social</div>
+    <a class="nav-item" href="https://www.instagram.com/mrpewpickles" target="_blank" style="text-decoration:none;">
+      <svg class="nav-icon" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+      Instagram
+    </a>
   </div>
 
   <div class="nav-section">
@@ -1108,12 +1094,12 @@ body.neon-mode .search-input:focus { border-color: var(--accent2); box-shadow: 0
         <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Add</span>
       </button>
-      <button class="hbtn" onclick="document.getElementById('bgInput').click()" data-tip="Cambiar fondo">
+      <button class="hbtn" onclick="document.getElementById('bgInput').click()" data-tip="Change background">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
-        <span>Fondo</span>
+        <span>BG</span>
       </button>
       <input type="file" id="bgInput" accept="image/*" style="display:none" onchange="app.handleBgUpload(this)">
-      <button class="hbtn" onclick="app.cycleTheme()" data-tip="Cambiar tema">
+      <button class="hbtn" onclick="app.cycleTheme()" data-tip="Change theme">
         <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/></svg>
         <span>Tema</span>
       </button>
@@ -1132,13 +1118,13 @@ body.neon-mode .search-input:focus { border-color: var(--accent2); box-shadow: 0
     <button class="sort-btn" onclick="app.setSort('clicks', this)">Most Used</button>
     <button class="sort-btn" onclick="app.setSort('favorites', this)">Favs First</button>
     <div class="view-toggle">
-      <button class="view-btn active" onclick="app.setViewMode('normal', this)" data-tip="Grid">
+      <button class="view-btn" onclick="app.setViewMode('normal', this)" data-tip="Grid">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       </button>
       <button class="view-btn" onclick="app.setViewMode('compact', this)" data-tip="Compact">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="4" height="4"/><rect x="10" y="3" width="4" height="4"/><rect x="17" y="3" width="4" height="4"/><rect x="3" y="10" width="4" height="4"/><rect x="10" y="10" width="4" height="4"/><rect x="17" y="10" width="4" height="4"/></svg>
       </button>
-      <button class="view-btn" onclick="app.setViewMode('list', this)" data-tip="List">
+      <button class="view-btn active" onclick="app.setViewMode('list', this)" data-tip="List">
         <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       </button>
     </div>
@@ -1158,14 +1144,6 @@ body.neon-mode .search-input:focus { border-color: var(--accent2); box-shadow: 0
     <div id="view-anime" class="view-section"><div class="grid" id="grid-anime"></div></div>
     <div id="view-tvapks" class="view-section"><div class="grid" id="grid-tvapks"></div></div>
     <div id="view-favorites" class="view-section"><div class="grid" id="grid-favorites"></div></div>
-
-    <div id="view-spotify" class="view-section">
-      <div class="spotify-container">
-        <div class="spotify-wrapper">
-          <iframe style="border-radius:12px" src="https://open.spotify.com/embed/playlist/37i9dQZF1DXcBWIGoYBM5M?utm_source=generator&theme=0" width="100%" height="100%" frameBorder="0" allowfullscreen allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
-        </div>
-      </div>
-    </div>
 
     <div id="view-stats" class="view-section">
       <div class="stats-grid" id="statsGrid"></div>
@@ -1329,7 +1307,7 @@ function fuzzyMatch(str, query) {
 // ─── APP ─────────────────────────────────────────────────────────────────────
 const app = {
   currentTab: 'games',
-  viewMode: 'normal',
+  viewMode: 'list',
   sortMode: 'default',
   themeIdx: 0,
   favorites: [],
@@ -1343,7 +1321,7 @@ const app = {
     this.favorites = JSON.parse(localStorage.getItem('dachub_favs_v2') || '[]');
     this.pinned = JSON.parse(localStorage.getItem('dachub_pinned') || '[]');
     this.clicks = JSON.parse(localStorage.getItem('dachub_clicks') || '{}');
-    this.viewMode = localStorage.getItem('dachub_view') || 'normal';
+    this.viewMode = localStorage.getItem('dachub_view') || 'list';
     this.sortMode = localStorage.getItem('dachub_sort') || 'default';
     this.themeIdx = parseInt(localStorage.getItem('dachub_theme') || '0');
     this.customSites = JSON.parse(localStorage.getItem('dachub_custom_sites') || '[]');
@@ -1388,7 +1366,7 @@ const app = {
     r.onload = e => {
       localStorage.setItem('dachub_custom_bg', e.target.result);
       document.body.style.backgroundImage = `url(${e.target.result})`;
-      this.showToast('Fondo actualizado');
+      this.showToast('Background updated');
     };
     r.readAsDataURL(input.files[0]);
   },
@@ -1453,7 +1431,7 @@ const app = {
         if (p.y > H) p.y = 0;
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(200,255,0,0.4)';
+        ctx.fillStyle = 'rgba(168,85,247,0.5)';
         ctx.fill();
       });
       // Lines
@@ -1466,7 +1444,7 @@ const app = {
             ctx.beginPath();
             ctx.moveTo(pts[i].x, pts[i].y);
             ctx.lineTo(pts[j].x, pts[j].y);
-            ctx.strokeStyle = `rgba(200,255,0,${0.08 * (1 - d/100)})`;
+            ctx.strokeStyle = `rgba(168,85,247,${0.1 * (1 - d/100)})`;
             ctx.lineWidth = 0.5;
             ctx.stroke();
           }
@@ -1641,7 +1619,7 @@ const app = {
 
   // ─── RENDER ────────────────────────────────────────────────────────────────
   render(category, filter = '') {
-    if (category === 'spotify' || category === 'stats') return;
+    if (category === 'stats') return;
     const container = document.getElementById(`grid-${category}`);
     if (!container) return;
 
@@ -1733,7 +1711,7 @@ const app = {
     if (e) e.preventDefault();
     this.currentTab = tabId;
 
-    const labels = {games:'Games',streaming:'Streaming',anime:'Anime',tvapks:'APKs',spotify:'Spotify',favorites:'Favorites',stats:'Stats'};
+    const labels = {games:'Games',streaming:'Streaming',anime:'Anime',tvapks:'APKs',favorites:'Favorites',stats:'Stats'};
     document.getElementById('pageTitle').textContent = labels[tabId] || tabId;
 
     // Active states
@@ -1741,23 +1719,20 @@ const app = {
 
     // Views
     document.querySelectorAll('.view-section').forEach(el => {
-      el.classList.remove('active', 'spotify-active');
+      el.classList.remove('active');
     });
     const target = document.getElementById(`view-${tabId}`);
-    if (target) {
-      if (tabId === 'spotify') target.classList.add('active', 'spotify-active');
-      else target.classList.add('active');
-    }
+    if (target) target.classList.add('active');
 
     // Count badge visibility
-    const hideBadge = tabId === 'spotify' || tabId === 'stats';
+    const hideBadge = tabId === 'stats';
     document.getElementById('countBadge').style.display = hideBadge ? 'none' : '';
 
     // Open All Favs button
     document.getElementById('openAllBtn').style.display = tabId === 'favorites' ? '' : 'none';
 
     // Controls bar visibility
-    document.querySelector('.controls-bar').style.display = (tabId === 'spotify' || tabId === 'stats') ? 'none' : '';
+    document.querySelector('.controls-bar').style.display = tabId === 'stats' ? 'none' : '';
 
     if (tabId === 'stats') this.renderStats();
     else this.render(tabId, document.getElementById('searchInput').value);
