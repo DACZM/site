@@ -45,7 +45,6 @@ body {
   z-index: 0; pointer-events: none;
 }
 
-/* grain */
 .bg-overlay::after {
   content:'';
   position:absolute;inset:0;
@@ -53,7 +52,6 @@ body {
   opacity:0.4;pointer-events:none;
 }
 
-/* SIDEBAR */
 .sidebar {
   width: var(--sidebar-w);
   background: rgba(0,0,0,0.65);
@@ -123,10 +121,7 @@ body {
 }
 
 .nav-item:hover { color: var(--text); background: var(--surface); }
-
-.nav-item.active {
-  color: var(--text); background: rgba(255,255,255,0.05);
-}
+.nav-item.active { color: var(--text); background: rgba(255,255,255,0.05); }
 
 .nav-item.active::before {
   content: '';
@@ -135,7 +130,6 @@ body {
   background: linear-gradient(to bottom, transparent, rgba(200,188,165,0.5), transparent);
 }
 
-/* nav image icons */
 .nav-icon-img {
   width: 18px; height: 18px; border-radius: 3px;
   object-fit: cover; flex-shrink: 0;
@@ -181,10 +175,8 @@ a.nav-item:hover { color: var(--text); background: var(--surface); }
 
 .sidebar-stats span { color: var(--muted); }
 
-/* MAIN */
 .main { flex: 1; display: flex; flex-direction: column; min-width: 0; position: relative; z-index: 5; }
 
-/* HEADER */
 header {
   height: var(--header-h);
   border-bottom: 1px solid var(--border);
@@ -223,7 +215,6 @@ header::after {
 
 .header-right { display: flex; align-items: center; gap: 7px; flex-shrink: 0; }
 
-/* SEARCH */
 .search-wrap { position: relative; width: 200px; }
 
 .search-icon-el {
@@ -275,7 +266,6 @@ header::after {
   font-size: 8px; color: var(--muted); text-transform: uppercase;
 }
 
-/* HEADER BUTTONS */
 .hbtn {
   background: var(--surface); border: 1px solid var(--border);
   color: var(--muted);
@@ -291,7 +281,6 @@ header::after {
 .hbtn.accent { border-color: rgba(200,188,165,0.18); color: #bbb8b0; background: rgba(200,188,165,0.06); }
 .hbtn.accent:hover { background: rgba(200,188,165,0.12); }
 
-/* CONTROLS BAR */
 .controls-bar {
   display: flex; align-items: center; gap: 7px;
   padding: 8px 20px; border-bottom: 1px solid var(--border);
@@ -323,7 +312,6 @@ header::after {
 
 .open-all-btn { margin-left: 7px; }
 
-/* CONTENT */
 .content-scroll {
   flex: 1; overflow-y: auto; padding: 18px 20px; scroll-behavior: smooth;
 }
@@ -332,12 +320,10 @@ header::after {
 .content-scroll::-webkit-scrollbar-track { background: transparent; }
 .content-scroll::-webkit-scrollbar-thumb { background: var(--dim); border-radius: 2px; }
 
-/* GRID */
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 10px; }
 .grid.compact { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 7px; }
 .grid.list { grid-template-columns: 1fr; gap: 5px; }
 
-/* SKELETON */
 .skeleton {
   background: linear-gradient(90deg, var(--surface) 25%, rgba(255,255,255,0.05) 50%, var(--surface) 75%);
   background-size: 200% 100%; animation: shimmer 1.2s infinite;
@@ -349,7 +335,6 @@ header::after {
 .skeleton-card.compact { height: 68px; }
 .skeleton-card.list { height: 46px; }
 
-/* CARD */
 .card {
   background: var(--surface); border: 1px solid var(--border);
   border-radius: var(--r); color: var(--text);
@@ -427,7 +412,6 @@ header::after {
   color: var(--dim); display: flex; align-items: center; gap: 3px;
 }
 
-/* ACTION ICON */
 .aicon {
   width: 20px; height: 20px; display: flex;
   align-items: center; justify-content: center;
@@ -441,18 +425,15 @@ header::after {
 .aicon.fav.active svg { fill: #c0bcb4; stroke: #c0bcb4; }
 .aicon.pin.active { color: #aaa8a0; }
 
-/* LIST VIEW */
 .grid.list .card { flex-direction: row; align-items: center; padding: 8px 12px; }
 .grid.list .card-header { margin-bottom: 0; flex: 1; min-width: 0; }
 .grid.list .card-url { margin-bottom: 0; width: 140px; flex-shrink: 0; }
 .grid.list .card-footer { border-top: none; padding-top: 0; margin-top: 0; margin-left: 10px; }
 
-/* COMPACT */
 .grid.compact .card { padding: 10px; }
 .grid.compact .card-url, .grid.compact .card-footer { display: none; }
 .grid.compact .card-header { margin-bottom: 0; }
 
-/* TOOLTIP */
 [data-tip] { position: relative; }
 [data-tip]:hover::after {
   content: attr(data-tip);
@@ -464,7 +445,6 @@ header::after {
   z-index: 200; font-family: var(--mono);
 }
 
-/* STATS */
 .stats-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 10px; margin-bottom: 18px; }
 
 .stat-card {
@@ -492,7 +472,7 @@ header::after {
   font-family: var(--metal); font-size: 14px; letter-spacing: 0.1em;
   text-transform: uppercase; color: var(--muted);
 }
-.top-item { display: flex; align-items: center; gap: 9px; padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.03); text-decoration: none; color: var(--text); transition: background 0.15s; }
+.top-item { display: flex; align-items: center; gap: 9px; padding: 9px 14px; border-bottom: 1px solid rgba(255,255,255,0.03); text-decoration: none; color: var(--text); transition: background 0.15s; cursor: pointer; }
 .top-item:hover { background: var(--surface-hover); }
 .top-rank { font-family: var(--mono); font-size: 9px; color: var(--dim); width: 18px; text-align: right; flex-shrink: 0; }
 .top-name { font-family: var(--metal); font-size: 15px; letter-spacing: 0.06em; text-transform: uppercase; flex: 1; }
@@ -500,12 +480,10 @@ header::after {
 .top-bar { height: 100%; background: rgba(200,188,165,0.28); border-radius: 1px; }
 .top-clicks { font-family: var(--mono); font-size: 9px; color: var(--muted); width: 28px; text-align: right; }
 
-/* VIEWS */
 .view-section { display: none; }
 .view-section.active { display: block; animation: fadeIn 0.22s ease; }
 @keyframes fadeIn { from{opacity:0;transform:translateY(5px)} to{opacity:1;transform:translateY(0)} }
 
-/* MODAL */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(0,0,0,0.78);
   backdrop-filter: blur(4px); z-index: 200;
@@ -554,7 +532,6 @@ header::after {
 .btn.primary { background: rgba(200,188,165,0.1); border-color: rgba(200,188,165,0.22); color: var(--text); }
 .btn.primary:hover { background: rgba(200,188,165,0.16); }
 
-/* TOAST */
 .toast {
   position: fixed; bottom: 22px; left: 50%;
   transform: translateX(-50%) translateY(8px);
@@ -570,7 +547,6 @@ header::after {
 .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
 .toast svg { width: 11px; height: 11px; stroke: #111; stroke-width: 2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 
-/* BACK TO TOP */
 .back-top {
   position: fixed; right: 22px; bottom: 22px;
   width: 32px; height: 32px; background: var(--surface);
@@ -583,7 +559,6 @@ header::after {
 .back-top:hover { color: var(--text); border-color: rgba(200,188,165,0.22); transform: translateY(-2px); }
 .back-top svg { width: 13px; height: 13px; stroke: currentColor; stroke-width: 2; fill: none; }
 
-/* MOBILE NAV */
 .mobile-nav {
   display: none; position: fixed; bottom: 0; left: 0; width: 100%;
   background: rgba(7,7,8,0.95); backdrop-filter: blur(12px);
@@ -641,7 +616,6 @@ header::after {
 
 <div class="bg-overlay"></div>
 
-<!-- SIDEBAR -->
 <nav class="sidebar">
   <div class="brand">
     <img src="https://i.pinimg.com/736x/dc/8e/ac/dc8eac0d6cbdd0a35d9ff7e2da3f7cc1.jpg" alt="logo" class="brand-logo"
@@ -649,62 +623,47 @@ header::after {
     <span class="brand-name">DAC</span>
     <span class="brand-ver">v2</span>
   </div>
-
   <div class="nav-section">
     <div class="nav-label">Library</div>
-
-    <div class="nav-item active" onclick="app.setTab('games',event)" data-tab="games">
-      <img class="nav-icon-img"
-        src="https://i.pinimg.com/474x/f3/7b/4e/f37b4e0f0e3e5b8e2f0b1d0e0c8a6b3e.jpg"
-        alt=""
+    <div class="nav-item active" data-tab="games">
+      <img class="nav-icon-img" src="https://i.pinimg.com/474x/f3/7b/4e/f37b4e0f0e3e5b8e2f0b1d0e0c8a6b3e.jpg" alt=""
         onerror="this.outerHTML='<svg class=\'nav-icon\' viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'6\' width=\'20\' height=\'12\' rx=\'2\'/><path d=\'M6 12h4m-2-2v4m10-2h-4\'/></svg>'">
       Games
       <span class="nav-badge" id="nbadge-games">0</span>
     </div>
-
-    <div class="nav-item" onclick="app.setTab('streaming',event)" data-tab="streaming">
-      <img class="nav-icon-img"
-        src="https://i.pinimg.com/474x/7a/2c/5d/7a2c5d8e3b1f0a9e2c6b4d8a0f3e7b2d.jpg"
-        alt=""
+    <div class="nav-item" data-tab="streaming">
+      <img class="nav-icon-img" src="https://i.pinimg.com/474x/7a/2c/5d/7a2c5d8e3b1f0a9e2c6b4d8a0f3e7b2d.jpg" alt=""
         onerror="this.outerHTML='<svg class=\'nav-icon\' viewBox=\'0 0 24 24\'><polygon points=\'23 7 16 12 23 17 23 7\'/><rect x=\'1\' y=\'5\' width=\'15\' height=\'14\' rx=\'2\'/></svg>'">
       Stream
       <span class="nav-badge" id="nbadge-streaming">0</span>
     </div>
-
-    <div class="nav-item" onclick="app.setTab('anime',event)" data-tab="anime">
-      <img class="nav-icon-img"
-        src="https://i.pinimg.com/474x/2b/8f/1a/2b8f1a3e5c7d0b9e4f2a6c8e1b3d5f7a.jpg"
-        alt=""
+    <div class="nav-item" data-tab="anime">
+      <img class="nav-icon-img" src="https://i.pinimg.com/474x/2b/8f/1a/2b8f1a3e5c7d0b9e4f2a6c8e1b3d5f7a.jpg" alt=""
         onerror="this.outerHTML='<svg class=\'nav-icon\' viewBox=\'0 0 24 24\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><polygon points=\'10 8 16 12 10 16 10 8\'/></svg>'">
       Anime
       <span class="nav-badge" id="nbadge-anime">0</span>
     </div>
   </div>
-
   <div class="nav-section">
     <div class="nav-label">Social</div>
     <a class="nav-item" href="https://www.instagram.com/mrpewpickles" target="_blank" rel="noopener">
-      <img class="nav-icon-img"
-        src="https://i.pinimg.com/474x/4a/9c/2e/4a9c2e7b1d5f0a3e8c6b4d2a7f1e9c3b.jpg"
-        alt=""
+      <img class="nav-icon-img" src="https://i.pinimg.com/474x/4a/9c/2e/4a9c2e7b1d5f0a3e8c6b4d2a7f1e9c3b.jpg" alt=""
         onerror="this.outerHTML='<svg class=\'nav-icon\' viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'2\' width=\'20\' height=\'20\' rx=\'5\'/><path d=\'M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z\'/><line x1=\'17.5\' y1=\'6.5\' x2=\'17.51\' y2=\'6.5\'/></svg>'">
       Instagram
     </a>
   </div>
-
   <div class="nav-section">
     <div class="nav-label">Tools</div>
-    <div class="nav-item" onclick="app.setTab('favorites',event)" data-tab="favorites">
+    <div class="nav-item" data-tab="favorites">
       <svg class="nav-icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
       Saved
       <span class="nav-badge" id="nbadge-favorites">0</span>
     </div>
-    <div class="nav-item" onclick="app.setTab('stats',event)" data-tab="stats">
+    <div class="nav-item" data-tab="stats">
       <svg class="nav-icon" viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
       Stats
     </div>
   </div>
-
   <div class="sidebar-bottom">
     <div class="sidebar-stats">
       Sites: <span id="stat-total">0</span><br>
@@ -714,7 +673,6 @@ header::after {
   </div>
 </nav>
 
-<!-- MAIN -->
 <main class="main">
   <header>
     <div class="header-left">
@@ -722,49 +680,49 @@ header::after {
       <div class="count-badge" id="countBadge">0</div>
     </div>
     <div class="header-right">
-      <button class="hbtn random-btn accent" onclick="app.openRandom()" data-tip="Random site">
+      <button class="hbtn random-btn accent" id="btnRandom" data-tip="Random site">
         <svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="15" y1="15" x2="21" y2="21"/></svg>
         <span>Rand</span>
       </button>
-      <button class="hbtn" onclick="app.openAddModal()" data-tip="Add site">
+      <button class="hbtn" id="btnAdd" data-tip="Add site">
         <svg viewBox="0 0 24 24"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
         <span>Add</span>
       </button>
-      <button class="hbtn" onclick="document.getElementById('bgInput').click()" data-tip="Change background">
+      <button class="hbtn" id="btnBg" data-tip="Change background">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
         <span>BG</span>
       </button>
-      <input type="file" id="bgInput" accept="image/*" style="display:none" onchange="app.handleBgUpload(this)">
+      <input type="file" id="bgInput" accept="image/*" style="display:none">
       <div class="search-wrap">
         <svg class="search-icon-el" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        <input type="text" class="search-input" id="searchInput" placeholder="Search..." autocomplete="off" oninput="app.handleSearch(this.value)" onfocus="app.showSuggestions(this.value)" onblur="setTimeout(()=>app.hideSuggestions(),150)">
+        <input type="text" class="search-input" id="searchInput" placeholder="Search..." autocomplete="off">
         <span class="search-shortcut">/</span>
         <div class="search-suggestions" id="suggestions"></div>
       </div>
     </div>
   </header>
 
-  <div class="controls-bar">
-    <button class="sort-btn" data-sort="default" onclick="app.setSort('default',this)">Default</button>
-    <button class="sort-btn" data-sort="name" onclick="app.setSort('name',this)">A–Z</button>
-    <button class="sort-btn" data-sort="clicks" onclick="app.setSort('clicks',this)">Top</button>
-    <button class="sort-btn" data-sort="favorites" onclick="app.setSort('favorites',this)">Saved</button>
+  <div class="controls-bar" id="controlsBar">
+    <button class="sort-btn" data-sort="default">Default</button>
+    <button class="sort-btn" data-sort="name">A-Z</button>
+    <button class="sort-btn" data-sort="clicks">Top</button>
+    <button class="sort-btn" data-sort="favorites">Saved</button>
     <div class="view-toggle">
-      <button class="view-btn" data-view="normal" onclick="app.setViewMode('normal',this)" data-tip="Grid">
+      <button class="view-btn" data-view="normal" data-tip="Grid">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
       </button>
-      <button class="view-btn" data-view="compact" onclick="app.setViewMode('compact',this)" data-tip="Compact">
+      <button class="view-btn" data-view="compact" data-tip="Compact">
         <svg viewBox="0 0 24 24"><rect x="3" y="3" width="4" height="4"/><rect x="10" y="3" width="4" height="4"/><rect x="17" y="3" width="4" height="4"/><rect x="3" y="10" width="4" height="4"/><rect x="10" y="10" width="4" height="4"/><rect x="17" y="10" width="4" height="4"/></svg>
       </button>
-      <button class="view-btn" data-view="list" onclick="app.setViewMode('list',this)" data-tip="List">
+      <button class="view-btn" data-view="list" data-tip="List">
         <svg viewBox="0 0 24 24"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
       </button>
     </div>
-    <button class="hbtn open-all-btn" id="openAllBtn" onclick="app.openAllFavs()" style="display:none" data-tip="Open all saved">
+    <button class="hbtn open-all-btn" id="openAllBtn" style="display:none" data-tip="Open all saved">
       <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
       <span>Open All</span>
     </button>
-    <button class="hbtn" onclick="app.exportFavs()" data-tip="Export JSON">
+    <button class="hbtn" id="btnExport" data-tip="Export JSON">
       <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
       <span>Export</span>
     </button>
@@ -782,40 +740,34 @@ header::after {
   </div>
 </main>
 
-<!-- MOBILE NAV -->
 <nav class="mobile-nav">
-  <div class="mnav-item active" onclick="app.setTab('games',event)" data-tab="games">
-    <img class="mnav-icon-img"
-      src="https://i.pinimg.com/474x/f3/7b/4e/f37b4e0f0e3e5b8e2f0b1d0e0c8a6b3e.jpg"
-      alt="" onerror="this.outerHTML='<svg style=\'width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none\' viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'6\' width=\'20\' height=\'12\' rx=\'2\'/><path d=\'M6 12h4m-2-2v4m10-2h-4\'/></svg>'">
+  <div class="mnav-item active" data-tab="games">
+    <img class="mnav-icon-img" src="https://i.pinimg.com/474x/f3/7b/4e/f37b4e0f0e3e5b8e2f0b1d0e0c8a6b3e.jpg" alt=""
+      onerror="this.outerHTML='<svg style=\'width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none\' viewBox=\'0 0 24 24\'><rect x=\'2\' y=\'6\' width=\'20\' height=\'12\' rx=\'2\'/><path d=\'M6 12h4m-2-2v4m10-2h-4\'/></svg>'">
     Games
   </div>
-  <div class="mnav-item" onclick="app.setTab('streaming',event)" data-tab="streaming">
-    <img class="mnav-icon-img"
-      src="https://i.pinimg.com/474x/7a/2c/5d/7a2c5d8e3b1f0a9e2c6b4d8a0f3e7b2d.jpg"
-      alt="" onerror="this.outerHTML='<svg style=\'width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none\' viewBox=\'0 0 24 24\'><polygon points=\'23 7 16 12 23 17 23 7\'/><rect x=\'1\' y=\'5\' width=\'15\' height=\'14\' rx=\'2\'/></svg>'">
+  <div class="mnav-item" data-tab="streaming">
+    <img class="mnav-icon-img" src="https://i.pinimg.com/474x/7a/2c/5d/7a2c5d8e3b1f0a9e2c6b4d8a0f3e7b2d.jpg" alt=""
+      onerror="this.outerHTML='<svg style=\'width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none\' viewBox=\'0 0 24 24\'><polygon points=\'23 7 16 12 23 17 23 7\'/><rect x=\'1\' y=\'5\' width=\'15\' height=\'14\' rx=\'2\'/></svg>'">
     Stream
   </div>
-  <div class="mnav-item" onclick="app.setTab('anime',event)" data-tab="anime">
-    <img class="mnav-icon-img"
-      src="https://i.pinimg.com/474x/2b/8f/1a/2b8f1a3e5c7d0b9e4f2a6c8e1b3d5f7a.jpg"
-      alt="" onerror="this.outerHTML='<svg style=\'width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none\' viewBox=\'0 0 24 24\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><polygon points=\'10 8 16 12 10 16 10 8\'/></svg>'">
+  <div class="mnav-item" data-tab="anime">
+    <img class="mnav-icon-img" src="https://i.pinimg.com/474x/2b/8f/1a/2b8f1a3e5c7d0b9e4f2a6c8e1b3d5f7a.jpg" alt=""
+      onerror="this.outerHTML='<svg style=\'width:20px;height:20px;stroke:currentColor;stroke-width:1.5;fill:none\' viewBox=\'0 0 24 24\'><circle cx=\'12\' cy=\'12\' r=\'10\'/><polygon points=\'10 8 16 12 10 16 10 8\'/></svg>'">
     Anime
   </div>
-  <div class="mnav-item" onclick="app.setTab('favorites',event)" data-tab="favorites">
+  <div class="mnav-item" data-tab="favorites">
     <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
     Saved
   </div>
 </nav>
 
-<!-- BACK TO TOP -->
-<button class="back-top" id="backTop" onclick="app.scrollTop()" data-tip="Top">
+<button class="back-top" id="backTop" data-tip="Top">
   <svg viewBox="0 0 24 24"><polyline points="18 15 12 9 6 15"/></svg>
 </button>
 
-<!-- ADD MODAL -->
-<div class="modal-overlay" id="addModal" onclick="app.closeModal(event)">
-  <div class="modal" onclick="event.stopPropagation()">
+<div class="modal-overlay" id="addModal">
+  <div class="modal">
     <div class="modal-title">Add Site</div>
     <input type="text" class="modal-input" id="newName" placeholder="Name">
     <input type="url" class="modal-input" id="newUrl" placeholder="https://example.com">
@@ -825,471 +777,747 @@ header::after {
       <option value="anime">Anime</option>
     </select>
     <div class="modal-actions">
-      <button class="btn" onclick="app.closeAddModal()">Cancel</button>
-      <button class="btn primary" onclick="app.addSite()">Add</button>
+      <button class="btn" id="modalCancel">Cancel</button>
+      <button class="btn primary" id="modalAdd">Add</button>
     </div>
   </div>
 </div>
 
-<!-- TOAST -->
 <div class="toast" id="toast">
   <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
   <span id="toastMsg">Done</span>
 </div>
 
 <script>
-const DEFAULT_BG = "https://i.pinimg.com/736x/3f/e3/cf/3fe3cf0d73422024c100b0abe9040a2c.jpg";
+(function() {
+  "use strict";
 
-const DEFAULT_DB = {
-  games: [
-    {id:'g1',name:"SteamRip",url:"https://steamrip.com"},
-    {id:'g2',name:"FitGirl",url:"https://fitgirl-repacks.site"},
-    {id:'g3',name:"DODI",url:"https://dodi-repacks.site"},
-    {id:'g4',name:"ElEnemigos",url:"https://elenemigos.com"},
-    {id:'g5',name:"AnkerGames",url:"https://ankergames.net"},
-    {id:'g6',name:"SteamUnderground",url:"https://steamunderground.net/"},
-    {id:'g7',name:"UnionCrax",url:"https://union-crax.xyz/"},
-    {id:'g8',name:"Optijuegos",url:"https://optijuegos.net"},
-    {id:'g9',name:"Vanya Games",url:"https://vanya-games.site/"},
-    {id:'g10',name:"FreeGOG",url:"https://freegogpcgames.com"},
-    {id:'g11',name:"KaOsKrew",url:"https://kaoskrew.org"}
-  ],
-  streaming: [
-    {id:'s1',name:"YFlix",url:"https://yflix.to/home"},
-    {id:'s2',name:"1Movies",url:"https://1movies.bz/home"},
-    {id:'s4',name:"Flixtor",url:"https://flixtor.mov/home"},
-    {id:'s6',name:"Noozy",url:"https://noozy.tv/home"},
-    {id:'s7',name:"FlixUp",url:"https://flixup.to/home"},
-    {id:'s8',name:"StreamEX",url:"https://streamex.net/"},
-    {id:'s9',name:"SmashyStream",url:"https://smashystream.xyz/"},
-    {id:'s10',name:"VidPlay",url:"https://vidplay.top/"},
-    {id:'s11',name:"HydraHD",url:"https://hydrahd.ru/"},
-    {id:'s12',name:"Soapy",url:"https://soapy.to/home"},
-    {id:'s13',name:"FreeHDMovies",url:"https://freehdmovies.to/home"},
-    {id:'s14',name:"MyFlixerz",url:"https://myflixerz.to/home"},
-    {id:'s17',name:"PrimeShows",url:"https://www.primeshows.live/"},
-    {id:'s18',name:"CineMDK",url:"https://cinemadeck.com/home"},
-    {id:'s19',name:"Hexa",url:"https://hexa.su/"},
-    {id:'s20',name:"YouFlex",url:"https://youflex.live/"},
-    {id:'s21',name:"Beech",url:"https://www.beech.watch/"},
-    {id:'s22',name:"CinePC",url:"https://cinepeace.in/"},
-    {id:'s23',name:"NetPlay",url:"https://netplayz.live/"}
-  ],
-  anime: [
-    {id:'a1',name:"AnimeKai",url:"https://animekai.pw/"},
-    {id:'a3',name:"Kuudere",url:"https://kuudere.to/"},
-    {id:'a4',name:"AnimeLok",url:"https://animelok.site/home"},
-    {id:'a5',name:"AniZone",url:"https://anizone.to/"},
-    {id:'a6',name:"AllManga",url:"https://allmanga.to/anime"},
-    {id:'a7',name:"Anime Nexus",url:"https://anime.nexus/"},
-    {id:'a8',name:"KickAssAnime",url:"https://kickassanime.cx/"},
-    {id:'a9',name:"AnimeSogo",url:"https://animesogo.to/home"},
-    {id:'a10',name:"Senshi",url:"https://senshi.live/"},
-    {id:'a11',name:"AniWatchTV",url:"https://aniwatchtv.to/home"},
-    {id:'a12',name:"Miruro",url:"https://www.miruro.com/"},
-    {id:'a13',name:"Kaido",url:"https://kaido.to/home"},
-    {id:'a14',name:"HiAnime",url:"https://hianime.to/home"},
-    {id:'a15',name:"AniHQ",url:"https://anihq.org/home/"},
-    {id:'a16',name:"9AnimeTV",url:"https://9animetv.to/home"},
-    {id:'a17',name:"AnimeNana",url:"https://animenana.com/"},
-    {id:'a19',name:"AnimeSalt",url:"https://animesalt.to/"},
-    {id:'a20',name:"AnimeHub",url:"https://animehub.ac/"},
-    {id:'a21',name:"AniCrush",url:"https://anicrush.to/home"},
-    {id:'a22',name:"AnimeHeaven",url:"https://animeheaven.me/"},
-    {id:'a23',name:"4Anime",url:"https://4anime.gg/home"}
-  ]
-};
+  var DEFAULT_BG = "https://i.pinimg.com/736x/3f/e3/cf/3fe3cf0d73422024c100b0abe9040a2c.jpg";
 
-function fuzzyMatch(str, query) {
-  if (!query) return true;
-  str = str.toLowerCase(); query = query.toLowerCase();
-  if (str.includes(query)) return true;
-  let si = 0;
-  for (let qi = 0; qi < query.length; qi++) {
-    while (si < str.length && str[si] !== query[qi]) si++;
-    if (si >= str.length) return false;
-    si++;
+  var DEFAULT_DB = {
+    games: [
+      {id:'g1',name:"SteamRip",url:"https://steamrip.com"},
+      {id:'g2',name:"FitGirl",url:"https://fitgirl-repacks.site"},
+      {id:'g3',name:"DODI",url:"https://dodi-repacks.site"},
+      {id:'g4',name:"ElEnemigos",url:"https://elenemigos.com"},
+      {id:'g5',name:"AnkerGames",url:"https://ankergames.net"},
+      {id:'g6',name:"SteamUnderground",url:"https://steamunderground.net/"},
+      {id:'g7',name:"UnionCrax",url:"https://union-crax.xyz/"},
+      {id:'g8',name:"Optijuegos",url:"https://optijuegos.net"},
+      {id:'g9',name:"Vanya Games",url:"https://vanya-games.site/"},
+      {id:'g10',name:"FreeGOG",url:"https://freegogpcgames.com"},
+      {id:'g11',name:"KaOsKrew",url:"https://kaoskrew.org"}
+    ],
+    streaming: [
+      {id:'s1',name:"YFlix",url:"https://yflix.to/home"},
+      {id:'s2',name:"1Movies",url:"https://1movies.bz/home"},
+      {id:'s4',name:"Flixtor",url:"https://flixtor.mov/home"},
+      {id:'s6',name:"Noozy",url:"https://noozy.tv/home"},
+      {id:'s7',name:"FlixUp",url:"https://flixup.to/home"},
+      {id:'s8',name:"StreamEX",url:"https://streamex.net/"},
+      {id:'s9',name:"SmashyStream",url:"https://smashystream.xyz/"},
+      {id:'s10',name:"VidPlay",url:"https://vidplay.top/"},
+      {id:'s11',name:"HydraHD",url:"https://hydrahd.ru/"},
+      {id:'s12',name:"Soapy",url:"https://soapy.to/home"},
+      {id:'s13',name:"FreeHDMovies",url:"https://freehdmovies.to/home"},
+      {id:'s14',name:"MyFlixerz",url:"https://myflixerz.to/home"},
+      {id:'s17',name:"PrimeShows",url:"https://www.primeshows.live/"},
+      {id:'s18',name:"CineMDK",url:"https://cinemadeck.com/home"},
+      {id:'s19',name:"Hexa",url:"https://hexa.su/"},
+      {id:'s20',name:"YouFlex",url:"https://youflex.live/"},
+      {id:'s21',name:"Beech",url:"https://www.beech.watch/"},
+      {id:'s22',name:"CinePC",url:"https://cinepeace.in/"},
+      {id:'s23',name:"NetPlay",url:"https://netplayz.live/"}
+    ],
+    anime: [
+      {id:'a1',name:"AnimeKai",url:"https://animekai.pw/"},
+      {id:'a3',name:"Kuudere",url:"https://kuudere.to/"},
+      {id:'a4',name:"AnimeLok",url:"https://animelok.site/home"},
+      {id:'a5',name:"AniZone",url:"https://anizone.to/"},
+      {id:'a6',name:"AllManga",url:"https://allmanga.to/anime"},
+      {id:'a7',name:"Anime Nexus",url:"https://anime.nexus/"},
+      {id:'a8',name:"KickAssAnime",url:"https://kickassanime.cx/"},
+      {id:'a9',name:"AnimeSogo",url:"https://animesogo.to/home"},
+      {id:'a10',name:"Senshi",url:"https://senshi.live/"},
+      {id:'a11',name:"AniWatchTV",url:"https://aniwatchtv.to/home"},
+      {id:'a12',name:"Miruro",url:"https://www.miruro.com/"},
+      {id:'a13',name:"Kaido",url:"https://kaido.to/home"},
+      {id:'a14',name:"HiAnime",url:"https://hianime.to/home"},
+      {id:'a15',name:"AniHQ",url:"https://anihq.org/home/"},
+      {id:'a16',name:"9AnimeTV",url:"https://9animetv.to/home"},
+      {id:'a17',name:"AnimeNana",url:"https://animenana.com/"},
+      {id:'a19',name:"AnimeSalt",url:"https://animesalt.to/"},
+      {id:'a20',name:"AnimeHub",url:"https://animehub.ac/"},
+      {id:'a21',name:"AniCrush",url:"https://anicrush.to/home"},
+      {id:'a22',name:"AnimeHeaven",url:"https://animeheaven.me/"},
+      {id:'a23',name:"4Anime",url:"https://4anime.gg/home"}
+    ]
+  };
+
+  /* Fuzzy match */
+  function fuzzyMatch(str, query) {
+    if (!query) return true;
+    str = str.toLowerCase();
+    query = query.toLowerCase();
+    if (str.indexOf(query) !== -1) return true;
+    var si = 0;
+    for (var qi = 0; qi < query.length; qi++) {
+      while (si < str.length && str[si] !== query[qi]) si++;
+      if (si >= str.length) return false;
+      si++;
+    }
+    return true;
   }
-  return true;
-}
 
-const app = {
-  currentTab: 'games',
-  viewMode: 'list',
-  sortMode: 'default',
-  favorites: [],
-  pinned: [],
-  clicks: {},
-  db: null,
-  customSites: [],
-  _toastTimer: null,
+  /* Safe HTML escape for text content */
+  function esc(s) {
+    var d = document.createElement('div');
+    d.textContent = s;
+    return d.innerHTML;
+  }
 
-  init() {
-    this.favorites = JSON.parse(localStorage.getItem('dachub_favs_v2') || '[]');
-    this.pinned = JSON.parse(localStorage.getItem('dachub_pinned') || '[]');
-    this.clicks = JSON.parse(localStorage.getItem('dachub_clicks') || '{}');
-    this.viewMode = localStorage.getItem('dachub_view') || 'list';
-    this.sortMode = localStorage.getItem('dachub_sort') || 'default';
-    this.customSites = JSON.parse(localStorage.getItem('dachub_custom_sites') || '[]');
+  /* State */
+  var currentTab = 'games';
+  var viewMode = 'list';
+  var sortMode = 'default';
+  var favorites = [];
+  var pinned = [];
+  var clicks = {};
+  var db = null;
+  var customSites = [];
+  var toastTimer = null;
+  var suggestionBlurTimer = null;
 
-    this.db = JSON.parse(JSON.stringify(DEFAULT_DB));
-    this.customSites.forEach(s => {
-      if (this.db[s.cat]) this.db[s.cat].push({id: s.id, name: s.name, url: s.url});
-    });
+  /* DOM refs */
+  var $contentScroll, $searchInput, $suggestions, $pageTitle, $countBadge;
+  var $addModal, $newName, $newUrl, $newCat;
+  var $toast, $toastMsg, $backTop, $openAllBtn, $controlsBar;
 
-    this.syncControlButtons();
-    this.loadBackground();
-    this.initKeyboard();
-    this.initScroll();
-    this.renderAll();
-    this.setTab('games');
-    this.updateSidebarStats();
-  },
+  /* --- Favicon con fallback robusto via delegacion de error global --- */
+  document.addEventListener('error', function(e) {
+    var t = e.target;
+    if (t.tagName === 'IMG' && t.dataset.fallback) {
+      var div = document.createElement('div');
+      div.className = 'favicon-fallback';
+      var sz = t.dataset.fsize || '16';
+      div.style.width = sz + 'px';
+      div.style.height = sz + 'px';
+      div.textContent = t.dataset.fallback;
+      t.replaceWith(div);
+    }
+  }, true);
 
-  syncControlButtons() {
-    document.querySelectorAll('.sort-btn').forEach(b => b.classList.toggle('active', b.dataset.sort === this.sortMode));
-    document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.dataset.view === this.viewMode));
-  },
-
-  loadBackground() {
-    const bg = localStorage.getItem('dachub_custom_bg');
-    document.body.style.backgroundImage = 'url(' + (bg || DEFAULT_BG) + ')';
-  },
-
-  handleBgUpload(input) {
-    if (!input.files || !input.files[0]) return;
-    const r = new FileReader();
-    r.onload = e => {
-      localStorage.setItem('dachub_custom_bg', e.target.result);
-      document.body.style.backgroundImage = 'url(' + e.target.result + ')';
-      this.showToast('BG updated');
-    };
-    r.readAsDataURL(input.files[0]);
-    input.value = '';
-  },
-
-  initKeyboard() {
-    document.addEventListener('keydown', e => {
-      const tag = document.activeElement.tagName;
-      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') {
-        if (e.key === 'Escape') document.activeElement.blur();
-        return;
-      }
-      if (e.key === '/') { e.preventDefault(); document.getElementById('searchInput').focus(); }
-      if (e.key === 'r' || e.key === 'R') this.openRandom();
-      if (e.key === 'Escape') this.closeAddModal();
-    });
-  },
-
-  initScroll() {
-    const sc = document.getElementById('contentScroll');
-    const btn = document.getElementById('backTop');
-    sc.addEventListener('scroll', () => btn.classList.toggle('visible', sc.scrollTop > 300));
-  },
-
-  scrollTop() { document.getElementById('contentScroll').scrollTo({top:0, behavior:'smooth'}); },
-
-  faviconHTML(url, size) {
+  function faviconHTML(url, size) {
     size = size || 16;
     try {
-      const u = new URL(url);
-      const domain = u.hostname;
-      const letter = domain.charAt(0).toUpperCase();
-      return '<img class="site-favicon" src="https://www.google.com/s2/favicons?domain=' + domain + '&sz=32" alt="" width="' + size + '" height="' + size + '" onerror="this.outerHTML=\'<div class=\\'favicon-fallback\\' style=\\'width:' + size + 'px;height:' + size + 'px\\'>' + letter + '</div>\'">';
+      var u = new URL(url);
+      var domain = u.hostname;
+      var letter = domain.charAt(0).toUpperCase();
+      return '<img class="site-favicon" src="https://www.google.com/s2/favicons?domain=' +
+        encodeURIComponent(domain) + '&sz=32" width="' + size + '" height="' + size +
+        '" data-fallback="' + esc(letter) + '" data-fsize="' + size + '">';
     } catch(e) {
       return '<div class="favicon-fallback" style="width:' + size + 'px;height:' + size + 'px">?</div>';
     }
-  },
+  }
 
-  createCard(item, cat) {
-    const clean = item.url.replace(/^https?:\/\//, '').replace(/\/$/, '').split('/')[0];
-    const isFav = this.favorites.includes(item.id);
-    const isPinned = this.pinned.includes(item.id);
-    const clicks = this.clicks[item.id] || 0;
+  /* --- Card HTML: data-attributes, zero inline onclick --- */
+  function createCard(item, cat, delay) {
+    var clean = item.url.replace(/^https?:\/\//, '').replace(/\/$/, '').split('/')[0];
+    var isFav = favorites.indexOf(item.id) !== -1;
+    var isPinned = pinned.indexOf(item.id) !== -1;
+    var c = clicks[item.id] || 0;
 
-    return '<div class="card" id="card-' + item.id + '" onclick="app.handleCardClick(\'' + item.id + '\',\'' + item.url.replace(/'/g, "\\'") + '\', this)">' +
+    return '<div class="card" data-id="' + esc(item.id) + '" data-url="' + esc(item.url) +
+      '" style="animation-delay:' + delay + 's">' +
       '<div class="card-header">' +
-        this.faviconHTML(item.url) +
-        '<div class="card-title">' + item.name + '</div>' +
-        '<div class="card-actions" onclick="event.stopPropagation()">' +
-          '<div class="aicon fav ' + (isFav ? 'active' : '') + '" onclick="app.toggleFav(\'' + item.id + '\',event)" data-tip="' + (isFav ? 'Unsave' : 'Save') + '">' +
+        faviconHTML(item.url) +
+        '<div class="card-title">' + esc(item.name) + '</div>' +
+        '<div class="card-actions">' +
+          '<div class="aicon fav ' + (isFav ? 'active' : '') + '" data-action="fav" data-tip="' + (isFav ? 'Unsave' : 'Save') + '">' +
             '<svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>' +
           '</div>' +
-          '<div class="aicon pin ' + (isPinned ? 'active' : '') + '" onclick="app.togglePin(\'' + item.id + '\',event)" data-tip="Pin">' +
+          '<div class="aicon pin ' + (isPinned ? 'active' : '') + '" data-action="pin" data-tip="Pin">' +
             '<svg viewBox="0 0 24 24"><line x1="12" y1="17" x2="12" y2="22"/><path d="M5 17h14v-1.76a2 2 0 0 0-1.11-1.79l-1.78-.9A2 2 0 0 1 15 10.76V6h1a2 2 0 0 0 0-4H8a2 2 0 0 0 0 4h1v4.76a2 2 0 0 1-1.11 1.79l-1.78.9A2 2 0 0 0 5 15.24Z"/></svg>' +
           '</div>' +
-          '<div class="aicon" onclick="app.copyLink(\'' + item.url.replace(/'/g, "\\'") + '\',event)" data-tip="Copy">' +
+          '<div class="aicon" data-action="copy" data-tip="Copy">' +
             '<svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>' +
           '</div>' +
         '</div>' +
       '</div>' +
-      '<div class="card-url">' + clean + '</div>' +
+      '<div class="card-url">' + esc(clean) + '</div>' +
       '<div class="card-footer">' +
-        '<span class="card-tag">' + (cat === 'favorites' ? 'saved' : cat) + '</span>' +
+        '<span class="card-tag">' + esc(cat === 'favorites' ? 'saved' : cat) + '</span>' +
         '<span class="click-count">' +
           '<svg style="width:8px;height:8px;stroke:var(--dim);stroke-width:1.5;fill:none" viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>' +
-          ' ' + clicks +
+          ' ' + c +
         '</span>' +
       '</div>' +
     '</div>';
-  },
+  }
 
-  handleCardClick(id, url, el) {
-    if (el) { el.classList.add('clicked'); setTimeout(() => el.classList.remove('clicked'), 300); }
-    this.clicks[id] = (this.clicks[id] || 0) + 1;
-    localStorage.setItem('dachub_clicks', JSON.stringify(this.clicks));
-    this.updateSidebarStats();
-    setTimeout(() => window.open(url, '_blank'), 100);
-  },
-
-  toggleFav(id, e) {
-    e.stopPropagation();
-    const idx = this.favorites.indexOf(id);
-    if (idx === -1) { this.favorites.push(id); this.showToast('Saved'); }
-    else { this.favorites.splice(idx, 1); this.showToast('Removed'); }
-    localStorage.setItem('dachub_favs_v2', JSON.stringify(this.favorites));
-    this.render(this.currentTab, document.getElementById('searchInput').value);
-    this.updateSidebarStats(); this.updateNavBadges();
-  },
-
-  togglePin(id, e) {
-    e.stopPropagation();
-    const idx = this.pinned.indexOf(id);
-    if (idx === -1) { this.pinned.push(id); this.showToast('Pinned'); }
-    else { this.pinned.splice(idx, 1); this.showToast('Unpinned'); }
-    localStorage.setItem('dachub_pinned', JSON.stringify(this.pinned));
-    this.render(this.currentTab, document.getElementById('searchInput').value);
-  },
-
-  openAllFavs() {
-    const all = Object.values(this.db).flat().filter(i => this.favorites.includes(i.id));
-    if (!all.length) { this.showToast('No saved sites'); return; }
-    if (confirm('Open ' + all.length + ' tabs?')) all.forEach(i => window.open(i.url, '_blank'));
-  },
-
-  exportFavs() {
-    const favs = Object.values(this.db).flat().filter(i => this.favorites.includes(i.id));
-    if (!favs.length) { this.showToast('Nothing to export'); return; }
-    const blob = new Blob([JSON.stringify(favs, null, 2)], {type:'application/json'});
-    const a = document.createElement('a');
-    a.href = URL.createObjectURL(blob); a.download = 'dachub-saved.json'; a.click();
-    URL.revokeObjectURL(a.href); this.showToast('Exported');
-  },
-
-  showSuggestions(val) {
-    if (!val || val.length < 2) { this.hideSuggestions(); return; }
-    const all = [];
-    Object.entries(this.db).forEach(([cat, arr]) => arr.forEach(i => all.push(Object.assign({}, i, {cat: cat}))));
-    const matches = all.filter(i => fuzzyMatch(i.name, val) || fuzzyMatch(i.url, val)).slice(0, 6);
-    const el = document.getElementById('suggestions');
-    if (!matches.length) { this.hideSuggestions(); return; }
-    el.innerHTML = matches.map(i => {
-      const safeUrl = i.url.replace(/'/g, "\\'");
-      return '<div class="suggestion-item" onmousedown="app.suggestionClick(\'' + i.id + '\',\'' + safeUrl + '\')">' +
-        this.faviconHTML(i.url, 13) +
-        '<span class="suggestion-name">' + i.name + '</span>' +
-        '<span class="suggestion-cat">' + i.cat + '</span>' +
-      '</div>';
-    }).join('');
-    el.classList.add('visible');
-  },
-
-  suggestionClick(id, url) {
-    this.hideSuggestions();
-    document.getElementById('searchInput').value = '';
-    const card = document.getElementById('card-' + id);
-    if (card) { this.handleCardClick(id, url, card); }
-    else {
-      this.clicks[id] = (this.clicks[id] || 0) + 1;
-      localStorage.setItem('dachub_clicks', JSON.stringify(this.clicks));
-      this.updateSidebarStats(); window.open(url, '_blank');
+  /* --- Card click handler --- */
+  function handleCardClick(id, url, el) {
+    if (el) {
+      el.classList.add('clicked');
+      setTimeout(function() { el.classList.remove('clicked'); }, 300);
     }
-  },
+    clicks[id] = (clicks[id] || 0) + 1;
+    localStorage.setItem('dachub_clicks', JSON.stringify(clicks));
+    updateSidebarStats();
+    setTimeout(function() { window.open(url, '_blank'); }, 100);
+  }
 
-  hideSuggestions() { document.getElementById('suggestions').classList.remove('visible'); },
+  function toggleFav(id) {
+    var idx = favorites.indexOf(id);
+    if (idx === -1) { favorites.push(id); showToast('Saved'); }
+    else { favorites.splice(idx, 1); showToast('Removed'); }
+    localStorage.setItem('dachub_favs_v2', JSON.stringify(favorites));
+    render(currentTab, $searchInput.value);
+    updateSidebarStats();
+    updateNavBadges();
+  }
 
-  setSort(mode, btn) {
-    this.sortMode = mode;
-    localStorage.setItem('dachub_sort', mode);
-    document.querySelectorAll('.sort-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    this.render(this.currentTab, document.getElementById('searchInput').value);
-  },
+  function togglePin(id) {
+    var idx = pinned.indexOf(id);
+    if (idx === -1) { pinned.push(id); showToast('Pinned'); }
+    else { pinned.splice(idx, 1); showToast('Unpinned'); }
+    localStorage.setItem('dachub_pinned', JSON.stringify(pinned));
+    render(currentTab, $searchInput.value);
+  }
 
-  setViewMode(mode, btn) {
-    this.viewMode = mode;
-    localStorage.setItem('dachub_view', mode);
-    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
-    if (btn) btn.classList.add('active');
-    document.querySelectorAll('.grid').forEach(g => {
-      g.className = 'grid' + (mode !== 'normal' ? ' ' + mode : '');
+  function copyLink(url) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(function() { showToast('Copied'); });
+    } else {
+      var ta = document.createElement('textarea');
+      ta.value = url;
+      ta.style.cssText = 'position:fixed;opacity:0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+      showToast('Copied');
+    }
+  }
+
+  function openAllFavs() {
+    var all = [];
+    Object.keys(db).forEach(function(cat) {
+      db[cat].forEach(function(i) {
+        if (favorites.indexOf(i.id) !== -1) all.push(i);
+      });
     });
-    this.render(this.currentTab, document.getElementById('searchInput').value);
-  },
+    if (!all.length) { showToast('No saved sites'); return; }
+    if (confirm('Open ' + all.length + ' tabs?')) {
+      all.forEach(function(i) { window.open(i.url, '_blank'); });
+    }
+  }
 
-  sortItems(items) {
-    const arr = items.slice();
-    if (this.sortMode === 'name') return arr.sort((a, b) => a.name.localeCompare(b.name));
-    if (this.sortMode === 'clicks') return arr.sort((a, b) => (this.clicks[b.id]||0) - (this.clicks[a.id]||0));
-    if (this.sortMode === 'favorites') return arr.sort((a, b) => (this.favorites.includes(a.id)?-1:0) - (this.favorites.includes(b.id)?-1:0));
-    return arr.sort((a, b) => (this.pinned.includes(a.id)?-1:0) - (this.pinned.includes(b.id)?-1:0));
-  },
+  function exportFavs() {
+    var favs = [];
+    Object.keys(db).forEach(function(cat) {
+      db[cat].forEach(function(i) {
+        if (favorites.indexOf(i.id) !== -1) favs.push(i);
+      });
+    });
+    if (!favs.length) { showToast('Nothing to export'); return; }
+    var blob = new Blob([JSON.stringify(favs, null, 2)], {type: 'application/json'});
+    var a = document.createElement('a');
+    a.href = URL.createObjectURL(blob);
+    a.download = 'dachub-saved.json';
+    a.click();
+    URL.revokeObjectURL(a.href);
+    showToast('Exported');
+  }
 
-  render(category, filter) {
+  /* --- Sort --- */
+  function sortItems(items) {
+    var arr = items.slice();
+    if (sortMode === 'name') return arr.sort(function(a, b) { return a.name.localeCompare(b.name); });
+    if (sortMode === 'clicks') return arr.sort(function(a, b) { return (clicks[b.id]||0) - (clicks[a.id]||0); });
+    if (sortMode === 'favorites') return arr.sort(function(a, b) {
+      return (favorites.indexOf(b.id) !== -1 ? 1 : 0) - (favorites.indexOf(a.id) !== -1 ? 1 : 0);
+    });
+    return arr.sort(function(a, b) {
+      return (pinned.indexOf(b.id) !== -1 ? 1 : 0) - (pinned.indexOf(a.id) !== -1 ? 1 : 0);
+    });
+  }
+
+  /* --- Render --- */
+  function render(category, filter) {
     filter = filter || '';
     if (category === 'stats') return;
-    const container = document.getElementById('grid-' + category);
+    var container = document.getElementById('grid-' + category);
     if (!container) return;
-    const skClass = this.viewMode === 'compact' ? 'compact' : this.viewMode === 'list' ? 'list' : '';
-    container.innerHTML = Array(4).fill('<div class="skeleton skeleton-card ' + skClass + '"></div>').join('');
-    const self = this;
+
+    var skClass = viewMode === 'compact' ? 'compact' : viewMode === 'list' ? 'list' : '';
+    container.innerHTML = '';
+    for (var s = 0; s < 4; s++) {
+      var sk = document.createElement('div');
+      sk.className = 'skeleton skeleton-card ' + skClass;
+      container.appendChild(sk);
+    }
+
     setTimeout(function() {
-      let data = [];
+      var data = [];
       if (category === 'favorites') {
-        Object.entries(self.db).forEach(function(entry) {
-          const cat = entry[0], arr = entry[1];
-          arr.filter(i => self.favorites.includes(i.id)).forEach(i => data.push(Object.assign({}, i, {cat: cat})));
+        Object.keys(db).forEach(function(cat) {
+          db[cat].forEach(function(i) {
+            if (favorites.indexOf(i.id) !== -1) {
+              data.push({id: i.id, name: i.name, url: i.url, cat: cat});
+            }
+          });
         });
       } else {
-        data = (self.db[category] || []).map(i => Object.assign({}, i, {cat: category}));
+        (db[category] || []).forEach(function(i) {
+          data.push({id: i.id, name: i.name, url: i.url, cat: category});
+        });
       }
-      if (filter) data = data.filter(i => fuzzyMatch(i.name, filter) || fuzzyMatch(i.url, filter));
-      data = self.sortItems(data);
-      document.getElementById('countBadge').textContent = data.length;
-      const nb = document.getElementById('nbadge-' + category);
+
+      if (filter) {
+        data = data.filter(function(i) {
+          return fuzzyMatch(i.name, filter) || fuzzyMatch(i.url, filter);
+        });
+      }
+
+      data = sortItems(data);
+
+      $countBadge.textContent = data.length;
+      var nb = document.getElementById('nbadge-' + category);
       if (nb) nb.textContent = data.length;
+
       if (!data.length) {
+        container.className = 'grid' + (viewMode !== 'normal' ? ' ' + viewMode : '');
         container.innerHTML = '<div class="empty-state"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg><p>No results</p></div>';
         return;
       }
-      container.className = 'grid' + (self.viewMode !== 'normal' ? ' ' + self.viewMode : '');
-      container.innerHTML = data.map(function(i, idx) {
-        return self.createCard(i, i.cat || category).replace(
-          'animation: cardIn 0.3s ease both',
-          'animation: cardIn 0.3s ' + (idx * 0.035) + 's ease both'
-        );
-      }).join('');
+
+      container.className = 'grid' + (viewMode !== 'normal' ? ' ' + viewMode : '');
+      var html = '';
+      for (var i = 0; i < data.length; i++) {
+        html += createCard(data[i], data[i].cat || category, i * 0.035);
+      }
+      container.innerHTML = html;
     }, 80);
-  },
-
-  renderAll(filter) {
-    Object.keys(this.db).forEach(k => this.render(k, filter));
-    this.render('favorites', filter);
-  },
-
-  renderStats() {
-    const self = this;
-    const allItems = Object.values(this.db).reduce((a, b) => a.concat(b), []);
-    const totalClicks = Object.values(this.clicks).reduce((a,b) => a+b, 0);
-    const biggest = Object.entries(this.db).sort((a,b) => b[1].length - a[1].length)[0];
-    document.getElementById('statsGrid').innerHTML =
-      '<div class="stat-card"><div class="stat-label">Sites</div><div class="stat-value">' + allItems.length + '</div></div>' +
-      '<div class="stat-card"><div class="stat-label">Saved</div><div class="stat-value">' + this.favorites.length + '</div></div>' +
-      '<div class="stat-card"><div class="stat-label">Clicks</div><div class="stat-value">' + totalClicks + '</div></div>' +
-      '<div class="stat-card"><div class="stat-label">Biggest</div><div class="stat-value" style="font-size:24px">' + biggest[0] + '</div><div class="stat-sub">' + biggest[1].length + ' sites</div></div>';
-    const ranked = allItems.filter(i => self.clicks[i.id]).sort((a,b) => (self.clicks[b.id]||0) - (self.clicks[a.id]||0)).slice(0, 10);
-    const maxC = ranked[0] ? this.clicks[ranked[0].id] : 1;
-    document.getElementById('topList').innerHTML =
-      '<div class="top-list-header">Most Clicked</div>' +
-      (ranked.length ? ranked.map((i, idx) => {
-        const pct = Math.round((self.clicks[i.id] / maxC) * 100);
-        return '<a class="top-item" href="' + i.url + '" target="_blank" rel="noopener" onclick="event.preventDefault();app.handleCardClick(\'' + i.id + '\',\'' + i.url.replace(/'/g, "\\'") + '\',null)">' +
-          '<span class="top-rank">#' + (idx+1) + '</span>' +
-          self.faviconHTML(i.url, 14) +
-          '<span class="top-name">' + i.name + '</span>' +
-          '<div class="top-bar-wrap"><div class="top-bar" style="width:' + pct + '%"></div></div>' +
-          '<span class="top-clicks">' + self.clicks[i.id] + '</span>' +
-        '</a>';
-      }).join('') : '<div style="padding:18px;text-align:center;color:var(--dim);font-family:var(--metal);font-size:13px;letter-spacing:0.08em;text-transform:uppercase">No clicks yet</div>');
-  },
-
-  setTab(tabId, e) {
-    if (e) e.preventDefault();
-    this.currentTab = tabId;
-    const labels = {games:'Games', streaming:'Stream', anime:'Anime', favorites:'Saved', stats:'Stats'};
-    document.getElementById('pageTitle').textContent = labels[tabId] || tabId;
-    document.querySelectorAll('[data-tab]').forEach(el => el.classList.toggle('active', el.dataset.tab === tabId));
-    document.querySelectorAll('.view-section').forEach(el => el.classList.remove('active'));
-    const target = document.getElementById('view-' + tabId);
-    if (target) target.classList.add('active');
-    document.getElementById('countBadge').style.display = tabId === 'stats' ? 'none' : '';
-    document.getElementById('openAllBtn').style.display = tabId === 'favorites' ? '' : 'none';
-    document.querySelector('.controls-bar').style.display = tabId === 'stats' ? 'none' : '';
-    if (tabId === 'stats') this.renderStats();
-    else this.render(tabId, document.getElementById('searchInput').value);
-  },
-
-  handleSearch(val) { this.showSuggestions(val); this.render(this.currentTab, val); },
-
-  openAddModal() {
-    document.getElementById('addModal').classList.add('open');
-    setTimeout(() => document.getElementById('newName').focus(), 100);
-  },
-
-  closeAddModal() { document.getElementById('addModal').classList.remove('open'); },
-  closeModal(e) { if (e.target === document.getElementById('addModal')) this.closeAddModal(); },
-
-  addSite() {
-    let name = document.getElementById('newName').value.trim();
-    let url = document.getElementById('newUrl').value.trim();
-    const cat = document.getElementById('newCat').value;
-    if (!name || !url) { this.showToast('Fill all fields'); return; }
-    if (!/^https?:\/\//.test(url)) url = 'https://' + url;
-    const site = {id: 'c' + Date.now(), name: name, url: url, cat: cat};
-    this.customSites.push(site);
-    localStorage.setItem('dachub_custom_sites', JSON.stringify(this.customSites));
-    this.db[cat].push({id: site.id, name: name, url: url});
-    document.getElementById('newName').value = '';
-    document.getElementById('newUrl').value = '';
-    this.closeAddModal();
-    this.showToast('Added');
-    this.render(cat, ''); this.updateNavBadges(); this.updateSidebarStats();
-  },
-
-  copyLink(url, e) {
-    e.stopPropagation();
-    navigator.clipboard.writeText(url).then(() => this.showToast('Copied')).catch(() => {
-      const ta = document.createElement('textarea');
-      ta.value = url; ta.style.cssText = 'position:fixed;opacity:0';
-      document.body.appendChild(ta); ta.select(); document.execCommand('copy');
-      document.body.removeChild(ta); this.showToast('Copied');
-    });
-  },
-
-  openRandom() {
-    const cats = Object.keys(this.db);
-    const cat = cats[Math.floor(Math.random() * cats.length)];
-    const items = this.db[cat];
-    const item = items[Math.floor(Math.random() * items.length)];
-    window.open(item.url, '_blank');
-    this.showToast(item.name);
-  },
-
-  showToast(msg) {
-    const t = document.getElementById('toast');
-    document.getElementById('toastMsg').textContent = msg;
-    t.classList.add('show');
-    clearTimeout(this._toastTimer);
-    this._toastTimer = setTimeout(() => t.classList.remove('show'), 2000);
-  },
-
-  updateSidebarStats() {
-    document.getElementById('stat-total').textContent = Object.values(this.db).reduce((a,b) => a.concat(b), []).length;
-    document.getElementById('stat-favs').textContent = this.favorites.length;
-    document.getElementById('stat-clicks').textContent = Object.values(this.clicks).reduce((a,b) => a+b, 0);
-  },
-
-  updateNavBadges() {
-    Object.keys(this.db).forEach(cat => {
-      const el = document.getElementById('nbadge-' + cat);
-      if (el) el.textContent = this.db[cat].length;
-    });
-    const fe = document.getElementById('nbadge-favorites');
-    if (fe) fe.textContent = this.favorites.length;
   }
-};
 
-window.addEventListener('DOMContentLoaded', function() { app.init(); });
+  function renderAll(filter) {
+    Object.keys(db).forEach(function(k) { render(k, filter); });
+    render('favorites', filter);
+  }
+
+  function renderStats() {
+    var allItems = [];
+    Object.keys(db).forEach(function(cat) {
+      db[cat].forEach(function(i) { allItems.push(i); });
+    });
+
+    var totalClicks = 0;
+    Object.keys(clicks).forEach(function(k) { totalClicks += clicks[k]; });
+
+    var biggest = Object.keys(db).sort(function(a, b) { return db[b].length - db[a].length; })[0];
+
+    $statsGrid.innerHTML =
+      '<div class="stat-card"><div class="stat-label">Sites</div><div class="stat-value">' + allItems.length + '</div></div>' +
+      '<div class="stat-card"><div class="stat-label">Saved</div><div class="stat-value">' + favorites.length + '</div></div>' +
+      '<div class="stat-card"><div class="stat-label">Clicks</div><div class="stat-value">' + totalClicks + '</div></div>' +
+      '<div class="stat-card"><div class="stat-label">Biggest</div><div class="stat-value" style="font-size:24px">' + esc(biggest) + '</div><div class="stat-sub">' + db[biggest].length + ' sites</div></div>';
+
+    var ranked = allItems.filter(function(i) { return clicks[i.id]; })
+      .sort(function(a, b) { return (clicks[b.id]||0) - (clicks[a.id]||0); })
+      .slice(0, 10);
+
+    var maxC = ranked.length ? clicks[ranked[0].id] : 1;
+
+    if (!ranked.length) {
+      $topList.innerHTML = '<div class="top-list-header">Most Clicked</div><div style="padding:18px;text-align:center;color:var(--dim);font-family:var(--metal);font-size:13px;letter-spacing:0.08em;text-transform:uppercase">No clicks yet</div>';
+      return;
+    }
+
+    var html = '<div class="top-list-header">Most Clicked</div>';
+    for (var i = 0; i < ranked.length; i++) {
+      var item = ranked[i];
+      var pct = Math.round((clicks[item.id] / maxC) * 100);
+      html += '<div class="top-item" data-id="' + esc(item.id) + '" data-url="' + esc(item.url) + '">' +
+        '<span class="top-rank">#' + (i + 1) + '</span>' +
+        faviconHTML(item.url, 14) +
+        '<span class="top-name">' + esc(item.name) + '</span>' +
+        '<div class="top-bar-wrap"><div class="top-bar" style="width:' + pct + '%"></div></div>' +
+        '<span class="top-clicks">' + clicks[item.id] + '</span>' +
+      '</div>';
+    }
+    $topList.innerHTML = html;
+  }
+
+  /* --- Tab switching --- */
+  var tabLabels = {games:'Games', streaming:'Stream', anime:'Anime', favorites:'Saved', stats:'Stats'};
+
+  function setTab(tabId) {
+    currentTab = tabId;
+    $pageTitle.textContent = tabLabels[tabId] || tabId;
+
+    document.querySelectorAll('[data-tab]').forEach(function(el) {
+      el.classList.toggle('active', el.dataset.tab === tabId);
+    });
+
+    document.querySelectorAll('.view-section').forEach(function(el) {
+      el.classList.remove('active');
+    });
+
+    var target = document.getElementById('view-' + tabId);
+    if (target) target.classList.add('active');
+
+    $countBadge.style.display = tabId === 'stats' ? 'none' : '';
+    $openAllBtn.style.display = tabId === 'favorites' ? '' : 'none';
+    $controlsBar.style.display = tabId === 'stats' ? 'none' : '';
+
+    if (tabId === 'stats') renderStats();
+    else render(tabId, $searchInput.value);
+  }
+
+  /* --- Search & Suggestions --- */
+  function handleSearch(val) {
+    showSuggestions(val);
+    render(currentTab, val);
+  }
+
+  function showSuggestions(val) {
+    clearTimeout(suggestionBlurTimer);
+    if (!val || val.length < 2) { hideSuggestions(); return; }
+
+    var all = [];
+    Object.keys(db).forEach(function(cat) {
+      db[cat].forEach(function(i) {
+        all.push({id: i.id, name: i.name, url: i.url, cat: cat});
+      });
+    });
+
+    var matches = all.filter(function(i) {
+      return fuzzyMatch(i.name, val) || fuzzyMatch(i.url, val);
+    }).slice(0, 6);
+
+    if (!matches.length) { hideSuggestions(); return; }
+
+    var html = '';
+    for (var i = 0; i < matches.length; i++) {
+      var m = matches[i];
+      html += '<div class="suggestion-item" data-id="' + esc(m.id) + '" data-url="' + esc(m.url) + '">' +
+        faviconHTML(m.url, 13) +
+        '<span class="suggestion-name">' + esc(m.name) + '</span>' +
+        '<span class="suggestion-cat">' + esc(m.cat) + '</span>' +
+      '</div>';
+    }
+    $suggestions.innerHTML = html;
+    $suggestions.classList.add('visible');
+  }
+
+  function hideSuggestions() {
+    $suggestions.classList.remove('visible');
+  }
+
+  function suggestionClick(id, url) {
+    hideSuggestions();
+    $searchInput.value = '';
+    var card = document.getElementById('card-' + id);
+    if (card) {
+      handleCardClick(id, url, card);
+    } else {
+      clicks[id] = (clicks[id] || 0) + 1;
+      localStorage.setItem('dachub_clicks', JSON.stringify(clicks));
+      updateSidebarStats();
+      window.open(url, '_blank');
+    }
+  }
+
+  /* --- Sort & View --- */
+  function setSort(mode) {
+    sortMode = mode;
+    localStorage.setItem('dachub_sort', mode);
+    document.querySelectorAll('.sort-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.sort === mode);
+    });
+    render(currentTab, $searchInput.value);
+  }
+
+  function setViewMode(mode) {
+    viewMode = mode;
+    localStorage.setItem('dachub_view', mode);
+    document.querySelectorAll('.view-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.view === mode);
+    });
+    document.querySelectorAll('.grid').forEach(function(g) {
+      g.className = 'grid' + (mode !== 'normal' ? ' ' + mode : '');
+    });
+    render(currentTab, $searchInput.value);
+  }
+
+  function syncControlButtons() {
+    document.querySelectorAll('.sort-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.sort === sortMode);
+    });
+    document.querySelectorAll('.view-btn').forEach(function(b) {
+      b.classList.toggle('active', b.dataset.view === viewMode);
+    });
+  }
+
+  /* --- Background --- */
+  function loadBackground() {
+    var bg = localStorage.getItem('dachub_custom_bg');
+    document.body.style.backgroundImage = 'url(' + (bg || DEFAULT_BG) + ')';
+  }
+
+  function handleBgUpload(input) {
+    if (!input.files || !input.files[0]) return;
+    var r = new FileReader();
+    r.onload = function(e) {
+      localStorage.setItem('dachub_custom_bg', e.target.result);
+      document.body.style.backgroundImage = 'url(' + e.target.result + ')';
+      showToast('BG updated');
+    };
+    r.readAsDataURL(input.files[0]);
+    input.value = '';
+  }
+
+  /* --- Modal --- */
+  function openAddModal() {
+    $addModal.classList.add('open');
+    setTimeout(function() { $newName.focus(); }, 100);
+  }
+
+  function closeAddModal() {
+    $addModal.classList.remove('open');
+  }
+
+  function addSite() {
+    var name = $newName.value.trim();
+    var url = $newUrl.value.trim();
+    var cat = $newCat.value;
+    if (!name || !url) { showToast('Fill all fields'); return; }
+    if (!/^https?:\/\//.test(url)) url = 'https://' + url;
+    var site = {id: 'c' + Date.now(), name: name, url: url, cat: cat};
+    customSites.push(site);
+    localStorage.setItem('dachub_custom_sites', JSON.stringify(customSites));
+    db[cat].push({id: site.id, name: name, url: url});
+    $newName.value = '';
+    $newUrl.value = '';
+    closeAddModal();
+    showToast('Added');
+    render(cat, '');
+    updateNavBadges();
+    updateSidebarStats();
+  }
+
+  /* --- Random --- */
+  function openRandom() {
+    var cats = Object.keys(db);
+    var cat = cats[Math.floor(Math.random() * cats.length)];
+    var items = db[cat];
+    var item = items[Math.floor(Math.random() * items.length)];
+    window.open(item.url, '_blank');
+    showToast(item.name);
+  }
+
+  /* --- Toast --- */
+  function showToast(msg) {
+    $toastMsg.textContent = msg;
+    $toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function() { $toast.classList.remove('show'); }, 2000);
+  }
+
+  /* --- Sidebar stats --- */
+  function updateSidebarStats() {
+    var total = 0;
+    Object.keys(db).forEach(function(k) { total += db[k].length; });
+    document.getElementById('stat-total').textContent = total;
+    document.getElementById('stat-favs').textContent = favorites.length;
+    var tc = 0;
+    Object.keys(clicks).forEach(function(k) { tc += clicks[k]; });
+    document.getElementById('stat-clicks').textContent = tc;
+  }
+
+  function updateNavBadges() {
+    Object.keys(db).forEach(function(cat) {
+      var el = document.getElementById('nbadge-' + cat);
+      if (el) el.textContent = db[cat].length;
+    });
+    var fe = document.getElementById('nbadge-favorites');
+    if (fe) fe.textContent = favorites.length;
+  }
+
+  /* --- Scroll --- */
+  function scrollTop() {
+    $contentScroll.scrollTo({top: 0, behavior: 'smooth'});
+  }
+
+  /* ============================================================
+     EVENT DELEGATION — el corazón de la corrección
+     ============================================================ */
+
+  function initEvents() {
+
+    /* --- Click en content area: cards, top-list items, action icons --- */
+    $contentScroll.addEventListener('click', function(e) {
+      /* Action icon dentro de una card */
+      var aicon = e.target.closest('.aicon');
+      if (aicon) {
+        e.stopPropagation();
+        var card = aicon.closest('.card');
+        if (!card) return;
+        var id = card.dataset.id;
+        var url = card.dataset.url;
+        var action = aicon.dataset.action;
+        if (action === 'fav') toggleFav(id);
+        else if (action === 'pin') togglePin(id);
+        else if (action === 'copy') copyLink(url);
+        return;
+      }
+
+      /* Click en una card */
+      var card = e.target.closest('.card');
+      if (card) {
+        handleCardClick(card.dataset.id, card.dataset.url, card);
+        return;
+      }
+
+      /* Click en top-list item (stats) */
+      var topItem = e.target.closest('.top-item');
+      if (topItem) {
+        e.preventDefault();
+        handleCardClick(topItem.dataset.id, topItem.dataset.url, null);
+        return;
+      }
+    });
+
+    /* --- Click en suggestions --- */
+    $suggestions.addEventListener('mousedown', function(e) {
+      var item = e.target.closest('.suggestion-item');
+      if (item) {
+        suggestionClick(item.dataset.id, item.dataset.url);
+      }
+    });
+
+    /* --- Nav items (sidebar + mobile) --- */
+    document.addEventListener('click', function(e) {
+      var navItem = e.target.closest('[data-tab]');
+      if (navItem) {
+        /* No interceptar links externos (como Instagram) */
+        if (navItem.tagName === 'A') return;
+        setTab(navItem.dataset.tab);
+      }
+    });
+
+    /* --- Sort buttons --- */
+    document.querySelector('.controls-bar').addEventListener('click', function(e) {
+      var sortBtn = e.target.closest('.sort-btn');
+      if (sortBtn) { setSort(sortBtn.dataset.sort); return; }
+
+      var viewBtn = e.target.closest('.view-btn');
+      if (viewBtn) { setViewMode(viewBtn.dataset.view); return; }
+    });
+
+    /* --- Header buttons --- */
+    document.getElementById('btnRandom').addEventListener('click', openRandom);
+    document.getElementById('btnAdd').addEventListener('click', openAddModal);
+    document.getElementById('btnBg').addEventListener('click', function() {
+      document.getElementById('bgInput').click();
+    });
+    document.getElementById('bgInput').addEventListener('change', function() {
+      handleBgUpload(this);
+    });
+    document.getElementById('openAllBtn').addEventListener('click', openAllFavs);
+    document.getElementById('btnExport').addEventListener('click', exportFavs);
+
+    /* --- Back to top --- */
+    $backTop.addEventListener('click', scrollTop);
+
+    /* --- Modal --- */
+    $addModal.addEventListener('click', function(e) {
+      if (e.target === $addModal) closeAddModal();
+    });
+    document.getElementById('modalCancel').addEventListener('click', closeAddModal);
+    document.getElementById('modalAdd').addEventListener('click', addSite);
+
+    /* Enter en modal inputs */
+    $newUrl.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') addSite();
+    });
+    $newName.addEventListener('keydown', function(e) {
+      if (e.key === 'Enter') $newUrl.focus();
+    });
+
+    /* --- Search input --- */
+    $searchInput.addEventListener('input', function() {
+      handleSearch(this.value);
+    });
+    $searchInput.addEventListener('focus', function() {
+      showSuggestions(this.value);
+    });
+    $searchInput.addEventListener('blur', function() {
+      suggestionBlurTimer = setTimeout(hideSuggestions, 150);
+    });
+
+    /* --- Scroll para back-top --- */
+    $contentScroll.addEventListener('scroll', function() {
+      $backTop.classList.toggle('visible', $contentScroll.scrollTop > 300);
+    });
+
+    /* --- Keyboard shortcuts --- */
+    document.addEventListener('keydown', function(e) {
+      var tag = document.activeElement.tagName;
+      if (tag === 'INPUT' || tag === 'SELECT' || tag === 'TEXTAREA') {
+        if (e.key === 'Escape') document.activeElement.blur();
+        return;
+      }
+      if (e.key === '/') { e.preventDefault(); $searchInput.focus(); }
+      if (e.key === 'r' || e.key === 'R') openRandom();
+      if (e.key === 'Escape') closeAddModal();
+    });
+  }
+
+  /* --- Init --- */
+  function init() {
+    $contentScroll = document.getElementById('contentScroll');
+    $searchInput = document.getElementById('searchInput');
+    $suggestions = document.getElementById('suggestions');
+    $pageTitle = document.getElementById('pageTitle');
+    $countBadge = document.getElementById('countBadge');
+    $addModal = document.getElementById('addModal');
+    $newName = document.getElementById('newName');
+    $newUrl = document.getElementById('newUrl');
+    $newCat = document.getElementById('newCat');
+    $toast = document.getElementById('toast');
+    $toastMsg = document.getElementById('toastMsg');
+    $backTop = document.getElementById('backTop');
+    $openAllBtn = document.getElementById('openAllBtn');
+    $controlsBar = document.getElementById('controlsBar');
+
+    /* Load state */
+    try { favorites = JSON.parse(localStorage.getItem('dachub_favs_v2') || '[]'); } catch(e) { favorites = []; }
+    try { pinned = JSON.parse(localStorage.getItem('dachub_pinned') || '[]'); } catch(e) { pinned = []; }
+    try { clicks = JSON.parse(localStorage.getItem('dachub_clicks') || '{}'); } catch(e) { clicks = {}; }
+    try { customSites = JSON.parse(localStorage.getItem('dachub_custom_sites') || '[]'); } catch(e) { customSites = []; }
+
+    viewMode = localStorage.getItem('dachub_view') || 'list';
+    sortMode = localStorage.getItem('dachub_sort') || 'default';
+
+    /* Build DB */
+    db = JSON.parse(JSON.stringify(DEFAULT_DB));
+    customSites.forEach(function(s) {
+      if (db[s.cat]) db[s.cat].push({id: s.id, name: s.name, url: s.url});
+    });
+
+    syncControlButtons();
+    loadBackground();
+    initEvents();
+    setTab('games');
+    updateSidebarStats();
+    updateNavBadges();
+  }
+
+  window.addEventListener('DOMContentLoaded', init);
+})();
 </script>
 </body>
 </html>
